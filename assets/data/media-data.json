@@ -1,0 +1,41 @@
+{
+  "images": {
+    "favicon": {
+      "src": "/assets/common/icons/olm-icon-favicon.svg",
+      "alt": "",
+      "width": 64,
+      "height": 64,
+      "status": "placeholder"
+    },
+    "commonOg": {
+      "src": "/assets/common/og/olm-og-default.svg",
+      "alt": "오름인터내셔널과 공식 파트너 브랜드 소개",
+      "width": 1200,
+      "height": 630,
+      "status": "placeholder"
+    },
+    "ludwikHero": {
+      "src": "/assets/ludwik/hero/ludwik-hero-placeholder.svg",
+      "alt": "Ludwik 공식 제품 이미지 준비 중",
+      "width": 960,
+      "height": 720,
+      "status": "placeholder"
+    },
+    "biostarHero": {
+      "src": "/assets/biostar/hero/biostar-hero-placeholder.svg",
+      "alt": "BIOstar 공식 제품 이미지 준비 중",
+      "width": 960,
+      "height": 720,
+      "status": "placeholder"
+    },
+    "biostarIngredients": {
+      "src": "/assets/biostar/hero/biostar-hero-placeholder.svg",
+      "alt": "BIOstar 알로에와 라벤더 성분 이미지 준비 중",
+      "width": 960,
+      "height": 720,
+      "status": "placeholder"
+    }
+  },
+  "products": [],
+  "certifications": []
+}
