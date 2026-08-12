@@ -1,0 +1,5 @@
+import test from "node:test"; import assert from "node:assert/strict"; import {readFile,access} from "node:fs/promises";
+const root=new URL("../",import.meta.url); const pages=["index.html","about/index.html","brands/index.html","brands/ludwik/index.html","brands/biostar/index.html","business/index.html","partnership/index.html","contact/index.html"];
+test("all routes exist",async()=>{for(const p of pages)await access(new URL(p,root))});
+test("local absolute links resolve",async()=>{for(const p of pages){const html=await readFile(new URL(p,root),"utf8");for(const [,href] of html.matchAll(/href="(\/[^"]*)"/g)){const clean=href.split("#")[0].split("?")[0];if(!clean||clean==="/"){await access(new URL("index.html",root));continue}if(clean.includes("."))await access(new URL(clean.slice(1),root));else await access(new URL(`${clean.slice(1)}index.html`,root));}}});
+test("images have dimensions and alt",async()=>{for(const p of pages){const html=await readFile(new URL(p,root),"utf8");for(const [tag] of html.matchAll(/<img\b[^>]*>/g)){assert.match(tag,/alt="[^"]*"/);assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/)}}});

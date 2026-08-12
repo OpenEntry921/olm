@@ -1,0 +1,14 @@
+{
+  "name": "oreum-international-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "오름인터내셔널 정적 기업·브랜드 웹사이트",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "lint": "node scripts/validate.mjs",
+    "typecheck": "node --check assets/js/main.js && node --check assets/data/site-data.js",
+    "test": "node --test tests/site.test.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
