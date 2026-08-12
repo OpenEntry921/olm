@@ -1,0 +1,4 @@
+/** Korean page content. Keep the exported shape aligned with a future reviewed locale module. */
+export const brandsContentKo = ({ imageTag, pageHero }) => (
+`${pageHero("Brands","서로 다른 개성,<br>하나의 신뢰","오름인터내셔널은 각 브랜드의 고유한 역사와 철학을 존중하며 한국의 일상에 연결합니다.")}<section class="section ludwik"><div class="container split"><div><span class="eyebrow">01 · Ludwik</span><h2 class="title">1964년 폴란드의 주방에서 시작된 생활 세정 브랜드</h2><p>오랜 헤리티지와 폭넓은 홈케어 제품군으로 생활 곳곳의 깨끗함을 제안합니다.</p><a class="link-arrow" href="/brands/ludwik/">브랜드 스토리 →</a></div><div class="visual">${imageTag("ludwikHero")}</div></div></section><section class="section biostar"><div class="container split"><div class="visual">${imageTag("biostarHero")}</div><div><span class="eyebrow">02 · BIOstar</span><h2 class="title">자연에서 찾은 성분과 클리닝 기술의 만남</h2><p>천연 유래 성분과 식물 추출물, 유산균을 활용한 새로운 홈케어 아이디어를 전합니다.</p><a class="link-arrow" href="/brands/biostar/">브랜드 스토리 →</a></div></div></section>`
+);
