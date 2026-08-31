@@ -1,48 +1,46 @@
-/** Korean BIOstar content and product-image readiness data. */
+/** Korean BIOstar brand settings and product catalogue. */
 export const biostarBrand = {
   name: "BIOstar",
-  // TODO: 공식 BIOstar 웹용 로고 PNG 또는 SVG 업로드 후 image 경로로 교체
-  // 권장 경로: /assets/biostar/logo/biostar-logo.png
-  logo: { path: "/assets/biostar/logo/biostar-logo.png", ready: false, alt: "BIOstar", width: 720, height: 240 }
+  // TODO: 공식 BIOstar 로고 업로드 후 교체
+  logo: { path: null, alt: "BIOstar", width: null, height: null },
+  officialPurchaseUrl: null,
+  purchaseFallbackUrl: "/contact/?type=consumer"
 };
+
+const productImagePath = fileName => `/docs/source-images/${fileName}`;
 
 export const biostarProducts = [
-  { id: "biostar-dishwashing-liquid-700ml", name: "BIOstar 주방세제", variant: "700ml", description: "손설거지를 위한 주방세제로, 음식물과 기름때가 남은 식기를 깨끗하게 관리할 수 있도록 설계된 제품입니다. 천연 알로에 추출물을 활용한 제품 구성이 특징입니다.", futureImage: "/assets/biostar/products/biostar-dishwashing-liquid-700ml.png", imageReady: false, placeholderLabel: "제품 이미지 준비 중", order: 1, visible: true },
-  { id: "biostar-kitchen-foam-700ml", name: "BIOstar 주방 클리닝 폼", variant: "700ml", description: "조리대, 후드, 싱크대, 전자레인지 등 세척 가능한 주방 표면의 기름때와 음식물 오염 관리에 사용하는 주방용 클리닝 폼입니다. 천연 알로에 추출물을 활용합니다.", futureImage: "/assets/biostar/products/biostar-kitchen-foam-700ml.png", imageReady: false, placeholderLabel: "제품 이미지 준비 중", order: 2, visible: true },
-  { id: "biostar-bathroom-foam-700ml", name: "BIOstar 욕실 클리닝 폼", variant: "700ml", description: "세라믹, 크롬, 유리, 스테인리스와 타일 등 세척 가능한 욕실 표면의 물때와 비누 잔여물을 관리하기 위한 욕실용 클리닝 폼입니다. 천연 라벤더 추출물을 활용합니다.", futureImage: "/assets/biostar/products/biostar-bathroom-foam-700ml.png", imageReady: false, placeholderLabel: "제품 이미지 준비 중", order: 3, visible: true },
-  { id: "biostar-shower-cleaner-700ml", name: "BIOstar 샤워부스 클리너", variant: "700ml", description: "샤워부스의 유리와 타일, 크롬 및 세라믹 표면에 남는 물자국, 비누 잔여물과 석회성 오염을 관리하기 위한 전용 클리너입니다. 천연 라벤더 추출물을 활용합니다.", futureImage: "/assets/biostar/products/biostar-shower-cleaner-700ml.png", imageReady: false, placeholderLabel: "제품 이미지 준비 중", order: 4, visible: true },
-  { id: "biostar-glass-mirror-cleaner-700ml", name: "BIOstar 유리·거울 클리너", variant: "700ml", description: "유리와 거울 등 광택 표면에 남는 먼지, 얼룩과 생활 오염을 관리하기 위한 클리너입니다.", futureImage: "/assets/biostar/products/biostar-glass-mirror-cleaner-700ml.png", imageReady: false, placeholderLabel: "제품 이미지 준비 중", order: 5, visible: true }
+  { id: "dishwashing-liquid", name: "주방세제", volume: "700ml", category: "kitchen", use: "식기 세척", description: "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다.", image: productImagePath("biostar-dishwashing-liquid-700ml.png"), width: 854, height: 2143, alt: "BIOstar 주방세제 700ml 용기", certifications: [], purchaseUrl: null },
+  { id: "kitchen-cleaner", name: "주방 세정 폼", volume: "700ml", category: "kitchen", use: "주방 표면 관리", description: "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다.", image: productImagePath("biostar-kitchen-cleaner-700ml.png"), width: 854, height: 2270, alt: "BIOstar 주방 세정 폼 700ml 스프레이 용기", certifications: [], purchaseUrl: null },
+  { id: "dishwasher-tablets", name: "식기세척기 세제", volume: "50개입", category: "kitchen", use: "식기세척기용", description: "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다.", image: productImagePath("biostar-dishwasher-tablets-50pcs.png"), width: 2000, height: 2000, alt: "BIOstar 식기세척기 세제 50개입 패키지", certifications: [], purchaseUrl: null },
+  { id: "bathroom-cleaner", name: "욕실 세정 폼", volume: "700ml", category: "bathroom", use: "욕실 표면 관리", description: "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다.", image: productImagePath("biostar-bathroom-cleaner-700ml.png"), width: 854, height: 2270, alt: "BIOstar 욕실 세정 폼 700ml 스프레이 용기", certifications: [], purchaseUrl: null },
+  { id: "shower-cabin-cleaner", name: "샤워부스 세정제", volume: "700ml", category: "bathroom", use: "샤워부스 관리", description: "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다.", image: productImagePath("biostar-shower-cabin-cleaner-700ml.png"), width: 854, height: 2270, alt: "BIOstar 샤워부스 세정제 700ml 스프레이 용기", certifications: [], purchaseUrl: null },
+  { id: "toilet-gel", name: "변기 세정 젤", volume: "750ml", category: "bathroom", use: "변기 내부 세정", description: "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다.", image: productImagePath("biostar-toilet-gel-750ml.png"), width: 814, height: 2208, alt: "BIOstar 변기 세정 젤 750ml 용기", certifications: [], purchaseUrl: null },
+  { id: "glass-mirror-cleaner", name: "유리·거울 세정제", volume: "700ml", category: "living", use: "유리·거울 관리", description: "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다.", image: productImagePath("biostar-glass-and-mirror-cleaner-700ml.png"), width: 1006, height: 2354, alt: "BIOstar 유리·거울 세정제 700ml 스프레이 용기", certifications: [], purchaseUrl: null },
+  { id: "universal-cleaner", name: "다목적 세정제", volume: "800ml", category: "living", use: "생활 공간 표면 관리", description: "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다.", image: productImagePath("biostar-universal-cleaner-800ml.png"), width: 830, height: 2216, alt: "BIOstar 다목적 세정제 800ml 용기", certifications: [], purchaseUrl: null }
 ];
 
-// 검사 결과 확인 후 비활성화 또는 교체 예정
-export const biostarPendingInfographics = {
-  enabled: true,
-  status: "pending-review",
-  items: [
-    { src: "/docs/source-images/ChatGPT Image 2026년 8월 22일 오후 02_10_04.png", alt: "BIOstar 제품 특징 안내", width: 1817, height: 866, order: 1 },
-    { src: "/docs/source-images/ChatGPT Image 2026년 8월 22일 오후 02_15_58.png", alt: "BIOstar 세정 아이디어 안내", width: 1024, height: 1535, order: 2 }
-  ]
-};
+const categories = [
+  { id: "kitchen", eyebrow: "KITCHEN CARE", title: "주방 관리" },
+  { id: "bathroom", eyebrow: "BATHROOM CARE", title: "욕실 관리" },
+  { id: "living", eyebrow: "LIVING CARE", title: "생활 공간 관리" }
+];
 
-const stagingImages = {
-  hero: { src: "/docs/source-images/ChatGPT Image 2026년 8월 22일 오후 01_55_15 (6).png", alt: "BIOstar 홈케어 제품 라인업", width: 1942, height: 809 },
-  approach: { src: "/docs/source-images/ChatGPT Image 2026년 8월 22일 오후 01_55_15 (5).png", alt: "BIOstar 제품을 사용하는 주방 공간", width: 1942, height: 809 }
-};
-const imageTag = (image, className = "") => `<img${className ? ` class="${className}"` : ""} src="${image.src}" width="${image.width}" height="${image.height}" alt="${image.alt}">`;
-const productVisual = product => product.imageReady
-  ? `<img class="product-image" src="${product.futureImage}" width="720" height="900" alt="${product.name} ${product.variant}">`
-  : `<div class="product-placeholder" role="img" aria-label="${product.name} ${product.variant} ${product.placeholderLabel}"><strong>${biostarBrand.name}</strong><span>${product.name}</span><b>${product.variant}</b><small>${product.placeholderLabel}</small></div>`;
-const productCard = product => `<article class="product-card" data-product-id="${product.id}">${productVisual(product)}<div class="product-copy"><h3>${product.name}</h3><p class="product-variant">${product.variant}</p><p>${product.description}</p></div></article>`;
+const productImage = (product, { decorative = false, eager = false } = {}) => `<img class="biostar-product-image" src="${product.image}" width="${product.width}" height="${product.height}" alt="${decorative ? "" : product.alt}" loading="${eager ? "eager" : "lazy"}" decoding="async">`;
+const productCard = product => `<article class="biostar-product" data-product-id="${product.id}"><div class="biostar-product-visual">${productImage(product)}</div><div class="biostar-product-copy"><p class="biostar-product-use">${product.use}</p><h3>${product.name}</h3><p class="biostar-product-volume">${product.volume}</p><p>${product.description}</p></div></article>`;
 
 export const biostarContentKo = () => {
-  const products = biostarProducts.filter(product => product.visible).sort((a, b) => a.order - b.order);
-  const wordmark = biostarBrand.logo.ready
+  const logo = biostarBrand.logo.path
     ? `<img class="brand-wordmark" src="${biostarBrand.logo.path}" width="${biostarBrand.logo.width}" height="${biostarBrand.logo.height}" alt="${biostarBrand.logo.alt}">`
     : `<span class="brand-name biostar-name">${biostarBrand.name}</span>`;
-  const infographics = biostarPendingInfographics.enabled
-    ? `<div class="infographic-grid">${biostarPendingInfographics.items.sort((a, b) => a.order - b.order).map(item => `<figure>${imageTag(item)}</figure>`).join("")}</div>` : "";
-  return `<section class="brand-detail-hero biostar-detail"><div class="container"><div class="breadcrumb"><a href="/">홈</a> / <a href="/brands/">브랜드</a> / BIOstar</div><div class="brand-intro">${wordmark}<div><span class="eyebrow">NATURAL-ORIGIN HOMECARE</span><h1 class="display">자연에서 찾은 성분에<br>클리닝 기술을 더하다</h1><p class="lead">BIOstar는 자연 유래 성분과 식물 추출물을 바탕으로 주방, 욕실, 유리와 거울 등 집 안의 다양한 공간을 관리할 수 있는 홈케어 제품을 제안합니다.</p></div></div>${imageTag(stagingImages.hero, "brand-banner")}</div></section>
-  <section class="section approach-section"><div class="container split"><div class="visual natural-visual">${imageTag(stagingImages.approach)}</div><div><span class="eyebrow">OUR APPROACH</span><h2 class="title">일상의 공간에서 시작하는 새로운 홈케어</h2><p class="lead">자연 유래 성분과 세정 기술을 결합해 제품이 사용되는 공간과 목적에 맞춘 세분화된 클리닝 제품군을 구성합니다.</p></div></div></section>
-  <section class="section product-section biostar-products"><div class="container"><span class="eyebrow">HOMECARE RANGE</span><h2 class="title">공간과 목적에 맞춘 제품 라인업</h2><div class="product-grid biostar-product-grid">${products.map(productCard).join("")}</div></div></section>
-  ${biostarPendingInfographics.enabled ? `<section class="section infographic-section"><div class="container"><span class="eyebrow">CLEANING IDEAS</span><h2 class="title">BIOstar가 제안하는 클리닝 아이디어</h2><p class="section-lead">자연 유래 성분과 브랜드의 세정 기술을 결합해 일상적인 오염 관리에 새로운 접근을 제안합니다.</p>${infographics}</div></section>` : ""}`;
+  const purchaseUrl = biostarBrand.officialPurchaseUrl || biostarBrand.purchaseFallbackUrl;
+  const purchaseNote = biostarBrand.officialPurchaseUrl ? "공식 판매처로 이동합니다." : "공식 판매처 URL 준비 중 · 제품 문의 페이지로 연결됩니다.";
+  const kitchen = biostarProducts.filter(product => product.category === "kitchen");
+
+  return `<section class="biostar-page-hero"><div class="container"><div class="breadcrumb"><a href="/">홈</a> / <a href="/brands/">브랜드</a> / BIOstar</div><div class="biostar-hero-grid"><div class="biostar-hero-copy">${logo}<span class="eyebrow">NATURAL-ORIGIN HOMECARE</span><h1 class="display">자연에서 찾은 성분에<br>클리닝 기술을 더하다</h1><p class="lead">천연 유래 성분과 식물 추출물에서 시작한 BIOstar. 주방과 욕실, 세탁과 생활 공간을 위한 다양한 홈케어 제품을 소개합니다.</p></div><div class="biostar-hero-products" aria-hidden="true">${productImage(kitchen[0], { decorative: true, eager: true })}${productImage(kitchen[1], { decorative: true, eager: true })}${productImage(kitchen[2], { decorative: true, eager: true })}</div></div></div></section>
+  <section class="section biostar-principles"><div class="container"><span class="eyebrow">BIOSTAR ESSENTIALS</span><h2 class="title">공간과 제품에 맞춘<br>홈케어의 기준</h2><p class="section-lead">제품의 용도와 공식 표시사항을 기준으로 필요한 정보를 살펴보세요. 성분과 인증은 제품마다 다를 수 있습니다.</p><ul class="biostar-keywords"><li>천연 유래 성분</li><li>천연 알로에 추출물</li><li>천연 라벤더 추출물</li><li>유산균을 활용한 클리닝 아이디어</li><li>주방·욕실·생활 공간별 제품</li><li>제품별 인증</li></ul></div></section>
+  <section class="biostar-catalogue" aria-labelledby="biostar-products-title"><div class="container"><span class="eyebrow">HOMECARE RANGE</span><h2 class="title" id="biostar-products-title">BIOstar 제품 라인업</h2>${categories.map((category, index) => `<section class="biostar-category biostar-category-${category.id}" aria-labelledby="category-${category.id}"><div class="biostar-category-heading"><span>${category.eyebrow}</span><h3 id="category-${category.id}">${category.title}</h3><b>0${index + 1}</b></div><div class="biostar-category-products">${biostarProducts.filter(product => product.category === category.id).map(productCard).join("")}</div></section>`).join("")}</div></section>
+  <section class="section biostar-idea"><div class="container biostar-info-grid"><div><span class="eyebrow">CLEANING IDEA</span><h2 class="title">유산균을 활용한<br>클리닝 아이디어</h2></div><p class="lead">유산균을 활용한 BIOstar만의 클리닝 아이디어. 자연 유래 성분과 브랜드의 세정 기술을 결합해 새로운 홈케어 방식을 제안합니다.</p></div></section>
+  <section class="section biostar-certifications"><div class="container biostar-info-grid"><div><span class="eyebrow">PRODUCT INFORMATION</span><h2 class="title">제품별 인증 안내</h2></div><div><p class="lead">인증과 성분 정보는 제품별로 다를 수 있으므로 각 제품의 공식 표시사항을 확인해 주세요.</p><p class="biostar-data-note">현재 별도로 등록된 제품별 인증 정보는 없습니다.</p></div></div></section>
+  <section class="section biostar-cta"><div class="container"><div><span class="eyebrow">OFFICIAL RETAILER</span><h2 class="title">BIOstar 제품을<br>공식 판매처에서 만나보세요</h2><p>${purchaseNote}</p></div><a class="btn biostar-cta-button" href="${purchaseUrl}">공식 판매처 보기</a></div></section>`;
 };
