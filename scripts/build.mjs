@@ -12,7 +12,15 @@ const sourceImages = [
   "ChatGPT Image 2026년 8월 22일 오후 01_55_15 (5).png",
   "ChatGPT Image 2026년 8월 22일 오후 01_55_15 (6).png",
   "ChatGPT Image 2026년 8월 22일 오후 02_10_04.png",
-  "ChatGPT Image 2026년 8월 22일 오후 02_15_58.png"
+  "ChatGPT Image 2026년 8월 22일 오후 02_15_58.png",
+  "biostar-bathroom-cleaner-700ml.png",
+  "biostar-dishwasher-tablets-50pcs.png",
+  "biostar-dishwashing-liquid-700ml.png",
+  "biostar-glass-and-mirror-cleaner-700ml.png",
+  "biostar-kitchen-cleaner-700ml.png",
+  "biostar-shower-cabin-cleaner-700ml.png",
+  "biostar-toilet-gel-750ml.png",
+  "biostar-universal-cleaner-800ml.png"
 ];
 const sourceImageDist = new URL("docs/source-images/",dist);
 await mkdir(sourceImageDist,{recursive:true});
