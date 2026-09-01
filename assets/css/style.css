@@ -19,8 +19,8 @@
 .hero .btn-light{background:#fff;color:#0b2239;border-color:#fff;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.18)}
 .hero .btn-light:hover{background:#f5b544;color:#0b2239;border-color:#f5b544}
 .hero .btn-light:focus-visible{outline:3px solid #ffc857;outline-offset:3px}
-.hero-scroll-cue{position:absolute;z-index:2;left:50%;bottom:max(22px,calc(env(safe-area-inset-bottom) + 14px));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:64px;min-height:54px;padding:4px 10px;border:0;background:transparent;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.75);transform:translateX(-50%);transition:opacity .28s ease}
-.hero-scroll-cue span{font-size:.7rem;font-weight:750;letter-spacing:.16em}
+.hero-scroll-cue{position:absolute;z-index:2;left:50%;bottom:max(22px,calc(env(safe-area-inset-bottom) + 14px));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:max-content;min-width:64px;min-height:54px;padding:4px 10px;border:0;background:transparent;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.75);transform:translateX(-50%);transition:opacity .28s ease}
+.hero-scroll-cue span{font-size:.7rem;font-weight:750;letter-spacing:.16em;white-space:nowrap}
 .hero-scroll-cue svg{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 3px rgba(0,0,0,.75));animation:scroll-cue 1.8s ease-in-out infinite}
 .hero-scroll-cue:hover svg{stroke:#fff}
 .hero-scroll-cue:focus-visible{outline:3px solid #ffc857;outline-offset:2px}
