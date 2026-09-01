@@ -23,6 +23,49 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
+  const scrollCue = document.querySelector(".hero-scroll-cue");
+  const nextSection = document.querySelector("#home-introduction");
+  if (scrollCue && nextSection) {
+    let dismissed = false;
+    let touchY = 0;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const removeDismissListeners = () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("keydown", onScrollKey);
+    };
+    const dismiss = () => {
+      if (dismissed) return;
+      dismissed = true;
+      scrollCue.classList.add("is-hidden");
+      scrollCue.setAttribute("tabindex", "-1");
+      removeDismissListeners();
+      window.setTimeout(() => { scrollCue.hidden = true; }, reducedMotion.matches ? 0 : 280);
+    };
+    function onScroll() { if (window.scrollY >= 64) dismiss(); }
+    function onWheel(event) { if (event.deltaY > 0) dismiss(); }
+    function onTouchStart(event) { touchY = event.touches[0]?.clientY ?? 0; }
+    function onTouchMove(event) { if ((event.touches[0]?.clientY ?? touchY) < touchY) dismiss(); }
+    function onScrollKey(event) {
+      const interactive = event.target instanceof Element && event.target.closest("button, a, input, select, textarea");
+      if (["ArrowDown", "PageDown", "End", " "].includes(event.key) && !interactive) dismiss();
+    }
+    scrollCue.addEventListener("click", () => {
+      dismiss();
+      const headerHeight = document.querySelector(".header")?.getBoundingClientRect().height ?? 0;
+      const top = nextSection.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top, behavior: reducedMotion.matches ? "auto" : "smooth" });
+      nextSection.focus({ preventScroll: true });
+    });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("keydown", onScrollKey);
+    onScroll();
+  }
   const form = document.querySelector("#contact-form");
   form?.addEventListener("submit", async e => {
     e.preventDefault();
