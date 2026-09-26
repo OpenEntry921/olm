@@ -22,7 +22,8 @@ export const commonContentKo = {
     phoneLabel: "대표 연락처", phone: "준비 중",
     addressLabel: "주소", address: "회사 주소 준비 중",
     copyright: "© 2026 OLM. All rights reserved.",
-    contactLabel: "문의 안내"
+    contactLabel: "문의 안내",
+    adminLabel: "관리자"
   },
   breadcrumb: { home: "홈", brands: "브랜드" },
   organization: {
