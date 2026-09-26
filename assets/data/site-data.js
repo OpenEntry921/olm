@@ -15,13 +15,14 @@ window.OREUM_DATA = {
   ],
   brands: [
     { id: "ludwik", name: "Ludwik", since: "1964", origin: "Poland", href: "/brands/ludwik/", keywords: ["브랜드 헤리티지", "주방", "세탁", "홈케어"] },
-    { id: "biostar", name: "BIOstar", href: "/brands/biostar/", keywords: ["천연 유래 성분", "알로에", "라벤더", "유산균"] }
+    { id: "biostar", name: "BIOstar", href: "/brands/biostar/", keywords: ["주방 관리", "욕실 관리", "다목적 관리", "식기세척기 관리"] }
   ],
   categories: {
     ludwik: ["주방 세정", "세탁 케어", "홈케어"],
-    biostar: ["주방", "욕실", "세탁 홈케어"]
+    biostar: ["주방 관리", "욕실 관리", "다목적 관리", "식기세척기 관리"]
   },
-  products: [], // TODO: 국내 공식 취급 제품 데이터
+  products: [], // FUTURE API: 브랜드 상세 페이지의 검토된 제품 레코드와 동일한 스키마로 연결
+  productGuide: { status: "preparing", apiEndpoint: "" }, // FUTURE API: 승인 후 독립 ProductGuide 컴포넌트가 참조
   certifications: [], // TODO: 확인된 제품별 인증 데이터
   retailers: [], // TODO: 공식 판매처명과 URL
   socialLinks: [] // TODO: 공식 소셜 링크

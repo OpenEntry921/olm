@@ -15,6 +15,26 @@ export const ludwikProducts = [
   { id: "ludwik-eko-powder-1-2kg", familyId: "ludwik-eko-dishwasher-powder", name: "Ludwik EKO 식기세척기용 분말 세제", type: "분말", quantity: "1.2kg", category: "식기세척기용 세제", description: "사용 환경과 세척량에 맞게 양을 조절해 사용할 수 있는 식기세척기용 분말 세제입니다.", image: productImage("ludwik-eko-dishwasher-powder-1-2kg.png"), width: 2362, height: 3154, alt: "Ludwik EKO 식기세척기용 분말 세제 1.2kg 패키지", purchaseUrl: null, availableInKorea: true }
 ];
 
+/** Reviewed product records reserved for a future product-guide API. Not all fields are rendered. */
+export const ludwikProductGuideData = ludwikProducts.map(product => ({
+  id: product.id,
+  brand: ludwikBrand.name,
+  nameKo: product.name,
+  nameOriginal: null,
+  category: product.category,
+  volume: product.quantity,
+  image: product.image,
+  approvedDescription: product.description,
+  usage: product.category,
+  cautions: null,
+  retailerUrl: product.purchaseUrl,
+  regulatoryCategory: null,
+  allowedClaims: [product.description],
+  restrictedClaims: ["확인되지 않은 성분·효능·안전성 표현"],
+  source: "제품 패키지 및 제공된 브랜드 자료",
+  lastReviewedAt: "2026-09-26"
+}));
+
 const productImageTag = (product, className = "ludwik-product-image") => `<img class="${className}" src="${product.image}" width="${product.width}" height="${product.height}" alt="${product.alt}" loading="lazy" decoding="async">`;
 const tabletVariant = product => `<article class="ludwik-tablet" data-product-id="${product.id}"><div class="ludwik-tablet-visual">${productImageTag(product)}</div><div class="ludwik-tablet-copy"><h4>${product.quantity}</h4><p>${product.name}</p></div></article>`;
 

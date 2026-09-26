@@ -20,6 +20,26 @@ export const biostarProducts = [
   { id: "universal-cleaner", name: "다목적 세정제", volume: "800ml", category: "living", use: "생활 공간 표면 관리", description: "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다.", image: productImagePath("biostar-universal-cleaner-800ml.png"), width: 830, height: 2216, alt: "BIOstar 다목적 세정제 800ml 용기", certifications: [], purchaseUrl: null }
 ];
 
+/** Reviewed product records reserved for a future product-guide API. Not all fields are rendered. */
+export const biostarProductGuideData = biostarProducts.map(product => ({
+  id: `biostar-${product.id}`,
+  brand: biostarBrand.name,
+  nameKo: product.name,
+  nameOriginal: null,
+  category: product.category,
+  volume: product.volume,
+  image: product.image,
+  approvedDescription: product.description,
+  usage: product.use,
+  cautions: null,
+  retailerUrl: product.purchaseUrl,
+  regulatoryCategory: null,
+  allowedClaims: [product.description],
+  restrictedClaims: ["확인되지 않은 성분·효능·안전성 표현"],
+  source: "제품 패키지 및 제공된 브랜드 자료",
+  lastReviewedAt: "2026-09-26"
+}));
+
 const categories = [
   { id: "kitchen", eyebrow: "KITCHEN CARE", title: "주방 관리" },
   { id: "bathroom", eyebrow: "BATHROOM CARE", title: "욕실 관리" },
@@ -32,15 +52,14 @@ const productCard = product => `<article class="biostar-product" data-product-id
 export const biostarContentKo = () => {
   const logo = biostarBrand.logo.path
     ? `<img class="brand-wordmark" src="${biostarBrand.logo.path}" width="${biostarBrand.logo.width}" height="${biostarBrand.logo.height}" alt="${biostarBrand.logo.alt}">`
-    : `<span class="brand-name biostar-name">${biostarBrand.name}</span>`;
+    : `<span class="eyebrow">BIOSTAR · POLAND</span>`;
   const purchaseUrl = biostarBrand.officialPurchaseUrl || biostarBrand.purchaseFallbackUrl;
   const purchaseNote = biostarBrand.officialPurchaseUrl ? "공식 판매처로 이동합니다." : "공식 판매처 URL 준비 중 · 제품 문의 페이지로 연결됩니다.";
   const kitchen = biostarProducts.filter(product => product.category === "kitchen");
 
-  return `<section class="biostar-page-hero"><div class="container"><div class="breadcrumb"><a href="/">홈</a> / <a href="/brands/">브랜드</a> / BIOstar</div><div class="biostar-hero-grid"><div class="biostar-hero-copy">${logo}<span class="eyebrow">NATURAL-ORIGIN HOMECARE</span><h1 class="display">자연에서 찾은 성분에<br>클리닝 기술을 더하다</h1><p class="lead">천연 유래 성분과 식물 추출물에서 시작한 BIOstar. 주방과 욕실, 세탁과 생활 공간을 위한 다양한 홈케어 제품을 소개합니다.</p></div><div class="biostar-hero-products" aria-hidden="true">${productImage(kitchen[0], { decorative: true, eager: true })}${productImage(kitchen[1], { decorative: true, eager: true })}${productImage(kitchen[2], { decorative: true, eager: true })}</div></div></div></section>
-  <section class="section biostar-principles"><div class="container"><span class="eyebrow">BIOSTAR ESSENTIALS</span><h2 class="title">공간과 제품에 맞춘<br>홈케어의 기준</h2><p class="section-lead">제품의 용도와 공식 표시사항을 기준으로 필요한 정보를 살펴보세요. 성분과 인증은 제품마다 다를 수 있습니다.</p><ul class="biostar-keywords"><li>천연 유래 성분</li><li>천연 알로에 추출물</li><li>천연 라벤더 추출물</li><li>유산균을 활용한 클리닝 아이디어</li><li>주방·욕실·생활 공간별 제품</li><li>제품별 인증</li></ul></div></section>
+  return `<section class="biostar-page-hero"><div class="container"><div class="breadcrumb"><a href="/">홈</a> / <a href="/brands/">브랜드</a> / BIOstar</div><div class="biostar-hero-grid"><div class="biostar-hero-copy">${logo}<span class="eyebrow">POLISH HOMECARE</span><h1 class="display">일상의 공간에 맞춘<br>폴란드 홈케어 브랜드</h1><p class="lead">BIOstar는 폴란드 INCO 그룹이 선보이는 홈케어 브랜드입니다. 주방과 욕실 등 생활공간에 맞춘 다양한 세정 제품을 소개합니다.</p></div><div class="biostar-hero-products" aria-hidden="true">${productImage(kitchen[0], { decorative: true, eager: true })}${productImage(kitchen[1], { decorative: true, eager: true })}${productImage(kitchen[2], { decorative: true, eager: true })}</div></div></div></section>
+  <section class="section biostar-principles"><div class="container"><span class="eyebrow">BIOSTAR ESSENTIALS</span><h2 class="title">공간과 제품에 맞춘<br>홈케어의 기준</h2><p class="section-lead">제품별 용도와 사용 방법은 상세 페이지에서 확인할 수 있습니다.</p><ul class="biostar-keywords"><li>주방 관리</li><li>욕실 관리</li><li>다목적 관리</li><li>식기세척기 관리</li></ul></div></section>
   <section class="biostar-catalogue" aria-labelledby="biostar-products-title"><div class="container"><span class="eyebrow">HOMECARE RANGE</span><h2 class="title" id="biostar-products-title">BIOstar 제품 라인업</h2>${categories.map((category, index) => `<section class="biostar-category biostar-category-${category.id}" aria-labelledby="category-${category.id}"><div class="biostar-category-heading"><span>${category.eyebrow}</span><h3 id="category-${category.id}">${category.title}</h3><b>0${index + 1}</b></div><div class="biostar-category-products">${biostarProducts.filter(product => product.category === category.id).map(productCard).join("")}</div></section>`).join("")}</div></section>
-  <section class="section biostar-idea"><div class="container biostar-info-grid"><div><span class="eyebrow">CLEANING IDEA</span><h2 class="title">유산균을 활용한<br>클리닝 아이디어</h2></div><p class="lead">유산균을 활용한 BIOstar만의 클리닝 아이디어. 자연 유래 성분과 브랜드의 세정 기술을 결합해 새로운 홈케어 방식을 제안합니다.</p></div></section>
   <section class="section biostar-certifications"><div class="container biostar-info-grid"><div><span class="eyebrow">PRODUCT INFORMATION</span><h2 class="title">제품별 인증 안내</h2></div><div><p class="lead">인증과 성분 정보는 제품별로 다를 수 있으므로 각 제품의 공식 표시사항을 확인해 주세요.</p><p class="biostar-data-note">현재 별도로 등록된 제품별 인증 정보는 없습니다.</p></div></div></section>
   <section class="section biostar-cta"><div class="container"><div><span class="eyebrow">OFFICIAL RETAILER</span><h2 class="title">BIOstar 제품을<br>공식 판매처에서 만나보세요</h2><p>${purchaseNote}</p></div><a class="btn biostar-cta-button" href="${purchaseUrl}">공식 판매처 보기</a></div></section>`;
 };
