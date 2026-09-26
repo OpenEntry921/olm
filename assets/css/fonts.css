@@ -1,1 +1,2 @@
-/* TODO: 공식 웹폰트 라이선스 확정 시 로컬 WOFF2 파일을 연결합니다. 시스템 폰트를 우선 사용합니다. */
+/* Korean glyphs only; Latin text continues to use the system Helvetica/Arial stack. */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
