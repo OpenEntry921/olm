@@ -1,7 +1,7 @@
 {
   "images": {
     "favicon": {
-      "src": "/assets/common/icons/olm-icon-favicon.svg",
+      "src": "/docs/source-images/olm_logo.png",
       "alt": "",
       "width": 64,
       "height": 64,
