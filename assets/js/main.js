@@ -26,25 +26,41 @@
   const scrollCue = document.querySelector(".hero-scroll-cue");
   const nextSection = document.querySelector("#home-introduction");
   if (scrollCue && nextSection) {
-    let dismissed = false;
+    const hero = scrollCue.closest(".hero");
+    const dismissalKey = "olm-home-scroll-cue-dismissed";
+    let dismissed = sessionStorage.getItem(dismissalKey) === "true";
     let touchY = 0;
+    let scrollFrame = 0;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const heroObserver = hero && "IntersectionObserver" in window
+      ? new IntersectionObserver(([entry]) => {
+          hero.classList.toggle("is-offscreen", !entry.isIntersecting);
+        }, { threshold: 0 })
+      : null;
     const removeDismissListeners = () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("keydown", onScrollKey);
+      if (scrollFrame) cancelAnimationFrame(scrollFrame);
     };
     const dismiss = () => {
       if (dismissed) return;
       dismissed = true;
+      sessionStorage.setItem(dismissalKey, "true");
       scrollCue.classList.add("is-hidden");
       scrollCue.setAttribute("tabindex", "-1");
       removeDismissListeners();
       window.setTimeout(() => { scrollCue.hidden = true; }, reducedMotion.matches ? 0 : 280);
     };
-    function onScroll() { if (window.scrollY >= 64) dismiss(); }
+    function onScroll() {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(() => {
+        scrollFrame = 0;
+        if (window.scrollY >= 64) dismiss();
+      });
+    }
     function onWheel(event) { if (event.deltaY > 0) dismiss(); }
     function onTouchStart(event) { touchY = event.touches[0]?.clientY ?? 0; }
     function onTouchMove(event) { if ((event.touches[0]?.clientY ?? touchY) < touchY) dismiss(); }
@@ -52,19 +68,33 @@
       const interactive = event.target instanceof Element && event.target.closest("button, a, input, select, textarea");
       if (["ArrowDown", "PageDown", "End", " "].includes(event.key) && !interactive) dismiss();
     }
-    scrollCue.addEventListener("click", () => {
+    const activateScrollCue = () => {
       dismiss();
       const headerHeight = document.querySelector(".header")?.getBoundingClientRect().height ?? 0;
       const top = nextSection.getBoundingClientRect().top + window.scrollY - headerHeight;
       window.scrollTo({ top, behavior: reducedMotion.matches ? "auto" : "smooth" });
       nextSection.focus({ preventScroll: true });
-    });
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("wheel", onWheel, { passive: true });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: true });
-    window.addEventListener("keydown", onScrollKey);
-    onScroll();
+    };
+    scrollCue.addEventListener("click", activateScrollCue);
+    heroObserver?.observe(hero);
+    if (dismissed) {
+      scrollCue.hidden = true;
+      scrollCue.setAttribute("tabindex", "-1");
+    } else if (window.scrollY >= 64) {
+      dismiss();
+    }
+    if (!dismissed) {
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("wheel", onWheel, { passive: true });
+      window.addEventListener("touchstart", onTouchStart, { passive: true });
+      window.addEventListener("touchmove", onTouchMove, { passive: true });
+      window.addEventListener("keydown", onScrollKey);
+    }
+    window.addEventListener("pagehide", () => {
+      removeDismissListeners();
+      heroObserver?.disconnect();
+      scrollCue.removeEventListener("click", activateScrollCue);
+    }, { once: true });
   }
   const form = document.querySelector("#contact-form");
   form?.addEventListener("submit", async e => {
