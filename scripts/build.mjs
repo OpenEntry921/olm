@@ -31,4 +31,5 @@ const sourceImages = [
 const sourceImageDist = new URL("docs/source-images/",dist);
 await mkdir(sourceImageDist,{recursive:true});
 for(const name of sourceImages){await cp(new URL(`docs/source-images/${name}`,root),new URL(name,sourceImageDist));}
+await cp(new URL("docs/source-images/retailers/",root),new URL("retailers/",sourceImageDist),{recursive:true});
 console.log("Static build created: dist/");
