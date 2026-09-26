@@ -22,6 +22,7 @@ const sourceImages = [
   "biostar-dishwashing-liquid-700ml.png",
   "biostar-glass-and-mirror-cleaner-700ml.png",
   "biostar-kitchen-cleaner-700ml.png",
+  "biostar-laundry-detergent.png",
   "biostar-shower-cabin-cleaner-700ml.png",
   "biostar-toilet-gel-750ml.png",
   "biostar-universal-cleaner-800ml.png"
