@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/ai-clean-care"
+  to = "/.netlify/functions/ai-clean-care"
+  status = 200
+
+[[redirects]]
+  from = "/api/admin/ai/:action"
+  to = "/.netlify/functions/admin-ai?action=:action"
+  status = 200

@@ -8,7 +8,7 @@
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "lint": "node scripts/validate.mjs",
-    "typecheck": "node --check assets/js/main.js && node --check assets/data/site-data.js && node --check scripts/generate.mjs && node --check src/content/ko/common.js && node --check src/i18n/locales.js && node --check src/seo/metadata.js",
+    "typecheck": "node --check assets/js/main.js && node --check assets/data/site-data.js && node --check scripts/generate.mjs && node --check src/content/ko/common.js && node --check src/i18n/locales.js && node --check src/seo/metadata.js && node --check netlify/functions/ai-clean-care.mjs && node --check netlify/functions/admin-ai.mjs && node --check assets/js/admin-ai.js",
     "test": "node --test tests/site.test.mjs"
   },
   "engines": { "node": ">=20" }
