@@ -8,6 +8,7 @@ import { biostarContentKo } from "../src/content/ko/biostar.js";
 import { businessContentKo } from "../src/content/ko/business.js";
 import { partnershipContentKo } from "../src/content/ko/partnership.js";
 import { contactContentKo } from "../src/content/ko/contact.js";
+import { aiCleanCareContentKo } from "../src/content/ko/ai-clean-care.js";
 import { renderLanguageSwitcher } from "../src/components/language-switcher.js";
 import { createMetadata, renderMetadata } from "../src/seo/metadata.js";
 
@@ -28,7 +29,7 @@ const organizationSchema = JSON.stringify({"@context":"https://schema.org","@typ
 const layout = (id, body, schema="") => { const metadata=createMetadata({common:commonContentKo,id,pathname:pathOf(id),pageMeta:pageMetaKo,imagePath:image("commonOg").src}); return `<!doctype html><html lang="${metadata.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${renderMetadata(metadata)}<link rel="icon" href="${image("favicon").src}" type="image/svg+xml"><link rel="stylesheet" href="/assets/css/style.css"><script type="application/ld+json">${schema||organizationSchema}</script></head><body>${header(id)}<main id="main">${body}</main>${footer}<script src="/assets/data/site-data.js"></script><script src="/assets/js/main.js"></script></body></html>`};
 const pageHero=(eyebrow,title,lead)=>`<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">${commonContentKo.breadcrumb.home}</a> / ${eyebrow}</div><span class="eyebrow">${eyebrow}</span><h1 class="display">${title}</h1><p class="lead">${lead}</p></div></section>`;
 const breadcrumbSchema = id => JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Organization","name":commonContentKo.organization.name,"description":commonContentKo.organization.description,"url":commonContentKo.siteUrl,"email":commonContentKo.organization.email},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":commonContentKo.breadcrumb.home,"item":commonContentKo.siteUrl+"/"},{"@type":"ListItem","position":2,"name":commonContentKo.breadcrumb.brands,"item":commonContentKo.siteUrl+"/brands/"},{"@type":"ListItem","position":3,"name":id === "ludwik" ? "Ludwik":"BIOstar","item":commonContentKo.siteUrl+`/brands/${id}/`}]}]});
-const pages={home:homeContentKo({imageTag}),about:aboutContentKo({pageHero}),brands:brandsContentKo({imageTag,pageHero}),ludwik:ludwikContentKo({imageTag}),biostar:biostarContentKo({imageTag}),business:businessContentKo({pageHero}),partnership:partnershipContentKo({pageHero}),contact:contactContentKo({pageHero})};
+const pages={home:homeContentKo({imageTag}),about:aboutContentKo({pageHero}),brands:brandsContentKo({imageTag,pageHero}),ludwik:ludwikContentKo({imageTag}),biostar:biostarContentKo({imageTag}),business:businessContentKo({pageHero}),partnership:partnershipContentKo({pageHero}),contact:contactContentKo({pageHero}),"ai-clean-care":aiCleanCareContentKo()};
 for (const [id,body] of Object.entries(pages)) {
   const folder = id === "home" ? root : id === "ludwik" || id === "biostar" ? new URL(`brands/${id}/`,root) : new URL(`${id}/`,root);
   await mkdir(folder,{recursive:true});

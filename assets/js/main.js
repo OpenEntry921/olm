@@ -126,3 +126,38 @@
     status.focus();
   });
 })();
+
+(() => {
+  const form = document.querySelector("#ai-care-form");
+  if (!form) return;
+  const input = document.querySelector("#ai-question");
+  const count = document.querySelector("#ai-char-count");
+  const result = document.querySelector("#ai-result");
+  const status = document.querySelector("#ai-status");
+  const answer = document.querySelector("#ai-answer");
+  const submit = form.querySelector("button[type=submit]");
+  const labels = { coreAnswer:"핵심 답변", recommendationReason:"추천 이유", usage:"사용 방법", cautions:"주의사항", advertisingAnalysis:"광고 문구 확인", uncertainty:"추가로 확인할 사항", followUpQuestion:"후속 질문" };
+  const safeText = value => typeof value === "string" ? value : "";
+  const section = (title, value, tone="") => value ? `<section class="ai-answer-section"${tone?` data-tone="${tone}"`:""}><h3>${title}</h3><p>${safeText(value)}</p></section>` : "";
+  const render = data => {
+    const products = Array.isArray(data.recommendedProducts) ? data.recommendedProducts : [];
+    const sources = Array.isArray(data.sources) ? data.sources : [];
+    const tone = products[0]?.brand?.toLowerCase() === "ludwik" ? "ludwik" : products.length ? "biostar" : "";
+    answer.innerHTML = `<div class="ai-answer-grid">${section(labels.coreAnswer,data.coreAnswer,tone)}${products.length?`<section><h3>추천 제품</h3><div class="ai-products">${products.map(p=>`<article class="ai-product"><img src="${p.image}" alt="" width="92" height="112"><div><h4>${p.name}</h4><p>${p.purpose}</p><a href="${p.url}">상세 정보 보기</a></div></article>`).join("")}</div></section>`:""}${section(labels.recommendationReason,data.recommendationReason,tone)}${section(labels.usage,data.usage)}${section(labels.cautions,data.cautions)}${section(labels.advertisingAnalysis,data.advertisingAnalysis)}${sources.length?`<section class="ai-answer-section"><h3>확인 근거</h3><ul class="ai-source-list">${sources.map(s=>`<li>${safeText(s.title)}${s.checkedAt?` · ${safeText(s.checkedAt)}`:""}</li>`).join("")}</ul></section>`:""}${section(labels.uncertainty,data.uncertainty)}${section(labels.followUpQuestion,data.followUpQuestion)}</div>`;
+  };
+  input.addEventListener("input",()=>{ count.textContent=`${input.value.length.toLocaleString("ko-KR")} / 1,200`; });
+  document.querySelectorAll("[data-ai-question]").forEach(button=>button.addEventListener("click",()=>{ input.value=button.dataset.aiQuestion; input.dispatchEvent(new Event("input")); input.focus(); }));
+  form.addEventListener("submit",async event=>{
+    event.preventDefault(); if(!form.reportValidity()) return;
+    result.hidden=false; answer.innerHTML=""; status.dataset.loading="true"; status.textContent="승인된 자료에서 관련 정보를 확인하고 있습니다…"; submit.disabled=true;
+    try {
+      const response=await fetch("/api/ai-clean-care",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:input.value,history:[],language:"ko"}),signal:AbortSignal.timeout(20000)});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok) throw Object.assign(new Error("request"),{status:response.status,message:data.message});
+      render(data); status.textContent="답변이 준비되었습니다.";
+    } catch(error) {
+      const messages={429:"질문이 잠시 많이 접수되고 있습니다. 잠시 후 다시 시도해 주세요.",503:"AI 클린케어 연결을 준비하고 있습니다. 제품별 기본 정보는 각 브랜드 상세페이지에서 확인해 주세요."};
+      status.textContent=messages[error.status]||error.message||"답변을 생성하지 못했습니다. 잠시 후 다시 시도해 주세요."; status.classList.add("ai-error");
+    } finally { delete status.dataset.loading; submit.disabled=false; result.focus(); }
+  });
+})();

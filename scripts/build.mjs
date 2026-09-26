@@ -4,7 +4,7 @@ const root = new URL("../", import.meta.url);
 const generated = spawnSync(process.execPath,[new URL("generate.mjs",import.meta.url).pathname],{stdio:"inherit"});
 if(generated.status) process.exit(generated.status);
 const dist=new URL("dist/",root); await rm(dist,{recursive:true,force:true}); await mkdir(dist);
-for(const name of ["index.html","about","brands","business","partnership","contact","assets","robots.txt","sitemap.xml"]){await cp(new URL(name,root),new URL(name,dist),{recursive:true});}
+for(const name of ["index.html","about","brands","business","partnership","contact","ai-clean-care","admin","assets","robots.txt","sitemap.xml"]){await cp(new URL(name,root),new URL(name,dist),{recursive:true});}
 const sourceImages = [
   "ChatGPT Image 2026년 8월 22일 오후 01_09_56.png",
   "랜딩페이지이미지.png",

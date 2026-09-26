@@ -12,6 +12,7 @@ export const commonContentKo = {
     { label: "브랜드", id: "brands", href: "/brands/" },
     { label: "사업영역", id: "business", href: "/business/" },
     { label: "파트너십", id: "partnership", href: "/partnership/" },
+    { label: "AI 클린케어", id: "ai-clean-care", href: "/ai-clean-care/" },
     { label: "문의", id: "contact", href: "/contact/" }
   ],
   footer: {
@@ -40,5 +41,6 @@ export const pageMetaKo = {
   biostar: ["BIOstar 홈케어 제품 | 오름인터내셔널", "폴란드 INCO 그룹의 BIOstar 주방·욕실·생활 공간별 홈케어 제품 8종을 소개합니다."],
   business: ["사업영역 | 오름인터내셔널", "해외 브랜드 소싱부터 국내 유통과 브랜드 빌딩까지 연결합니다."],
   partnership: ["한국 시장 파트너십 | 오름인터내셔널", "해외 생활용품 브랜드의 성공적인 한국 시장 진출을 함께 설계합니다."],
-  contact: ["문의 | 오름인터내셔널", "소비자, 유통·입점, 해외 브랜드 파트너십 문의를 안내합니다."]
+  contact: ["문의 | 오름인터내셔널", "소비자, 유통·입점, 해외 브랜드 파트너십 문의를 안내합니다."],
+  "ai-clean-care": ["AI 클린케어 | 오름인터내셔널", "제품 선택부터 성분, 사용법과 광고 문구 확인까지 근거를 중심으로 안내합니다."]
 };

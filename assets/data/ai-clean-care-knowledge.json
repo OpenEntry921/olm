@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "products": [
+    {"id":"biostar-bathroom-cleaner","brand":"BIOstar","name":"BIOstar 욕실 세정 폼","image":"/docs/source-images/biostar-bathroom-cleaner-700ml.png","category":"bathroom","purpose":"욕실 타일·세면대·욕조의 세척 가능한 표면","volume":"700ml","usage":"약 10cm 거리에서 분사한 뒤 헹구거나 젖은 천으로 닦으세요. 심한 오염은 약 5분 뒤 닦으세요.","cautions":"작은 부분에 먼저 시험하세요. 알루미늄, 대리석, 트래버틴, 석회암에는 사용하지 마세요.","ingredients":[],"certifications":[],"tests":[],"allowedClaims":["욕실의 세척 가능한 표면을 관리하는 세정 폼"],"prohibitedClaims":["프로바이오틱스","지속 효과","완전히 안전"],"sources":[{"title":"제품 패키지 및 오름인터내셔널 승인 제품정보","checkedAt":"2026-09-26"}],"approvalStatus":"approved","approvedAt":"2026-09-26","approvedBy":"content-admin","url":"/brands/biostar/#detail-biostar-bathroom-cleaner"},
+    {"id":"biostar-laundry-capsules","brand":"BIOstar","name":"BIOstar 세탁 캡슐","image":"/docs/source-images/biostar-laundry-detergent.png","category":"laundry","purpose":"의류 세탁","volume":"32개입","usage":"마른 손으로 캡슐을 빈 세탁조에 먼저 넣고 세탁물을 넣으세요. 라벨 권장량을 확인하세요.","cautions":"캡슐을 자르거나 뜯지 말고 어린이 손이 닿지 않는 건조한 곳에 보관하세요.","ingredients":[],"certifications":[],"tests":[],"allowedClaims":["의류 세탁용 캡슐형 세제"],"prohibitedClaims":["프로바이오틱스","완전히 안전"],"sources":[{"title":"제품 패키지 및 오름인터내셔널 승인 제품정보","checkedAt":"2026-09-26"}],"approvalStatus":"approved","approvedAt":"2026-09-26","approvedBy":"content-admin","url":"/brands/biostar/#detail-biostar-laundry-capsules"}
+  ],
+  "advertisingEvidence": []
+}
