@@ -15,18 +15,18 @@
       "status": "placeholder"
     },
     "ludwikHero": {
-      "src": "/assets/ludwik/hero/ludwik-hero-placeholder.svg",
-      "alt": "Ludwik 공식 제품 이미지 준비 중",
-      "width": 960,
-      "height": 720,
-      "status": "placeholder"
+      "src": "/docs/source-images/ludwik-eko-dishwasher-tablets-40pcs.png",
+      "alt": "Ludwik 친환경 식기세척기 세제 40개입",
+      "width": 2503,
+      "height": 2142,
+      "status": "approved"
     },
     "biostarHero": {
-      "src": "/assets/biostar/hero/biostar-hero-placeholder.svg",
-      "alt": "BIOstar 공식 제품 이미지 준비 중",
-      "width": 960,
-      "height": 720,
-      "status": "placeholder"
+      "src": "/docs/source-images/biostar-universal-cleaner-800ml.png",
+      "alt": "BIOstar 다목적 세정제 800ml",
+      "width": 830,
+      "height": 2216,
+      "status": "approved"
     },
     "biostarIngredients": {
       "src": "/assets/biostar/hero/biostar-hero-placeholder.svg",

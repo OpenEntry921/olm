@@ -1,5 +1,14 @@
 /** @typedef {{ title: string, description: string, openGraph: { title: string, description: string } }} PageMeta */
 
+export const companyInfoKo = {
+  name: "오름인터내셔널",
+  email: "olm@olm.kr",
+  emailHref: "mailto:olm@olm.kr",
+  phone: "070-8779-9669",
+  phoneHref: "tel:07087799669",
+  address: "경기도 수원시 팔달구 효원로249번길 46-15, 5층 85호"
+};
+
 export const commonContentKo = {
   locale: "ko",
   openGraphLocale: "ko_KR",
@@ -17,19 +26,21 @@ export const commonContentKo = {
   ],
   footer: {
     wordmark: "OLM",
-    companyLabel: "회사명", companyName: "오름인터내셔널",
-    emailLabel: "이메일", email: "contact@example.com",
-    phoneLabel: "대표 연락처", phone: "준비 중",
-    addressLabel: "주소", address: "회사 주소 준비 중",
+    companyLabel: "회사명", companyName: companyInfoKo.name,
+    emailLabel: "이메일", email: companyInfoKo.email, emailHref: companyInfoKo.emailHref,
+    phoneLabel: "대표 연락처", phone: companyInfoKo.phone, phoneHref: companyInfoKo.phoneHref,
+    addressLabel: "주소", address: companyInfoKo.address,
     copyright: "© 2026 OLM. All rights reserved.",
     contactLabel: "문의 안내",
     adminLabel: "관리자"
   },
   breadcrumb: { home: "홈", brands: "브랜드" },
   organization: {
-    name: "오름인터내셔널",
+    name: companyInfoKo.name,
     description: "유럽 프리미엄 생활용품 브랜드의 한국 공식 파트너",
-    email: "contact@example.com"
+    email: companyInfoKo.email,
+    telephone: companyInfoKo.phone,
+    address: companyInfoKo.address
   },
   languageSwitcher: { currentLocale: "ko", enabledLocales: ["ko"] }
 };
