@@ -5,9 +5,9 @@ window.OREUM_DATA = {
   company: {
     name: "오름인터내셔널",
     legalName: "오름인터내셔널",
-    email: "contact@example.com", // TODO: 공식 이메일
-    phone: "대표 연락처 준비 중", // TODO: 공식 전화번호
-    address: "회사 주소 준비 중" // TODO: 공식 주소
+    email: "olm@olm.kr",
+    phone: "070-8779-9669",
+    address: "경기도 수원시 팔달구 효원로249번길 46-15, 5층 85호"
   },
   navigation: [
     ["회사소개", "/about/"], ["브랜드", "/brands/"], ["사업영역", "/business/"],
