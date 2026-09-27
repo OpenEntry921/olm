@@ -15,9 +15,14 @@ function readSession(event){if(!process.env.ADMIN_DEMO_PIN)return null;const raw
 function issueSession(){const csrf=randomBytes(24).toString("hex"),payload=Buffer.from(JSON.stringify({role:"admin",csrf,expires:Date.now()+3_600_000})).toString("base64url");return {csrf,cookie:`olm_admin=${payload}.${sign(payload)}; Path=/; Max-Age=3600; HttpOnly; Secure; SameSite=Strict`}}
 const expired=["olm_admin=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict","olm_csrf=; Path=/; Max-Age=0; Secure; SameSite=Strict"];
 function validCsrf(event,session){const token=event.headers?.["x-csrf-token"]||"",cookie=cookies(event).olm_csrf||"";return Boolean(token&&cookie&&safeEqual(token,cookie)&&safeEqual(token,session.csrf))}
+function parseRequestUrl(event){
+ try{return new URL(event?.rawUrl||event?.path||"/.netlify/functions/admin-ai","https://localhost")}
+ catch{return new URL("/.netlify/functions/admin-ai","https://localhost")}
+}
 
 export async function handler(event){
- const action=event.queryStringParameters?.action||"settings",method=event.httpMethod,ip=event.headers?.["x-nf-client-connection-ip"]||event.headers?.["x-forwarded-for"]?.split(",")[0]||"local";
+ const requestUrl=parseRequestUrl(event);
+ const action=requestUrl.searchParams.get("action")||event.queryStringParameters?.action||"settings",method=event.httpMethod,ip=event.headers?.["x-nf-client-connection-ip"]||event.headers?.["x-forwarded-for"]?.split(",")[0]||"local";
  if(action==="status"&&method==="GET")return json(200,{adminPinConfigured:Boolean(process.env.ADMIN_DEMO_PIN)});
  if(action==="login"&&method==="POST"){
   const state=failures.get(ip)||{count:0,until:0};if(state.until>Date.now())return json(429,{message:"로그인 시도가 잠시 제한되었습니다."});

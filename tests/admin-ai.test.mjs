@@ -5,7 +5,13 @@ import {readFile} from "node:fs/promises";
 const pin="correct horse battery staple";
 Object.assign(process.env,{ADMIN_DEMO_PIN:pin,OPENAI_API_KEY:"openai-secret-test"});
 const {handler}=await import("../netlify/functions/admin-ai.mjs");
-const call=(action,httpMethod,extra={})=>handler({queryStringParameters:{action},httpMethod,headers:{...extra.headers},body:extra.body});
+const call=(action,httpMethod,extra={})=>handler({rawUrl:`https://example.test/.netlify/functions/admin-ai?action=${action}`,httpMethod,headers:{...extra.headers},body:extra.body});
+
+test("admin action URL parsing tolerates relative and missing request URLs",async()=>{
+ const relative=await handler({path:"/.netlify/functions/admin-ai?action=status",httpMethod:"GET",headers:{}});assert.deepEqual(JSON.parse(relative.body),{adminPinConfigured:true});
+ const missing=await handler({httpMethod:"GET",headers:{},queryStringParameters:{action:"status"}});assert.deepEqual(JSON.parse(missing.body),{adminPinConfigured:true});
+ const invalid=await handler({rawUrl:{toString(){throw new TypeError("Invalid URL")}},httpMethod:"GET",headers:{},queryStringParameters:{action:"status"}});assert.deepEqual(JSON.parse(invalid.body),{adminPinConfigured:true});
+});
 
 test("admin PIN login, authenticated settings, CSRF, save, and logout lifecycle",async()=>{
  assert.equal((await call("settings","GET")).statusCode,401);
