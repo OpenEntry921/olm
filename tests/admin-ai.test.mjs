@@ -13,6 +13,33 @@ test("admin action URL parsing tolerates relative and missing request URLs",asyn
  const invalid=await handler({rawUrl:{toString(){throw new TypeError("Invalid URL")}},httpMethod:"GET",headers:{},queryStringParameters:{action:"status"}});assert.deepEqual(JSON.parse(invalid.body),{adminPinConfigured:true});
 });
 
+test("approved knowledge is statically bundled and remains filtered and isolated",async()=>{
+ const coreSource=await readFile(new URL("../netlify/functions/lib/core.mjs",import.meta.url),"utf8");
+ assert.match(coreSource,/import knowledgeData from .*ai-clean-care-knowledge\.json.*with \{ type: "json" \}/);
+ assert.doesNotMatch(coreSource,/import\.meta\.url|readFile|process\.cwd/);
+ const {approvedKnowledge}=await import("../netlify/functions/lib/core.mjs");
+ const first=await approvedKnowledge();
+ assert.ok(first.products.length>0);
+ assert.ok(first.products.every(product=>product.approvalStatus==="approved"));
+ first.products[0].name="mutated in test";
+ const second=await approvedKnowledge();
+ assert.notEqual(second.products[0].name,"mutated in test");
+});
+
+test("direct and redirected status routes load the admin module and return JSON",async()=>{
+ const direct=await handler({rawUrl:"https://example.test/.netlify/functions/admin-ai?action=status",httpMethod:"GET",headers:{}});
+ const redirected=await handler({rawUrl:"https://example.test/api/admin/ai/status",queryStringParameters:{action:"status"},httpMethod:"GET",headers:{}});
+ for(const response of [direct,redirected]){
+  assert.equal(response.statusCode,200);
+  assert.match(response.headers["content-type"],/^application\/json/);
+  assert.deepEqual(JSON.parse(response.body),{adminPinConfigured:true});
+ }
+ const settings=await handler({rawUrl:"https://example.test/api/admin/ai/settings",queryStringParameters:{action:"settings"},httpMethod:"GET",headers:{}});
+ assert.equal(settings.statusCode,401);
+ assert.match(settings.headers["content-type"],/^application\/json/);
+ assert.doesNotThrow(()=>JSON.parse(settings.body));
+});
+
 test("admin PIN login, authenticated settings, CSRF, save, and logout lifecycle",async()=>{
  assert.equal((await call("settings","GET")).statusCode,401);
  const status=await call("status","GET");assert.deepEqual(JSON.parse(status.body),{adminPinConfigured:true});

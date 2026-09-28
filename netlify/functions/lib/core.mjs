@@ -1,8 +1,7 @@
-import { readFile } from "node:fs/promises";
-const knowledgeUrl = new URL("../../../assets/data/ai-clean-care-knowledge.json", import.meta.url);
+import knowledgeData from "../../../assets/data/ai-clean-care-knowledge.json" with { type: "json" };
 export const SYSTEM_PROMPT_VERSION="clean-care-ko-1.0";
 export const publicSchema={coreAnswer:"string",recommendedProductIds:"string[]",recommendationReason:"string",usage:"string",cautions:"string",advertisingAnalysis:"string",sources:"array",uncertainty:"string",followUpQuestion:"string"};
-export async function approvedKnowledge(){const data=JSON.parse(await readFile(knowledgeUrl,"utf8"));return {...data,products:data.products.filter(p=>p.approvalStatus==="approved")};}
+export async function approvedKnowledge(){const data=structuredClone(knowledgeData);return {...data,products:data.products.filter(p=>p.approvalStatus==="approved")};}
 export function sanitizeQuestion(value){return String(value??"").replace(/<[^>]*>/g,"").replace(/[\u0000-\u001f]/g," ").trim().slice(0,1200)}
 const restricted=/시스템\s*프롬프트|api\s*키|API\s*키|이전\s*지침.*무시|경쟁사.*비방/i;
 export function demoAnswer(question,knowledge){
