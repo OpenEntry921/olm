@@ -17,7 +17,7 @@ function classify(status){if(status===401||status===403)return new ProviderError
 export function createOpenAIAdapter({fetchImpl=fetch,timeoutMs=DEFAULT_TIMEOUT_MS}={}){
  return {async complete(input){
   if(!OPENAI_MODEL_ALLOWLIST.includes(input.model))throw new ProviderError("INVALID_MODEL",400);
-  const key=process.env.OPENAI_API_KEY;if(!key)throw new ProviderError("API_KEY_MISSING",503);
+  const key=process.env.My_App_Key;if(!key)throw new ProviderError("API_KEY_MISSING",503);
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs);
   try{
    const response=await fetchImpl("https://api.openai.com/v1/chat/completions",{method:"POST",signal:controller.signal,headers:{"content-type":"application/json",authorization:`Bearer ${key}`},body:JSON.stringify({model:input.model,temperature:0,messages:[{role:"system",content:prompt(input)},...messages(input)],response_format:{type:"json_schema",json_schema:{name:"clean_care_answer",strict:false,schema:answerJsonSchema}}})});
