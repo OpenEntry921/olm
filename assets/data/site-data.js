@@ -3,9 +3,9 @@ window.OREUM_DATA = {
   canonicalBase: "https://example.com", // TODO: 운영 도메인
   formEndpoint: "", // TODO: 문의 수신 HTTPS 엔드포인트
   company: {
-    name: "오름인터내셔널",
-    legalName: "오름인터내셔널",
-    email: "olm@olm.kr",
+    name: "주식회사 오름인터내셔널",
+    legalName: "주식회사 오름인터내셔널",
+    email: "khs@olm.kr",
     phone: "070-8779-9669",
     address: "경기도 수원시 팔달구 효원로249번길 46-15, 5층 85호"
   },
