@@ -22,7 +22,7 @@ npm run build     # dist/ 생성
 | 구분 | 변수 | 용도 |
 | --- | --- | --- |
 | 필수 | `ADMIN_DEMO_PIN` | 관리자 로그인 PIN |
-| 필수 | `OPENAI_API_KEY` | AI 클린케어 OpenAI API 연결 |
+| 필수 | `My_App_Key` | AI 클린케어 OpenAI API 연결 |
 
 `ADMIN_SESSION_SECRET`, `ADMIN_PASSWORD_SALT`, `ADMIN_PASSWORD_HASH`, `AI_PROVIDER`, `AI_MODEL`, `ANTHROPIC_API_KEY`, `ANTHROPIC_MODELS`, `OPENAI_MODELS`는 더 이상 필요하지 않습니다. 관리자 PIN과 API 키는 Netlify Function에서만 읽고, API 키 상태는 `설정됨` 또는 `설정되지 않음`으로만 제공합니다.
 

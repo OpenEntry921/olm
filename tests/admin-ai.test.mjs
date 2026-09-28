@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 
 const pin="correct horse battery staple";
-Object.assign(process.env,{ADMIN_DEMO_PIN:pin,OPENAI_API_KEY:"openai-secret-test"});
+Object.assign(process.env,{ADMIN_DEMO_PIN:pin,My_App_Key:"openai-secret-test"});
 const {handler}=await import("../netlify/functions/admin-ai.mjs");
 const call=(action,httpMethod,extra={})=>handler({rawUrl:`https://example.test/.netlify/functions/admin-ai?action=${action}`,httpMethod,headers:{...extra.headers},body:extra.body});
 
@@ -67,6 +67,8 @@ test("OpenAI adapter uses only the fixed allowlist and does not expose its key",
  const adapter=createOpenAIAdapter({fetchImpl:async(url,options)=>{request={url,options};return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(answer)}}]}),{status:200})},timeoutMs:1000});
  assert.deepEqual(await adapter.complete({model:"gpt-4o-mini",systemPrompt:"rules",question:"ping",history:[],knowledge:{products:[]},language:"ko"}),answer);assert.match(request.url,/api\.openai\.com/);assert.equal(JSON.parse(request.options.body).model,"gpt-4o-mini");assert.equal(request.options.headers.authorization,"Bearer openai-secret-test");
  await assert.rejects(adapter.complete({model:"invented-model",question:"ping",knowledge:{products:[]}}),error=>error.code==="INVALID_MODEL");
+ const key=process.env.My_App_Key;delete process.env.My_App_Key;
+ try{await assert.rejects(adapter.complete({model:"gpt-4o-mini",question:"ping",knowledge:{products:[]}}),error=>error.code==="API_KEY_MISSING"&&error.status===503)}finally{process.env.My_App_Key=key}
 });
 
 test("public AI Clean Care sends a question through OpenAI without returning the key",async()=>{
@@ -75,4 +77,4 @@ test("public AI Clean Care sends a question through OpenAI without returning the
  try{const response=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":"public-ai-test"},body:JSON.stringify({question:"주방 세정 방법을 알려주세요",history:[]})});assert.equal(response.statusCode,200);assert.equal(JSON.parse(response.body).coreAnswer,"approved answer");assert.doesNotMatch(response.body,/openai-secret-test/)}finally{globalThis.fetch=originalFetch}
 });
 
-test("admin page exposes the simplified accessible controls",async()=>{const admin=await readFile(new URL("../admin/ai-clean-care/index.html",import.meta.url),"utf8");assert.match(admin,/noindex,nofollow/);assert.match(admin,/for="admin-pin"/);assert.match(admin,/ADMIN_DEMO_PIN/);assert.match(admin,/OPENAI_API_KEY/);assert.match(admin,/id="admin-save"/);assert.match(admin,/id="admin-test"/);assert.doesNotMatch(admin,/Claude|admin-provider|API 키.*input/)});
+test("admin page exposes the simplified accessible controls",async()=>{const admin=await readFile(new URL("../admin/ai-clean-care/index.html",import.meta.url),"utf8");assert.match(admin,/noindex,nofollow/);assert.match(admin,/for="admin-pin"/);assert.match(admin,/ADMIN_DEMO_PIN/);assert.match(admin,/My_App_Key/);assert.match(admin,/id="admin-save"/);assert.match(admin,/id="admin-test"/);assert.doesNotMatch(admin,/Claude|admin-provider|API 키.*input/)});
