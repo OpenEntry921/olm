@@ -1,0 +1,21 @@
+# OLM International Corp.
+
+> 주식회사 오름인터내셔널(OLM International Corp., OLM)은 유럽 생활용품 브랜드를 한국 시장과 연결하고, 브랜드 및 제품 정보를 국내 소비자에게 제공하는 대한민국 법인입니다.
+
+## 회사 및 사업
+- [홈](https://olm.kr/): OLM과 공식 파트너 브랜드 개요
+- [회사소개](https://olm.kr/about/): 회사 철학, 파트너십 안내 및 회사정보
+- [사업영역](https://olm.kr/business/): 해외 브랜드 소싱, 국내 마케팅·브랜드 빌딩, 온라인 유통채널 운영
+- [한국 시장 파트너십](https://olm.kr/partnership/): 해외 생활용품 브랜드의 한국 시장 진출 협업 안내
+
+## 브랜드 및 제품정보
+- [브랜드](https://olm.kr/brands/): OLM이 한국에 공식적으로 소개하는 Ludwik와 BIOstar
+- [Ludwik](https://olm.kr/brands/ludwik/): 폴란드 생활 세정 브랜드 소개 및 국내 Ludwik EKO 식기세척기용 제품정보
+- [BIOstar](https://olm.kr/brands/biostar/): 폴란드 INCO 그룹의 홈케어 브랜드 소개 및 공간별 제품정보, 사용 방법, 주의사항
+- [AI 클린케어](https://olm.kr/ai-clean-care/): 승인된 제품정보와 세정 지식을 바탕으로 한 제품·성분·사용법 안내
+
+## 문의
+- [문의](https://olm.kr/contact/): 소비자, 유통·입점 및 해외 브랜드 파트너십 문의
+- 이메일: khs@olm.kr
+
+이 파일은 공개 페이지 탐색을 돕는 보조 안내입니다. 최신 제품 사용 방법과 주의사항은 각 제품 페이지와 제품 라벨을 함께 확인하세요.
