@@ -77,4 +77,21 @@ test("public AI Clean Care sends a question through OpenAI without returning the
  try{const response=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":"public-ai-test"},body:JSON.stringify({question:"주방 세정 방법을 알려주세요",history:[]})});assert.equal(response.statusCode,200);assert.equal(JSON.parse(response.body).coreAnswer,"approved answer");assert.doesNotMatch(response.body,/openai-secret-test/)}finally{globalThis.fetch=originalFetch}
 });
 
+test("public AI Clean Care preserves safe provider cause codes and messages",async()=>{
+ const {handler:publicHandler}=await import("../netlify/functions/ai-clean-care.mjs");const originalFetch=globalThis.fetch;const originalKey=process.env.My_App_Key;
+ const request=ip=>publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":ip},body:JSON.stringify({question:"세정 방법을 알려주세요",history:[]})});
+ try{
+  delete process.env.My_App_Key;let response=await request("missing-key-test");assert.equal(response.statusCode,503);assert.deepEqual(JSON.parse(response.body),{code:"API_KEY_MISSING",message:"AI 연결 설정을 확인하고 있습니다."});
+  process.env.My_App_Key="invalid-secret-value";globalThis.fetch=async()=>new Response("unauthorized",{status:401});response=await request("authentication-test");assert.equal(response.statusCode,401);assert.deepEqual(JSON.parse(response.body),{code:"AUTHENTICATION_FAILED",message:"AI 서비스 인증 설정을 확인해 주세요."});assert.doesNotMatch(response.body,/invalid-secret-value/);
+  globalThis.fetch=async()=>new Response("quota exceeded",{status:429});response=await request("openai-limit-test");assert.equal(response.statusCode,429);assert.deepEqual(JSON.parse(response.body),{code:"OPENAI_RATE_LIMITED",message:"AI 서비스의 요청 한도를 확인해 주세요."});
+  globalThis.fetch=async()=>{throw new TypeError("network unavailable")};response=await request("network-error-test");assert.equal(response.statusCode,502);assert.deepEqual(JSON.parse(response.body),{code:"NETWORK_ERROR",message:"AI 서비스 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."});
+ }finally{process.env.My_App_Key=originalKey;globalThis.fetch=originalFetch}
+});
+
+test("public AI Clean Care identifies its unchanged ten-request local limit",async()=>{
+ const {handler:publicHandler}=await import("../netlify/functions/ai-clean-care.mjs");const originalFetch=globalThis.fetch;
+ const answer={coreAnswer:"ok",recommendedProductIds:[],recommendationReason:"",usage:"",cautions:"",advertisingAnalysis:"",sources:[],uncertainty:"",followUpQuestion:""};globalThis.fetch=async()=>new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(answer)}}]}),{status:200});
+ try{let response;for(let count=0;count<11;count++)response=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":"local-limit-test"},body:JSON.stringify({question:"질문",history:[]})});assert.equal(response.statusCode,429);assert.deepEqual(JSON.parse(response.body),{code:"LOCAL_RATE_LIMITED",message:"질문이 잠시 많이 접수되고 있습니다. 잠시 후 다시 시도해 주세요."})}finally{globalThis.fetch=originalFetch}
+});
+
 test("admin page exposes the simplified accessible controls",async()=>{const admin=await readFile(new URL("../admin/ai-clean-care/index.html",import.meta.url),"utf8");assert.match(admin,/noindex,nofollow/);assert.match(admin,/for="admin-pin"/);assert.match(admin,/ADMIN_DEMO_PIN/);assert.match(admin,/My_App_Key/);assert.match(admin,/id="admin-save"/);assert.match(admin,/id="admin-test"/);assert.doesNotMatch(admin,/Claude|admin-provider|API 키.*input/)});

@@ -153,11 +153,11 @@
     try {
       const response=await fetch("/api/ai-clean-care",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:input.value,history:[],language:"ko"}),signal:AbortSignal.timeout(20000)});
       const data=await response.json().catch(()=>({}));
-      if(!response.ok) throw Object.assign(new Error("request"),{status:response.status,message:data.message});
+      if(!response.ok) throw Object.assign(new Error("request"),{status:response.status,code:data.code,message:data.message});
       render(data); status.textContent="답변이 준비되었습니다.";
     } catch(error) {
-      const messages={429:"질문이 잠시 많이 접수되고 있습니다. 잠시 후 다시 시도해 주세요.",503:"AI 클린케어 연결을 준비하고 있습니다. 제품별 기본 정보는 각 브랜드 상세페이지에서 확인해 주세요."};
-      status.textContent=messages[error.status]||error.message||"답변을 생성하지 못했습니다. 잠시 후 다시 시도해 주세요."; status.classList.add("ai-error");
+      const messages={LOCAL_RATE_LIMITED:"질문이 잠시 많이 접수되고 있습니다. 잠시 후 다시 시도해 주세요.",API_KEY_MISSING:"AI 연결 설정을 확인하고 있습니다.",AUTHENTICATION_FAILED:"AI 서비스 인증 설정을 확인해 주세요.",OPENAI_RATE_LIMITED:"AI 서비스의 요청 한도를 확인해 주세요.",NETWORK_ERROR:"AI 서비스 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",PROVIDER_ERROR:"AI 서비스 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."};
+      status.textContent=messages[error.code]||error.message||"답변을 생성하지 못했습니다. 잠시 후 다시 시도해 주세요."; status.classList.add("ai-error");
     } finally { delete status.dataset.loading; submit.disabled=false; result.focus(); }
   });
 })();
