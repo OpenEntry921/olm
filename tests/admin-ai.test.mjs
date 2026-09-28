@@ -117,3 +117,27 @@ test("public AI Clean Care identifies its unchanged ten-request local limit",asy
 });
 
 test("admin page exposes the simplified accessible controls",async()=>{const admin=await readFile(new URL("../admin/ai-clean-care/index.html",import.meta.url),"utf8");assert.match(admin,/noindex,nofollow/);assert.match(admin,/for="admin-pin"/);assert.match(admin,/ADMIN_DEMO_PIN/);assert.match(admin,/My_App_Key/);assert.match(admin,/id="admin-save"/);assert.match(admin,/id="admin-test"/);assert.doesNotMatch(admin,/Claude|admin-provider|API 키.*input/)});
+
+test("standard and deep modes preserve the full question and safely expand the previous answer",async()=>{
+ const {handler:publicHandler}=await import("../netlify/functions/ai-clean-care.mjs");const originalFetch=globalThis.fetch;
+ const scenarios=[
+  ["프로쉬가 세제에 식용색소를 쓴다고 알려져 있는데 이것이 사실인지 알고 싶고 왜 식용색소를 쓰는지 알고 싶습니다",/외부 브랜드|경쟁 제품/],
+  ["BIOstar의 바실러스는 어떤 역할을 하나요?",/세정 성분은 표면의 때와 오염을 씻어내고/],
+  ["폴란드 인증을 받았으면 한국에서도 사용할 수 있나요?",/대한민국의 인증·신고·승인·표시/]
+ ];
+ const requests=[];
+ globalThis.fetch=async(_url,options)=>{const request=JSON.parse(options.body);requests.push(request);const deep=request.max_completion_tokens===1800;const answer={coreAnswer:deep?"첫 답변에서 부족했던 쟁점을 나누어 심층 분석합니다.":"승인 지식을 우선한 기본 답변입니다.",recommendedProductIds:[],recommendationReason:deep?"확인된 내용":"",usage:"",cautions:deep?"대한민국의 제품 분류별 요건을 확인합니다.":"",advertisingAnalysis:deep?"일반 원리와 제품 사실을 구분합니다.":"",sources:[],uncertainty:deep?"현재 자료만으로 단정할 수 없습니다.":"추가 확인이 필요합니다.",followUpQuestion:""};return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(answer)}}]}),{status:200})};
+ try{
+  for(const [index,[question,policy]] of scenarios.entries()){
+   const standard=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":`deep-scenario-${index}`},body:JSON.stringify({question,history:[],mode:"standard"})});const standardData=JSON.parse(standard.body);assert.equal(standard.statusCode,200);assert.equal(standardData.mode,"standard");assert.equal(standardData.searchedWeb,false);
+   const originalAnswer=JSON.stringify(standardData);const deep=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":`deep-scenario-${index}`},body:JSON.stringify({originalQuestion:question,originalAnswer,history:[{role:"user",content:question},{role:"assistant",content:originalAnswer}],mode:"deep"})});const deepData=JSON.parse(deep.body);assert.equal(deep.statusCode,200);assert.equal(deepData.mode,"deep");assert.equal(deepData.searchedWeb,false);assert.match(deepData.coreAnswer,/심층 분석/);
+   const deepRequest=requests.at(-1);assert.equal(deepRequest.max_completion_tokens,1800);assert.match(deepRequest.messages[0].content,/웹 검색 도구가 없습니다/);assert.match(deepRequest.messages[0].content,policy);assert.ok(deepRequest.messages.at(-1).content.includes(question));assert.ok(deepRequest.messages.some(message=>message.content.includes(originalAnswer)));
+  }
+ }finally{globalThis.fetch=originalFetch}
+});
+
+test("deep mode validates its context and does not expose an unimplemented research mode",async()=>{
+ const {handler:publicHandler}=await import("../netlify/functions/ai-clean-care.mjs");
+ const missing=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":"deep-missing-answer"},body:JSON.stringify({originalQuestion:"질문",mode:"deep",history:[]})});assert.equal(missing.statusCode,400);
+ const research=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":"research-not-enabled"},body:JSON.stringify({question:"질문",mode:"research",history:[]})});assert.equal(research.statusCode,400);
+});

@@ -135,29 +135,48 @@
   const result = document.querySelector("#ai-result");
   const status = document.querySelector("#ai-status");
   const answer = document.querySelector("#ai-answer");
+  const deepButton = document.querySelector("#ai-deep-button");
+  const deepResult = document.querySelector("#ai-deep-result");
+  const deepStatus = document.querySelector("#ai-deep-status");
+  const deepAnswer = document.querySelector("#ai-deep-answer");
   const submit = form.querySelector("button[type=submit]");
   const labels = { coreAnswer:"핵심 답변", recommendationReason:"추천 이유", usage:"사용 방법", cautions:"주의사항", advertisingAnalysis:"광고 문구 확인", uncertainty:"추가로 확인할 사항", followUpQuestion:"후속 질문" };
-  const safeText = value => typeof value === "string" ? value : "";
-  const section = (title, value, tone="") => value ? `<section class="ai-answer-section"${tone?` data-tone="${tone}"`:""}><h3>${title}</h3><p>${safeText(value)}</p></section>` : "";
-  const render = data => {
+  const deepLabels = { coreAnswer:"심층 답변", recommendationReason:"확인된 내용", usage:"추가 확인 방법", cautions:"국내 기준에서 확인할 사항", advertisingAnalysis:"추가 분석", uncertainty:"확인되지 않은 내용", followUpQuestion:"후속 질문" };
+  const escapeHtml = value => String(value??"").replace(/[&<>"']/g,character=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[character]);
+  const section = (title, value, tone="") => value ? `<section class="ai-answer-section"${tone?` data-tone="${tone}"`:""}><h3>${title}</h3><p>${escapeHtml(value)}</p></section>` : "";
+  const render = (data,target,sectionLabels=labels) => {
     const products = Array.isArray(data.recommendedProducts) ? data.recommendedProducts : [];
     const sources = Array.isArray(data.sources) ? data.sources : [];
     const tone = products[0]?.brand?.toLowerCase() === "ludwik" ? "ludwik" : products.length ? "biostar" : "";
-    answer.innerHTML = `<div class="ai-answer-grid">${section(labels.coreAnswer,data.coreAnswer,tone)}${products.length?`<section><h3>추천 제품</h3><div class="ai-products">${products.map(p=>`<article class="ai-product"><img src="${p.image}" alt="" width="92" height="112"><div><h4>${p.name}</h4><p>${p.purpose}</p><a href="${p.url}">상세 정보 보기</a></div></article>`).join("")}</div></section>`:""}${section(labels.recommendationReason,data.recommendationReason,tone)}${section(labels.usage,data.usage)}${section(labels.cautions,data.cautions)}${section(labels.advertisingAnalysis,data.advertisingAnalysis)}${sources.length?`<section class="ai-answer-section"><h3>확인 근거</h3><ul class="ai-source-list">${sources.map(s=>`<li>${safeText(s.title)}${s.checkedAt?` · ${safeText(s.checkedAt)}`:""}</li>`).join("")}</ul></section>`:""}${section(labels.uncertainty,data.uncertainty)}${section(labels.followUpQuestion,data.followUpQuestion)}</div>`;
+    target.innerHTML = `<div class="ai-answer-grid">${section(sectionLabels.coreAnswer,data.coreAnswer,tone)}${products.length?`<section><h3>추천 제품</h3><div class="ai-products">${products.map(p=>`<article class="ai-product"><img src="${escapeHtml(p.image)}" alt="" width="92" height="112"><div><h4>${escapeHtml(p.name)}</h4><p>${escapeHtml(p.purpose)}</p><a href="${escapeHtml(p.url)}">상세 정보 보기</a></div></article>`).join("")}</div></section>`:""}${section(sectionLabels.recommendationReason,data.recommendationReason,tone)}${section(sectionLabels.usage,data.usage)}${section(sectionLabels.cautions,data.cautions)}${section(sectionLabels.advertisingAnalysis,data.advertisingAnalysis)}${sources.length?`<section class="ai-answer-section"><h3>참고할 자료</h3><ul class="ai-source-list">${sources.map(s=>`<li>${escapeHtml(s.title)}${s.checkedAt?` · ${escapeHtml(s.checkedAt)}`:""}</li>`).join("")}</ul></section>`:""}${section(sectionLabels.uncertainty,data.uncertainty)}${section(sectionLabels.followUpQuestion,data.followUpQuestion)}</div>`;
   };
+  let originalQuestion="", originalAnswer="", deepPending=false;
+  const errorMessage = error => ({LOCAL_RATE_LIMITED:"질문이 잠시 많이 접수되고 있습니다. 잠시 후 다시 시도해 주세요.",API_KEY_MISSING:"AI 연결 설정을 확인하고 있습니다.",AUTHENTICATION_FAILED:"AI 서비스 인증 설정을 확인해 주세요.",OPENAI_RATE_LIMITED:"AI 서비스의 요청 한도를 확인해 주세요.",NETWORK_ERROR:"AI 서비스 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",PROVIDER_ERROR:"AI 서비스 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."})[error.code]||error.message||"답변을 생성하지 못했습니다. 잠시 후 다시 시도해 주세요.";
   input.addEventListener("input",()=>{ count.textContent=`${input.value.length.toLocaleString("ko-KR")} / 1,200`; });
   document.querySelectorAll("[data-ai-question]").forEach(button=>button.addEventListener("click",()=>{ input.value=button.dataset.aiQuestion; input.dispatchEvent(new Event("input")); input.focus(); }));
   form.addEventListener("submit",async event=>{
     event.preventDefault(); if(!form.reportValidity()) return;
-    result.hidden=false; answer.innerHTML=""; status.dataset.loading="true"; status.textContent="승인된 자료에서 관련 정보를 확인하고 있습니다…"; submit.disabled=true;
+    result.hidden=false; deepResult.hidden=true; deepButton.hidden=true; answer.innerHTML=""; deepAnswer.innerHTML=""; status.classList.remove("ai-error"); status.dataset.loading="true"; status.textContent="승인된 자료에서 관련 정보를 확인하고 있습니다…"; submit.disabled=true;
     try {
-      const response=await fetch("/api/ai-clean-care",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:input.value,history:[],language:"ko"}),signal:AbortSignal.timeout(20000)});
+      originalQuestion=input.value;
+      const response=await fetch("/api/ai-clean-care",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:originalQuestion,history:[],mode:"standard",language:"ko"}),signal:AbortSignal.timeout(20000)});
       const data=await response.json().catch(()=>({}));
       if(!response.ok) throw Object.assign(new Error("request"),{status:response.status,code:data.code,message:data.message});
-      render(data); status.textContent="답변이 준비되었습니다.";
+      render(data,answer); originalAnswer=JSON.stringify(data); deepButton.hidden=false; status.textContent="답변이 준비되었습니다.";
     } catch(error) {
-      const messages={LOCAL_RATE_LIMITED:"질문이 잠시 많이 접수되고 있습니다. 잠시 후 다시 시도해 주세요.",API_KEY_MISSING:"AI 연결 설정을 확인하고 있습니다.",AUTHENTICATION_FAILED:"AI 서비스 인증 설정을 확인해 주세요.",OPENAI_RATE_LIMITED:"AI 서비스의 요청 한도를 확인해 주세요.",NETWORK_ERROR:"AI 서비스 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",PROVIDER_ERROR:"AI 서비스 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."};
-      status.textContent=messages[error.code]||error.message||"답변을 생성하지 못했습니다. 잠시 후 다시 시도해 주세요."; status.classList.add("ai-error");
+      status.textContent=errorMessage(error); status.classList.add("ai-error");
     } finally { delete status.dataset.loading; submit.disabled=false; result.focus(); }
+  });
+  deepButton.addEventListener("click",async()=>{
+    if(deepPending||!originalQuestion||!originalAnswer)return;
+    deepPending=true; deepButton.disabled=true; deepResult.hidden=false; deepStatus.classList.remove("ai-error"); deepStatus.dataset.loading="true"; deepStatus.textContent="조금 더 자세히 살펴보고 있습니다…";
+    try{
+      const history=[{role:"user",content:originalQuestion},{role:"assistant",content:originalAnswer}];
+      const response=await fetch("/api/ai-clean-care",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({originalQuestion,originalAnswer,history,mode:"deep",language:"ko"}),signal:AbortSignal.timeout(30000)});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok)throw Object.assign(new Error("request"),{status:response.status,code:data.code,message:data.message});
+      render(data,deepAnswer,deepLabels); deepStatus.textContent="추가 분석이 준비되었습니다.";
+    }catch(error){deepStatus.textContent=errorMessage(error);deepStatus.classList.add("ai-error");}
+    finally{deepPending=false;deepButton.disabled=false;delete deepStatus.dataset.loading;deepResult.focus();}
   });
 })();
