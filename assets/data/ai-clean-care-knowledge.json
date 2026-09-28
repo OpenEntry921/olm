@@ -1,5 +1,17 @@
 {
   "schemaVersion": 1,
+  "manufacturerPrinciples": [
+    {
+      "brand": "BIOstar",
+      "topic": "미생물 기반 세정 원리",
+      "approvedDescription": "BIOstar가 제공한 제조사 설명에서는 세정 성분이 표면의 오염을 씻어내고, 제품에 포함된 미생물이 남아 있는 유기물의 분해를 돕습니다. 세정 성분과 미생물은 서로 다른 역할을 합니다.",
+      "scope": "미생물 함유가 별도로 확인된 제품에만 적용하며, 개별 제품의 균주·종 또는 함유 여부를 뜻하지 않습니다.",
+      "allowedContext": ["바실러스는 다양한 환경에서 발견되는 미생물의 한 종류", "세정 성분과 미생물의 역할 구분"],
+      "prohibitedConclusions": ["유기농", "100% 천연", "무화학", "친환경 인증", "인체 무해", "살균", "소독", "항균", "지속 세정", "어린이 또는 반려동물에게 안전"],
+      "source": {"title":"BIOstar 제공 제조사 설명 및 오름인터내셔널 승인 정보","checkedAt":"2026-09-28"},
+      "approvalStatus": "approved"
+    }
+  ],
   "products": [
     {"id":"biostar-bathroom-cleaner","brand":"BIOstar","name":"BIOstar 욕실 세정 폼","image":"/docs/source-images/biostar-bathroom-cleaner-700ml.png","category":"bathroom","purpose":"욕실 타일·세면대·욕조의 세척 가능한 표면","volume":"700ml","usage":"약 10cm 거리에서 분사한 뒤 헹구거나 젖은 천으로 닦으세요. 심한 오염은 약 5분 뒤 닦으세요.","cautions":"작은 부분에 먼저 시험하세요. 알루미늄, 대리석, 트래버틴, 석회암에는 사용하지 마세요.","ingredients":[],"certifications":[],"tests":[],"allowedClaims":["욕실의 세척 가능한 표면을 관리하는 세정 폼"],"prohibitedClaims":["프로바이오틱스","지속 효과","완전히 안전"],"sources":[{"title":"제품 패키지 및 오름인터내셔널 승인 제품정보","checkedAt":"2026-09-26"}],"approvalStatus":"approved","approvedAt":"2026-09-26","approvedBy":"content-admin","url":"/brands/biostar/#detail-biostar-bathroom-cleaner"},
     {"id":"biostar-laundry-capsules","brand":"BIOstar","name":"BIOstar 세탁 캡슐","image":"/docs/source-images/biostar-laundry-detergent.png","category":"laundry","purpose":"의류 세탁","volume":"32개입","usage":"마른 손으로 캡슐을 빈 세탁조에 먼저 넣고 세탁물을 넣으세요. 라벨 권장량을 확인하세요.","cautions":"캡슐을 자르거나 뜯지 말고 어린이 손이 닿지 않는 건조한 곳에 보관하세요.","ingredients":[],"certifications":[],"tests":[],"allowedClaims":["의류 세탁용 캡슐형 세제"],"prohibitedClaims":["프로바이오틱스","완전히 안전"],"sources":[{"title":"제품 패키지 및 오름인터내셔널 승인 제품정보","checkedAt":"2026-09-26"}],"approvalStatus":"approved","approvedAt":"2026-09-26","approvedBy":"content-admin","url":"/brands/biostar/#detail-biostar-laundry-capsules"}

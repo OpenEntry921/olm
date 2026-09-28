@@ -20,7 +20,7 @@ export function createOpenAIAdapter({fetchImpl=fetch,timeoutMs=DEFAULT_TIMEOUT_M
   const key=process.env.My_App_Key;if(!key)throw new ProviderError("API_KEY_MISSING",503);
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs);
   try{
-   const response=await fetchImpl("https://api.openai.com/v1/chat/completions",{method:"POST",signal:controller.signal,headers:{"content-type":"application/json",authorization:`Bearer ${key}`},body:JSON.stringify({model:input.model,temperature:0,messages:[{role:"system",content:prompt(input)},...messages(input)],response_format:{type:"json_schema",json_schema:{name:"clean_care_answer",strict:false,schema:answerJsonSchema}}})});
+   const response=await fetchImpl("https://api.openai.com/v1/chat/completions",{method:"POST",signal:controller.signal,headers:{"content-type":"application/json",authorization:`Bearer ${key}`},body:JSON.stringify({model:input.model,temperature:0,max_completion_tokens:1200,messages:[{role:"system",content:prompt(input)},...messages(input)],response_format:{type:"json_schema",json_schema:{name:"clean_care_answer",strict:false,schema:answerJsonSchema}}})});
    if(!response.ok)throw classify(response.status);
    const data=await response.json();return parseJson(data.choices?.[0]?.message?.content??"");
   }catch(error){if(error instanceof ProviderError)throw error;if(error?.name==="AbortError")throw new ProviderError("NETWORK_ERROR",504);throw new ProviderError("NETWORK_ERROR",502)}finally{clearTimeout(timer)}
