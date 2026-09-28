@@ -65,10 +65,32 @@ test("OpenAI adapter uses only the fixed allowlist and does not expose its key",
  const {createOpenAIAdapter}=await import("../netlify/functions/lib/providers.mjs");
  const answer={coreAnswer:"ok",recommendedProductIds:[],recommendationReason:"",usage:"",cautions:"",advertisingAnalysis:"",sources:[],uncertainty:"",followUpQuestion:""};let request;
  const adapter=createOpenAIAdapter({fetchImpl:async(url,options)=>{request={url,options};return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(answer)}}]}),{status:200})},timeoutMs:1000});
- assert.deepEqual(await adapter.complete({model:"gpt-4o-mini",systemPrompt:"rules",question:"ping",history:[],knowledge:{products:[]},language:"ko"}),answer);assert.match(request.url,/api\.openai\.com/);assert.equal(JSON.parse(request.options.body).model,"gpt-4o-mini");assert.equal(request.options.headers.authorization,"Bearer openai-secret-test");
+ assert.deepEqual(await adapter.complete({model:"gpt-4o-mini",systemPrompt:"rules",question:"ping",history:[],knowledge:{products:[]},language:"ko"}),answer);assert.match(request.url,/api\.openai\.com/);const requestBody=JSON.parse(request.options.body);assert.equal(requestBody.model,"gpt-4o-mini");assert.equal(requestBody.max_completion_tokens,1200);assert.equal(request.options.headers.authorization,"Bearer openai-secret-test");
  await assert.rejects(adapter.complete({model:"invented-model",question:"ping",knowledge:{products:[]}}),error=>error.code==="INVALID_MODEL");
  const key=process.env.My_App_Key;delete process.env.My_App_Key;
  try{await assert.rejects(adapter.complete({model:"gpt-4o-mini",question:"ping",knowledge:{products:[]}}),error=>error.code==="API_KEY_MISSING"&&error.status===503)}finally{process.env.My_App_Key=key}
+});
+
+test("AI Clean Care policy separates approved facts, microbial principles, and Korean requirements",async()=>{
+ const {CLEAN_CARE_SYSTEM_PROMPT,approvedKnowledge}=await import("../netlify/functions/lib/core.mjs");
+ const knowledge=await approvedKnowledge();
+ assert.equal(knowledge.manufacturerPrinciples.length,1);
+ assert.match(knowledge.manufacturerPrinciples[0].approvedDescription,/세정 성분.*오염.*미생물.*유기물/);
+ for(const rule of [
+  /유기농.*천연.*바실러스\/미생물.*서로 다른 개념/,
+  /정확한 제품의 미생물 함유 여부와 균주·종은 승인 지식에 있을 때만/,
+  /해외 인증이나 시험자료.*대한민국 인증/,
+  /모든 생활용품에 국내 인증이 필요하다거나.*일괄 단정하지/,
+  /살균·소독·항균/,
+  /한두 문장으로 지나치게 줄이지/
+ ])assert.match(CLEAN_CARE_SYSTEM_PROMPT,rule);
+});
+
+test("all twelve policy questions pass through the public AI endpoint with the detailed policy",async()=>{
+ const {handler:publicHandler}=await import("../netlify/functions/ai-clean-care.mjs");const originalFetch=globalThis.fetch;let count=0;
+ const questions=["BIOstar는 천연 제품인가요?","BIOstar는 유기농 제품인가요?","바실러스가 뭐예요?","BIOstar에 들어 있는 유익균은 어떤 역할을 하나요?","미생물이 어떻게 청소를 하나요?","바실러스가 들어가면 더 안전한가요?","BIOstar는 친환경 제품인가요?","폴란드 인증이 있으면 한국에서도 인정되나요?","독일 인증을 받으면 국내 인증이 필요 없나요?","국내 인증이 없으면 사용할 수 없나요?","이 제품은 살균 효과가 있나요?","아이가 있는 집에서도 무조건 안전한가요?"];
+ globalThis.fetch=async(_url,options)=>{const body=JSON.parse(options.body);assert.equal(body.messages.at(-1).content,questions[count]);assert.match(body.messages[0].content,/세정 성분은 표면의 때와 오염을 씻어내고/);assert.match(body.messages[0].content,/대한민국의 인증·신고·승인·표시/);assert.match(body.messages[0].content,/manufacturerPrinciples/);count++;return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify({coreAnswer:"질문에 직접 답하고 승인 근거와 확인사항을 구체적으로 설명합니다.",recommendedProductIds:[],recommendationReason:"",usage:"라벨을 확인하세요.",cautions:"확인되지 않은 효능이나 안전성을 단정하지 않습니다.",advertisingAnalysis:"기술적 특징, 해외 자료와 국내 요건은 별개입니다.",sources:[],uncertainty:"제품별 승인 정보 밖의 사실은 확인이 필요합니다.",followUpQuestion:"정확한 제품명을 알려주시겠어요?"})}}]}),{status:200})};
+ try{for(const [index,question] of questions.entries()){const response=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":`policy-question-${index}`},body:JSON.stringify({question,history:[]})});assert.equal(response.statusCode,200);assert.match(JSON.parse(response.body).coreAnswer,/직접 답/)}assert.equal(count,questions.length)}finally{globalThis.fetch=originalFetch}
 });
 
 test("public AI Clean Care sends a question through OpenAI without returning the key",async()=>{
