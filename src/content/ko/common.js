@@ -1,9 +1,9 @@
 /** @typedef {{ title: string, description: string, openGraph: { title: string, description: string } }} PageMeta */
 
 export const companyInfoKo = {
-  name: "오름인터내셔널",
-  email: "olm@olm.kr",
-  emailHref: "mailto:olm@olm.kr",
+  name: "주식회사 오름인터내셔널",
+  email: "khs@olm.kr",
+  emailHref: "mailto:khs@olm.kr",
   phone: "070-8779-9669",
   phoneHref: "tel:07087799669",
   address: "경기도 수원시 팔달구 효원로249번길 46-15, 5층 85호"
@@ -30,7 +30,7 @@ export const commonContentKo = {
     emailLabel: "이메일", email: companyInfoKo.email, emailHref: companyInfoKo.emailHref,
     phoneLabel: "대표 연락처", phone: companyInfoKo.phone, phoneHref: companyInfoKo.phoneHref,
     addressLabel: "주소", address: companyInfoKo.address,
-    copyright: "© 2026 OLM. All rights reserved.",
+    copyright: "© 2026 OLM International Corp. All rights reserved.",
     contactLabel: "문의 안내",
     adminLabel: "관리자"
   },
