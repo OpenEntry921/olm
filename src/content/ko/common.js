@@ -39,7 +39,7 @@ export const commonContentKo = {
   organization: {
     name: companyInfoKo.name,
     alternateName: companyInfoKo.alternateName,
-    description: "유럽 프리미엄 생활용품 브랜드의 한국 공식 파트너",
+    description: "유럽 프리미엄 생활용품 브랜드 한국 공식 파트너",
     email: companyInfoKo.email,
     telephone: companyInfoKo.phone,
     address: companyInfoKo.address

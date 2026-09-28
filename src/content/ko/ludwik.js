@@ -4,7 +4,7 @@ const productImage = filename => `/docs/source-images/${filename}`;
 export const ludwikBrand = {
   name: "Ludwik",
   logo: { path: productImage("Ludwik-logo.png"), alt: "Ludwik", width: 1216, height: 304 },
-  officialPurchaseUrl: null, // TODO: 공식 판매처 URL 확정 후 입력
+  officialPurchaseUrl: "https://smartstore.naver.com/olmmall",
   purchaseFallbackUrl: "/contact/?type=retailer"
 };
 
@@ -49,5 +49,5 @@ export const ludwikContentKo = () => {
   <section class="section ludwik-catalogue" aria-labelledby="ludwik-products-title"><div class="container"><span class="eyebrow">AVAILABLE IN KOREA</span><h2 class="title" id="ludwik-products-title">국내에서 만나는 Ludwik EKO 식기세척기 제품</h2><p class="section-lead">생활 방식과 사용량에 맞게 선택할 수 있는 식기세척기용 태블릿과 분말 세제를 소개합니다.</p><section class="ludwik-tablet-family" aria-labelledby="tablet-family-title"><div class="ludwik-family-heading"><span>01 · TABLETS</span><h3 id="tablet-family-title">식기세척기용 태블릿</h3><p>필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.</p></div><div class="ludwik-tablet-grid">${tablets.map(tabletVariant).join("")}</div></section><section class="ludwik-powder" aria-labelledby="powder-title"><div class="ludwik-powder-visual">${productImageTag(powder)}</div><div class="ludwik-powder-copy"><span>02 · POWDER</span><h3 id="powder-title">${powder.name}</h3><strong>${powder.quantity}</strong><p>${powder.description}</p></div></section></div></section>
   <section class="section ludwik-choice"><div class="container ludwik-editorial-grid"><span class="ludwik-section-number" aria-hidden="true">04</span><div><span class="eyebrow">PACKAGE GUIDE</span><h2 class="title">사용량에 맞춘 패키지 선택</h2><p class="lead">40개입, 75개입, 120개입으로 구성된 태블릿 제품군은 가정의 사용 빈도와 보관 환경에 맞게 선택할 수 있습니다. 분말형 제품은 세척량에 맞춰 사용량을 조절하기 좋은 선택지입니다.</p></div></div></section>
   <section class="section ludwik-expansion"><div class="container ludwik-editorial-grid"><span class="ludwik-section-number" aria-hidden="true">1964—</span><div><span class="eyebrow">BEYOND THE KITCHEN</span><h2 class="title">주방에서 시작해 생활 전반으로</h2><p class="lead">주방세제에서 시작한 Ludwik는 세탁과 다양한 생활 공간을 위한 홈케어 영역으로 제품 경험을 확장해 왔습니다.</p></div></div></section>
-  <section class="section ludwik-cta"><div class="container"><div><span class="eyebrow">OFFICIAL RETAILER</span><h2 class="title">Ludwik 제품을 공식 판매처에서 만나보세요</h2><p>${purchaseNote}</p></div><a class="btn ludwik-cta-button" href="${purchaseUrl}">공식 판매처 보기</a></div></section>`;
+  <section class="section ludwik-cta"><div class="container"><div><span class="eyebrow">OFFICIAL RETAILER</span><h2 class="title">Ludwik 제품을 공식 판매처에서 만나보세요</h2><p>${purchaseNote}</p></div><a class="btn ludwik-cta-button" href="${purchaseUrl}" target="_blank" rel="noopener noreferrer">공식 판매처 보기</a></div></section>`;
 };
