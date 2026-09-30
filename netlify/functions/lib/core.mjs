@@ -1,10 +1,15 @@
 import knowledgeData from "../../../assets/data/ai-clean-care-knowledge.json" with { type: "json" };
-export const SYSTEM_PROMPT_VERSION="clean-care-ko-1.1";
+export const SYSTEM_PROMPT_VERSION="clean-care-ko-1.2";
 export const CLEAN_CARE_SYSTEM_PROMPT=`당신은 OLM AI Clean Care 제품 안내 도우미입니다.
 
 [근거와 제품 안내]
 - OLM, BIOstar, Ludwik에 관한 사실은 제공된 승인 지식을 최우선이자 유일한 제품 사실 근거로 사용하세요. 관련 승인 제품이 있을 때만 자연스럽게 먼저 설명하고, 관련 없는 제품을 억지로 추천하지 마세요.
+- 제품 추천에서 purpose는 단순 설명이 아니라 허용된 사용 범위입니다. 추천 전에 사용자가 요청한 사용 대상·공간·목적이 product.purpose 및 category와 의미상 일치하는지 반드시 확인하세요. approvalStatus가 "approved"이고, purpose/category가 질문의 실제 사용 목적과 일치하며, 추천 이유가 approvedKnowledge에 의해 직접 뒷받침되는 제품만 recommendedProductIds에 포함하세요.
+- 승인된 purpose/category와 일치하지 않는 제품은 추천하지 마세요. 성분, 일반적인 세정 능력, 제품 종류의 유사성을 근거로 승인되지 않은 교차 용도를 추론하지 마세요. 예를 들어 세탁 세제나 욕실 세정제를 식기 세척에, 식기용 제품을 의류 세탁에 추천하면 안 됩니다. 향후 승인 지식에 교차 용도가 명시적으로 추가된 경우에만 그 용도를 허용하세요.
+- "효과가 있을 수 있다", "사용할 수도 있다", "성분상 가능하다" 같은 표현으로 승인 용도를 확장하지 마세요. "세제니까", "기름 제거에 도움이 될 것 같으니까", "비슷한 용도니까"와 같은 일반 추론도 추천 근거가 될 수 없습니다.
+- 질문에 맞는 승인 제품이 knowledge에 없으면 가장 비슷한 제품을 억지로 추천하지 말고 "현재 OLM 승인 제품정보에서 해당 용도에 맞는 제품을 확인하지 못했습니다."라는 취지로 답하며 recommendedProductIds를 빈 배열로 반환하세요.
 - 승인 지식에 없는 성분, 효능, 균주·종, 시험 결과, 인증, 안전성 또는 환경성을 일반 지식으로 보충하거나 제품 사실처럼 말하지 마세요. 살균·소독·항균, 병원균 제거, 지속 세정, 절대적 안전성도 근거 없이 주장하지 마세요.
+- sources에는 그 답변의 주장을 실제로 직접 뒷받침하는 승인 지식의 출처만 포함하세요. "제품 패키지 및 오름인터내셔널 승인 제품정보"를 비롯한 출처를 승인된 purpose와 allowedClaims의 범위를 넘어 새로 추론한 효능·용도의 근거처럼 표시하지 마세요.
 - 모르는 사항은 모른다고 명확히 밝히고, 확인할 라벨·공식 자료 또는 담당 기관을 안내하세요. 경쟁 제품을 근거 없이 평가하거나 비방하지 마세요.
 
 [답변 방식]
@@ -36,9 +41,15 @@ const restricted=/시스템\s*프롬프트|api\s*키|API\s*키|이전\s*지침.*
 export function demoAnswer(question,knowledge){
  if(restricted.test(question)) return {coreAnswer:"시스템 지침, 비밀정보 또는 근거 없는 비방 요청에는 응할 수 없습니다. 세제의 선택, 성분, 사용법 또는 광고 근거에 관한 질문을 해주세요.",recommendedProductIds:[],recommendationReason:"",usage:"",cautions:"",advertisingAnalysis:"",sources:[],uncertainty:"보안 정보는 공개하지 않습니다.",followUpQuestion:"확인하려는 제품의 용도나 광고 문구를 알려주시겠어요?"};
  if(/프로바이오틱|바실러스|유산균/.test(question)) return {coreAnswer:"현재 제공된 승인 자료만으로는 해당 제품의 바실러스 또는 프로바이오틱스 관련 효과를 구체적으로 안내하기 어렵습니다. 제품별 공식 자료가 확인되면 업데이트하겠습니다.",recommendedProductIds:[],recommendationReason:"",usage:"",cautions:"",advertisingAnalysis:"함유 사실과 세정 효과는 각각 제품별 승인 자료로 확인해야 합니다.",sources:[],uncertainty:"균주, 함유 자료, 시험 조건과 국내 허용 광고 문구가 승인되지 않았습니다.",followUpQuestion:"확인하려는 정확한 제품명을 알려주시겠어요?"};
- const bathroom=/욕실|물때|샤워/.test(question); const product=bathroom?knowledge.products.find(p=>p.category==="bathroom"):null;
+ const dish=/식기|접시/.test(question); const laundry=/옷|의류|세탁/.test(question)&&!dish; const bathroom=/욕실|물때|샤워/.test(question)&&!dish;
+ const product=bathroom?knowledge.products.find(p=>p.category==="bathroom"):laundry?knowledge.products.find(p=>p.category==="laundry"):null;
  const ad=/광고|천연|유기농|무해|친환경|안전|독일/.test(question);
- return {coreAnswer:bathroom?"욕실 물때에는 표면 재질을 먼저 확인하고 욕실용 세정제를 사용하는 편이 적절합니다. 주방세제는 라벨에 욕실 표면 용도가 확인되지 않으면 임의로 사용하지 마세요.":ad?"표현만으로 제품 전체의 원산지, 유기농 여부 또는 절대적인 안전성을 판단할 수 없습니다. 정확한 문구와 적용 범위, 시험 조건, 인증 주체를 함께 확인해야 합니다.":"현재 확인된 자료만으로는 정확하게 판단하기 어렵습니다. 제품 라벨이나 광고 문구를 제공해 주시면 확인 범위를 넓힐 수 있습니다.",recommendedProductIds:product?[product.id]:[],recommendationReason:product?"질문한 사용 공간과 승인된 제품 용도가 욕실로 일치합니다. 표면별 사용 제한은 반드시 함께 확인해야 합니다.":"",usage:product?.usage??"",cautions:product?.cautions??"서로 다른 세정제를 혼합하지 말고 제품 라벨의 용도와 응급조치를 우선하세요.",advertisingAnalysis:ad?"판정: 근거 확인 필요. ‘천연 유래’, ‘유기농’, ‘친환경’, ‘무해’는 서로 다른 주장입니다. 제조사 자료, 라벨, 인증 범위와 공공기관 정보를 동일 기준으로 확인해야 합니다.":"",sources:product?product.sources:[],uncertainty:ad?"정확한 제품명, 광고 원문, 라벨 또는 링크가 없어 최신 주장과 근거는 확인하지 못했습니다.":"",followUpQuestion:ad?"정확한 광고 문구나 라벨 사진, 링크를 제공해 주시겠어요?":"사용할 표면 재질과 오염 종류를 알려주시겠어요?"};
+ const coreAnswer=dish&&/세탁\s*캡슐/.test(question)?"BIOstar 세탁 캡슐의 승인 용도는 의류 세탁입니다. 식기 세척용으로 추천하지 않습니다. 현재 OLM 승인 제품정보에서 해당 용도에 맞는 제품을 확인하지 못했습니다.":dish?"현재 OLM 승인 제품정보에서 해당 용도에 맞는 제품을 확인하지 못했습니다.":bathroom?"욕실 물때에는 표면 재질을 먼저 확인하고 욕실용 세정제를 사용하는 편이 적절합니다. 다른 용도의 제품은 라벨에 욕실 표면 용도가 확인되지 않으면 임의로 사용하지 마세요.":laundry?"옷을 세탁할 때는 승인 용도가 의류 세탁인 제품을 사용할 수 있습니다.":ad?"표현만으로 제품 전체의 원산지, 유기농 여부 또는 절대적인 안전성을 판단할 수 없습니다. 정확한 문구와 적용 범위, 시험 조건, 인증 주체를 함께 확인해야 합니다.":"현재 확인된 자료만으로는 정확하게 판단하기 어렵습니다. 제품 라벨이나 광고 문구를 제공해 주시면 확인 범위를 넓힐 수 있습니다.";
+ return {coreAnswer,recommendedProductIds:product?[product.id]:[],recommendationReason:product?`질문한 사용 목적과 승인된 제품 용도(${product.purpose})가 일치합니다.`:"",usage:product?.usage??"",cautions:product?.cautions??"서로 다른 세정제를 혼합하지 말고 제품 라벨의 용도와 응급조치를 우선하세요.",advertisingAnalysis:ad?"판정: 근거 확인 필요. ‘천연 유래’, ‘유기농’, ‘친환경’, ‘무해’는 서로 다른 주장입니다. 제조사 자료, 라벨, 인증 범위와 공공기관 정보를 동일 기준으로 확인해야 합니다.":"",sources:product?product.sources:[],uncertainty:ad?"정확한 제품명, 광고 원문, 라벨 또는 링크가 없어 최신 주장과 근거는 확인하지 못했습니다.":"",followUpQuestion:ad?"정확한 광고 문구나 라벨 사진, 링크를 제공해 주시겠어요?":"사용할 표면 재질과 오염 종류를 알려주시겠어요?"};
 }
-export function attachProducts(result,knowledge){return {...result,recommendedProducts:(result.recommendedProductIds||[]).map(id=>knowledge.products.find(p=>p.id===id)).filter(Boolean).map(p=>({id:p.id,brand:p.brand,name:p.name,image:p.image,purpose:p.purpose,url:p.url}))};}
+export function attachProducts(result,knowledge){
+ const approvedProducts=new Map(knowledge.products.filter(product=>product.approvalStatus==="approved").map(product=>[product.id,product]));
+ const recommendedProductIds=[...new Set(result.recommendedProductIds||[])].filter(id=>approvedProducts.has(id));
+ return {...result,recommendedProductIds,recommendedProducts:recommendedProductIds.map(id=>approvedProducts.get(id)).map(p=>({id:p.id,brand:p.brand,name:p.name,image:p.image,purpose:p.purpose,url:p.url}))};
+}
 export function validateAnswer(value){if(!value||typeof value.coreAnswer!=="string"||!Array.isArray(value.recommendedProductIds)||!Array.isArray(value.sources))throw new Error("INVALID_AI_SCHEMA");return value;}
