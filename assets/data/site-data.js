@@ -1,7 +1,7 @@
 /** 승인 전 교체 항목은 TODO 주석을 유지합니다. */
 window.OREUM_DATA = {
   canonicalBase: "https://olm.kr/",
-  formEndpoint: "", // TODO: 문의 수신 HTTPS 엔드포인트
+  formEndpoint: "/api/contact",
   company: {
     name: "주식회사 오름인터내셔널",
     legalName: "주식회사 오름인터내셔널",

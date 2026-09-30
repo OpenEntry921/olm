@@ -118,11 +118,16 @@
       status.focus(); return;
     }
     status.textContent = "전송 중입니다…";
+    const submit = form.querySelector('[type="submit"]');
+    submit.disabled = true;
     try {
-      const response = await fetch(endpoint, { method: "POST", body: new FormData(form) });
-      if (!response.ok) throw new Error("Request failed");
-      status.textContent = "문의가 접수되었습니다."; form.reset();
-    } catch { status.textContent = "전송하지 못했습니다. 잠시 후 다시 시도하거나 이메일을 이용해 주세요."; }
+      const data = new FormData(form);
+      const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: data.get("type"), name: data.get("name"), email: data.get("email"), phone: data.get("phone"), message: data.get("message") }) });
+      let result = {}; try { result = await response.json(); } catch {}
+      if (!response.ok) throw new Error(typeof result.message === "string" ? result.message : "");
+      status.textContent = "문의가 접수되었습니다. 담당자가 확인 후 연락드리겠습니다."; form.reset();
+    } catch (error) { status.textContent = error.message || "전송하지 못했습니다. 잠시 후 다시 시도하거나 이메일을 이용해 주세요."; }
+    finally { submit.disabled = false; }
     status.focus();
   });
 })();
