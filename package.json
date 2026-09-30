@@ -5,10 +5,11 @@
   "type": "module",
   "description": "오름인터내셔널 정적 기업·브랜드 웹사이트",
   "scripts": {
+    "start": "node server.mjs",
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "lint": "node scripts/validate.mjs",
-    "typecheck": "node --check assets/js/main.js && node --check assets/data/site-data.js && node --check scripts/generate.mjs && node --check src/content/ko/common.js && node --check src/i18n/locales.js && node --check src/seo/metadata.js && node --check netlify/functions/ai-clean-care.mjs && node --check netlify/functions/admin-ai.mjs && node --check assets/js/admin-ai.js",
+    "typecheck": "node --check assets/js/main.js && node --check assets/data/site-data.js && node --check scripts/generate.mjs && node --check src/content/ko/common.js && node --check src/i18n/locales.js && node --check src/seo/metadata.js && node --check server.mjs && node --check server/api/http.mjs && node --check server/api/ai-clean-care.mjs && node --check server/api/admin-ai.mjs && node --check netlify/functions/ai-clean-care.mjs && node --check netlify/functions/admin-ai.mjs && node --check assets/js/admin-ai.js",
     "test": "node --test tests/*.test.mjs"
   },
   "engines": { "node": ">=20" }
