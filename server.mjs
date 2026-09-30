@@ -5,6 +5,7 @@ import {extname,resolve,sep} from "node:path";
 import {fileURLToPath} from "node:url";
 import {handleAiCleanCare} from "./server/api/ai-clean-care.mjs";
 import {handleAdminAi} from "./server/api/admin-ai.mjs";
+import {handleContact} from "./server/api/contact.mjs";
 
 const root=resolve(fileURLToPath(new URL("dist/",import.meta.url)));
 const MIME={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",".js":"text/javascript; charset=utf-8",".mjs":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",".svg":"image/svg+xml",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".webp":"image/webp",".gif":"image/gif",".ico":"image/x-icon",".txt":"text/plain; charset=utf-8",".xml":"application/xml; charset=utf-8",".woff":"font/woff",".woff2":"font/woff2"};
@@ -21,6 +22,7 @@ export const server=createServer(async(req,res)=>{
   const url=new URL(req.url||"/","http://localhost"),request={method:req.method,headers:req.headers,url:url.href,remoteAddress:req.socket.remoteAddress};
   if(url.pathname==="/healthz"){if(req.method!=="GET")return write(res,{status:405,headers:{allow:"GET","content-type":"application/json; charset=utf-8","cache-control":"no-store"},body:JSON.stringify({message:"Method not allowed"})});return write(res,{status:200,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"},body:JSON.stringify({ok:true})})}
   if(url.pathname==="/api/ai-clean-care"){request.body=await readBody(req);return write(res,await handleAiCleanCare(request))}
+  if(url.pathname==="/api/contact"){if(req.method==="POST")request.body=await readBody(req);return write(res,await handleContact(request))}
   if(url.pathname.startsWith("/api/admin/ai/")){request.body=await readBody(req);return write(res,await handleAdminAi(request))}
   if(req.method==="GET"||req.method==="HEAD"){if(await staticFile(url.pathname,res))return}
   write(res,{status:404,headers:{"content-type":"text/plain; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"},body:"Not Found"});
