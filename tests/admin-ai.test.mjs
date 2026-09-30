@@ -86,6 +86,39 @@ test("AI Clean Care policy separates approved facts, microbial principles, and K
  ])assert.match(CLEAN_CARE_SYSTEM_PROMPT,rule);
 });
 
+test("product recommendations stay within the approved purpose and category",async()=>{
+ const {CLEAN_CARE_SYSTEM_PROMPT,approvedKnowledge,attachProducts,demoAnswer}=await import("../netlify/functions/lib/core.mjs");
+ const knowledge=await approvedKnowledge();
+ for(const rule of [
+  /purpose는 단순 설명이 아니라 허용된 사용 범위/,
+  /approvalStatus가 "approved".*purpose\/category.*approvedKnowledge/,
+  /세탁 세제나 욕실 세정제를 식기 세척에/,
+  /효과가 있을 수 있다.*사용할 수도 있다.*성분상 가능하다/,
+  /현재 OLM 승인 제품정보에서 해당 용도에 맞는 제품을 확인하지 못했습니다/,
+  /sources에는.*직접 뒷받침하는 승인 지식의 출처만/
+ ])assert.match(CLEAN_CARE_SYSTEM_PROMPT,rule);
+
+ const dishes=demoAnswer("기름기가 많은 식기를 씻을 때 어떤 제품이 좋아?",knowledge);
+ assert.deepEqual(dishes.recommendedProductIds,[]);
+ assert.match(dishes.coreAnswer,/해당 용도에 맞는 제품을 확인하지 못했습니다/);
+ assert.doesNotMatch(dishes.coreAnswer,/세탁 캡슐.*(?:효과|사용할 수)/);
+
+ const laundry=demoAnswer("옷을 세탁할 때 사용할 제품이 있어?",knowledge);
+ assert.deepEqual(laundry.recommendedProductIds,["biostar-laundry-capsules"]);
+ const bathroom=demoAnswer("욕실 타일을 청소하려는데 어떤 제품이 좋아?",knowledge);
+ assert.deepEqual(bathroom.recommendedProductIds,["biostar-bathroom-cleaner"]);
+ assert.ok(!bathroom.recommendedProductIds.includes("biostar-laundry-capsules"));
+
+ const crossUse=demoAnswer("세탁 캡슐로 접시를 닦아도 돼?",knowledge);
+ assert.deepEqual(crossUse.recommendedProductIds,[]);
+ assert.match(crossUse.coreAnswer,/승인 용도는 의류 세탁/);
+ assert.match(crossUse.coreAnswer,/식기 세척용으로 추천하지 않습니다/);
+
+ const filtered=attachProducts({recommendedProductIds:["biostar-laundry-capsules","unapproved-product","missing-product"]},{products:[...knowledge.products,{id:"unapproved-product",approvalStatus:"draft"}]});
+ assert.deepEqual(filtered.recommendedProductIds,["biostar-laundry-capsules"]);
+ assert.deepEqual(filtered.recommendedProducts.map(product=>product.id),["biostar-laundry-capsules"]);
+});
+
 test("all twelve policy questions pass through the public AI endpoint with the detailed policy",async()=>{
  const {handler:publicHandler}=await import("../netlify/functions/ai-clean-care.mjs");const originalFetch=globalThis.fetch;let count=0;
  const questions=["BIOstar는 천연 제품인가요?","BIOstar는 유기농 제품인가요?","바실러스가 뭐예요?","BIOstar에 들어 있는 유익균은 어떤 역할을 하나요?","미생물이 어떻게 청소를 하나요?","바실러스가 들어가면 더 안전한가요?","BIOstar는 친환경 제품인가요?","폴란드 인증이 있으면 한국에서도 인정되나요?","독일 인증을 받으면 국내 인증이 필요 없나요?","국내 인증이 없으면 사용할 수 없나요?","이 제품은 살균 효과가 있나요?","아이가 있는 집에서도 무조건 안전한가요?"];
