@@ -1,20 +1,476 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "manufacturerPrinciples": [
     {
       "brand": "BIOstar",
       "topic": "미생물 기반 세정 원리",
       "approvedDescription": "BIOstar가 제공한 제조사 설명에서는 세정 성분이 표면의 오염을 씻어내고, 제품에 포함된 미생물이 남아 있는 유기물의 분해를 돕습니다. 세정 성분과 미생물은 서로 다른 역할을 합니다.",
       "scope": "미생물 함유가 별도로 확인된 제품에만 적용하며, 개별 제품의 균주·종 또는 함유 여부를 뜻하지 않습니다.",
-      "allowedContext": ["바실러스는 다양한 환경에서 발견되는 미생물의 한 종류", "세정 성분과 미생물의 역할 구분"],
-      "prohibitedConclusions": ["유기농", "100% 천연", "무화학", "친환경 인증", "인체 무해", "살균", "소독", "항균", "지속 세정", "어린이 또는 반려동물에게 안전"],
-      "source": {"title":"BIOstar 제공 제조사 설명 및 오름인터내셔널 승인 정보","checkedAt":"2026-09-28"},
+      "allowedContext": [
+        "바실러스는 다양한 환경에서 발견되는 미생물의 한 종류",
+        "세정 성분과 미생물의 역할 구분"
+      ],
+      "prohibitedConclusions": [
+        "유기농",
+        "100% 천연",
+        "무화학",
+        "친환경 인증",
+        "인체 무해",
+        "살균",
+        "소독",
+        "항균",
+        "지속 세정",
+        "어린이 또는 반려동물에게 안전"
+      ],
+      "source": {
+        "title": "BIOstar 제공 제조사 설명 및 오름인터내셔널 승인 정보",
+        "checkedAt": "2026-09-28"
+      },
       "approvalStatus": "approved"
     }
   ],
   "products": [
-    {"id":"biostar-bathroom-cleaner","brand":"BIOstar","name":"BIOstar 욕실 세정 폼","image":"/docs/source-images/biostar-bathroom-cleaner-700ml.png","category":"bathroom","purpose":"욕실 타일·세면대·욕조의 세척 가능한 표면","volume":"700ml","usage":"약 10cm 거리에서 분사한 뒤 헹구거나 젖은 천으로 닦으세요. 심한 오염은 약 5분 뒤 닦으세요.","cautions":"작은 부분에 먼저 시험하세요. 알루미늄, 대리석, 트래버틴, 석회암에는 사용하지 마세요.","ingredients":[],"certifications":[],"tests":[],"allowedClaims":["욕실의 세척 가능한 표면을 관리하는 세정 폼"],"prohibitedClaims":["프로바이오틱스","지속 효과","완전히 안전"],"sources":[{"title":"제품 패키지 및 오름인터내셔널 승인 제품정보","checkedAt":"2026-09-26"}],"approvalStatus":"approved","approvedAt":"2026-09-26","approvedBy":"content-admin","url":"/brands/biostar/#detail-biostar-bathroom-cleaner"},
-    {"id":"biostar-laundry-capsules","brand":"BIOstar","name":"BIOstar 세탁 캡슐","image":"/docs/source-images/biostar-laundry-detergent.png","category":"laundry","purpose":"의류 세탁","volume":"32개입","usage":"마른 손으로 캡슐을 빈 세탁조에 먼저 넣고 세탁물을 넣으세요. 라벨 권장량을 확인하세요.","cautions":"캡슐을 자르거나 뜯지 말고 어린이 손이 닿지 않는 건조한 곳에 보관하세요.","ingredients":[],"certifications":[],"tests":[],"allowedClaims":["의류 세탁용 캡슐형 세제"],"prohibitedClaims":["프로바이오틱스","완전히 안전"],"sources":[{"title":"제품 패키지 및 오름인터내셔널 승인 제품정보","checkedAt":"2026-09-26"}],"approvalStatus":"approved","approvedAt":"2026-09-26","approvedBy":"content-admin","url":"/brands/biostar/#detail-biostar-laundry-capsules"}
+    {
+      "id": "biostar-dishwashing-liquid",
+      "slug": "biostar-dishwashing-liquid",
+      "brand": "BIOstar",
+      "name": "BIOstar 주방세제",
+      "nameOriginal": null,
+      "image": "/docs/source-images/biostar-dishwashing-liquid-700ml.png",
+      "imageWidth": 854,
+      "imageHeight": 2143,
+      "imageAlt": "BIOstar 주방세제 700ml 용기",
+      "category": "kitchen",
+      "purpose": "식기·조리도구 세척",
+      "useSpace": "주방",
+      "volume": "700ml",
+      "description": "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다.",
+      "usage": "적당량을 수세미 또는 식기에 덜어 세척한 후 흐르는 물로 충분히 헹궈 주세요. 제품 라벨에 표시된 권장 사용량을 확인해 사용하세요.",
+      "cautions": "용도 외에는 사용하지 마시고, 사용 전 제품 라벨에 표시된 주의사항을 확인하세요. 환경에 미치는 영향을 줄이기 위해 권장 사용량을 준수하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-dishwashing-liquid/"
+    },
+    {
+      "id": "biostar-kitchen-cleaner",
+      "slug": "biostar-kitchen-cleaner",
+      "brand": "BIOstar",
+      "name": "BIOstar 주방 세정 폼",
+      "nameOriginal": null,
+      "image": "/docs/source-images/biostar-kitchen-cleaner-700ml.png",
+      "imageWidth": 854,
+      "imageHeight": 2270,
+      "imageAlt": "BIOstar 주방 세정 폼 700ml 스프레이 용기",
+      "category": "kitchen",
+      "purpose": "주방 표면",
+      "useSpace": "주방",
+      "volume": "700ml",
+      "description": "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다.",
+      "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
+      "cautions": "뜨거운 표면에는 사용하지 마세요. 사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-kitchen-cleaner/"
+    },
+    {
+      "id": "biostar-dishwasher-tablets",
+      "slug": "biostar-dishwasher-tablets",
+      "brand": "BIOstar",
+      "name": "BIOstar 식기세척기 세제",
+      "nameOriginal": null,
+      "image": "/docs/source-images/biostar-dishwasher-tablets-50pcs.png",
+      "imageWidth": 2000,
+      "imageHeight": 2000,
+      "imageAlt": "BIOstar 식기세척기 세제 50개입 패키지",
+      "category": "dishwasher",
+      "purpose": "식기세척기용",
+      "useSpace": "식기세척기",
+      "volume": "50개입",
+      "description": "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다.",
+      "usage": "마른 손으로 제품을 꺼내 식기세척기의 세제 투입구에 넣고 작동하세요. 세척 코스와 사용량은 식기세척기 설명서와 제품 라벨의 권장 방법을 확인해 주세요.",
+      "cautions": "손이 젖은 상태로 제품을 만지지 마세요. 어린이의 손이 닿지 않는 곳에 보관하고, 제품 라벨에 표시된 주의사항을 확인한 후 사용하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-dishwasher-tablets/"
+    },
+    {
+      "id": "biostar-bathroom-cleaner",
+      "slug": "biostar-bathroom-cleaner",
+      "brand": "BIOstar",
+      "name": "BIOstar 욕실 세정 폼",
+      "nameOriginal": null,
+      "image": "/docs/source-images/biostar-bathroom-cleaner-700ml.png",
+      "imageWidth": 854,
+      "imageHeight": 2270,
+      "imageAlt": "BIOstar 욕실 세정 폼 700ml 스프레이 용기",
+      "category": "bathroom",
+      "purpose": "욕실 타일·세면대·욕조",
+      "useSpace": "욕실",
+      "volume": "700ml",
+      "description": "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다.",
+      "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
+      "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 알루미늄, 대리석, 트래버틴과 석회암 표면에는 사용하지 마세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-bathroom-cleaner/"
+    },
+    {
+      "id": "biostar-shower-cabin-cleaner",
+      "slug": "biostar-shower-cabin-cleaner",
+      "brand": "BIOstar",
+      "name": "BIOstar 샤워부스 세정제",
+      "nameOriginal": null,
+      "image": "/docs/source-images/biostar-shower-cabin-cleaner-700ml.png",
+      "imageWidth": 854,
+      "imageHeight": 2270,
+      "imageAlt": "BIOstar 샤워부스 세정제 700ml 스프레이 용기",
+      "category": "bathroom",
+      "purpose": "샤워부스·욕실 표면",
+      "useSpace": "욕실",
+      "volume": "700ml",
+      "description": "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다.",
+      "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
+      "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 알루미늄, 대리석, 트래버틴과 석회암 표면에는 사용하지 마세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-shower-cabin-cleaner/"
+    },
+    {
+      "id": "biostar-toilet-gel",
+      "slug": "biostar-toilet-gel",
+      "brand": "BIOstar",
+      "name": "BIOstar 변기 세정 젤",
+      "nameOriginal": null,
+      "image": "/docs/source-images/biostar-toilet-gel-750ml.png",
+      "imageWidth": 814,
+      "imageHeight": 2208,
+      "imageAlt": "BIOstar 변기 세정 젤 750ml 용기",
+      "category": "toilet",
+      "purpose": "변기 내부 세정",
+      "useSpace": "변기",
+      "volume": "750ml",
+      "description": "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다.",
+      "usage": "변기 안쪽 가장자리를 따라 적당량을 고르게 바른 후 제품 라벨에 표시된 시간 동안 두세요. 변기용 솔로 문지른 다음 물을 내려 헹궈 주세요.",
+      "cautions": "다른 세정제와 혼합하지 마세요. 피부와 눈에 직접 닿지 않도록 주의하고, 어린이의 손이 닿지 않는 곳에 보관하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-toilet-gel/"
+    },
+    {
+      "id": "biostar-glass-mirror-cleaner",
+      "slug": "biostar-glass-mirror-cleaner",
+      "brand": "BIOstar",
+      "name": "BIOstar 유리·거울 세정제",
+      "nameOriginal": null,
+      "image": "/docs/source-images/biostar-glass-and-mirror-cleaner-700ml.png",
+      "imageWidth": 1006,
+      "imageHeight": 2354,
+      "imageAlt": "BIOstar 유리·거울 세정제 700ml 스프레이 용기",
+      "category": "glass",
+      "purpose": "유리·거울 표면",
+      "useSpace": "유리·거울",
+      "volume": "700ml",
+      "description": "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다.",
+      "usage": "세정할 표면에 적당량을 분사한 후 보풀이 없는 마른 천으로 닦아 주세요. 전자기기 화면에는 직접 분사하지 마세요.",
+      "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 용도 외에는 사용하지 말고 제품 라벨의 주의사항을 확인하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-glass-mirror-cleaner/"
+    },
+    {
+      "id": "biostar-universal-cleaner",
+      "slug": "biostar-universal-cleaner",
+      "brand": "BIOstar",
+      "name": "BIOstar 다목적 세정제",
+      "nameOriginal": null,
+      "image": "/docs/source-images/biostar-universal-cleaner-800ml.png",
+      "imageWidth": 830,
+      "imageHeight": 2216,
+      "imageAlt": "BIOstar 다목적 세정제 800ml 용기",
+      "category": "multipurpose",
+      "purpose": "세척 가능한 생활공간 표면",
+      "useSpace": "생활 공간",
+      "volume": "800ml",
+      "description": "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다.",
+      "usage": "넓은 면적을 청소할 때는 제품 라벨의 희석 비율에 맞춰 물에 희석한 후 표면을 닦아 주세요. 심한 오염에는 젖은 천에 소량을 묻혀 닦은 다음 물이나 젖은 천으로 마무리하세요.",
+      "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 보호 처리되지 않은 목재 표면에는 사용하지 마세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-universal-cleaner/"
+    },
+    {
+      "id": "biostar-laundry-capsules",
+      "slug": "biostar-laundry-capsules",
+      "brand": "BIOstar",
+      "name": "BIOstar BIOstar 세탁 캡슐",
+      "nameOriginal": "2 in 1 Laundry Capsules",
+      "image": "/docs/source-images/biostar-laundry-detergent.png",
+      "imageWidth": 2000,
+      "imageHeight": 2000,
+      "imageAlt": "BIOstar 2 in 1 세탁 캡슐 32개입 제품 패키지",
+      "category": "laundry",
+      "purpose": "의류 세탁",
+      "useSpace": "세탁",
+      "volume": "32개입",
+      "description": "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다.",
+      "usage": "마른 손으로 캡슐을 꺼내 빈 세탁조 안쪽에 먼저 넣은 다음 세탁물을 넣어 주세요. 세탁물의 양과 오염 정도에 따른 사용량은 제품 라벨의 권장 방법을 확인하세요.",
+      "cautions": "캡슐을 자르거나 뜯지 마세요. 젖은 손으로 만지지 말고, 어린이의 손이 닿지 않는 건조한 곳에 보관하세요. 의류의 세탁 표시와 제품 라벨의 주의사항을 함께 확인하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "seller": {
+        "name": "오름인터내셔널 공식 스마트스토어",
+        "url": "https://smartstore.naver.com/olmmall"
+      },
+      "certifications": [],
+      "tests": [],
+      "allowedClaims": [
+        "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "sources": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "approvalStatus": "approved",
+      "approvedAt": "2026-09-26",
+      "approvedBy": "content-admin",
+      "url": "/products/biostar-laundry-capsules/"
+    }
   ],
   "advertisingEvidence": []
 }
