@@ -47,7 +47,7 @@ export const ludwikProductGuideData = ludwikProducts.map(product => ({
 }));
 
 const productImageTag = (product, className = "ludwik-product-image") => `<img class="${className}" src="${product.image}" width="${product.width}" height="${product.height}" alt="${product.alt}" loading="lazy" decoding="async">`;
-const productKnowledgeUrl = product => `/products/ludwik/${product.id.replace("ludwik-eko-tablets", "eko-dishwasher-tablets").replace("ludwik-eko-powder", "eko-dishwasher-powder")}${product.type === "태블릿" ? "pcs" : ""}/`;
+const productKnowledgeUrl = product => `/brands/ludwik/${product.familyId.replace("ludwik-", "")}/`;
 const tabletVariant = product => `<article class="ludwik-tablet" data-product-id="${product.id}"><div class="ludwik-tablet-visual">${productImageTag(product)}</div><div class="ludwik-tablet-copy"><h4>${product.quantity}</h4><p>${product.name}</p><a class="ludwik-product-link" href="${productKnowledgeUrl(product)}">제품 상세 정보 <span aria-hidden="true">→</span></a></div></article>`;
 
 export const ludwikContentKo = () => {

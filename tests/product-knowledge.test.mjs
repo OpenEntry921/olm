@@ -62,8 +62,17 @@ test("natural-origin percentages and ingredient-only 100% claims remain product-
 test("brand pages expose ordinary links and legacy BIOstar URLs remain built", async () => {
   for (const brandSlug of ["biostar", "ludwik"]) {
     const html = await readFile(new URL(`brands/${brandSlug}/index.html`, root), "utf8");
-    for (const product of approved.filter(item => item.brandSlug === brandSlug))
-      assert.match(html, new RegExp(`href="${route(product)}"`));
+    const products = approved.filter(item => item.brandSlug === brandSlug);
+    const brandRoutes = new Set(products.map(product => brandSlug === "ludwik"
+      ? `/brands/ludwik/${product.slug.replace(/-\d+(?:-\d+)?(?:pcs|kg)$/, "")}/`
+      : `/brands/biostar/${product.slug}/`));
+    for (const pathname of brandRoutes) {
+      assert.match(html, new RegExp(`href="${pathname}"`));
+      const productHtml = await readFile(new URL(`${pathname.slice(1)}index.html`, root), "utf8");
+      assert.match(productHtml, new RegExp(`rel="canonical" href="https://olm\\.kr${pathname}"`));
+      const data = JSON.parse(productHtml.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)[1]);
+      assert.equal(data["@graph"].find(node => node["@type"] === "Product").url, `https://olm.kr${pathname}`);
+    }
   }
   for (const product of approved.filter(item => item.brandSlug === "biostar"))
     await access(new URL(`products/biostar-${product.slug}/index.html`, root));
