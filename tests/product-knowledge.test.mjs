@@ -6,6 +6,7 @@ const root = new URL("../", import.meta.url);
 const master = JSON.parse(await readFile(new URL("assets/data/product-master.json", root), "utf8"));
 const approved = master.products.filter(product => product.approvalStatus === "approved");
 const route = product => `/products/${product.brandSlug}/${product.slug}/`;
+const primaryRoute = product => `/brands/${product.brandSlug}/${product.brandSlug === "ludwik" ? product.slug.replace(/-\d+(?:-\d+)?(?:pcs|kg)$/, "") : product.slug}/`;
 
 test("product master covers both brands without unverified commerce fields", () => {
   assert.equal(approved.filter(product => product.brand === "BIOstar").length, 9);
@@ -20,7 +21,7 @@ test("product master covers both brands without unverified commerce fields", () 
   }
 });
 
-test("every knowledge page is static, self-canonical, structured and discoverable", async () => {
+test("every legacy knowledge page points to its representative brand URL", async () => {
   const sitemap = await readFile(new URL("sitemap.xml", root), "utf8");
   const llms = await readFile(new URL("llms.txt", root), "utf8");
   for (const product of approved) {
@@ -31,18 +32,21 @@ test("every knowledge page is static, self-canonical, structured and discoverabl
     assert.ok(html.includes(product.name));
     assert.ok(html.includes(product.brand));
     assert.ok(html.includes(product.purpose));
-    assert.match(html, new RegExp(`rel="canonical" href="https://olm\\.kr${pathname}"`));
+    const primary = primaryRoute(product);
+    assert.match(html, new RegExp(`rel="canonical" href="https://olm\\.kr${primary}"`));
     const data = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)[1]);
     const schema = data["@graph"].find(node => node["@type"] === "Product");
     assert.equal(schema.name, product.name);
     assert.equal(schema.description, product.description);
-    assert.equal(schema.url, `https://olm.kr${pathname}`);
+    assert.equal(schema.url, `https://olm.kr${primary}`);
     assert.equal(schema.countryOfOrigin.name, "폴란드");
     assert.equal(schema.offers, undefined);
     assert.equal(schema.aggregateRating, undefined);
     assert.equal(schema.review, undefined);
-    assert.ok(sitemap.includes(`https://olm.kr${pathname}`));
-    assert.ok(llms.includes(`https://olm.kr${pathname}`));
+    assert.ok(sitemap.includes(`https://olm.kr${primary}`));
+    assert.ok(llms.includes(`https://olm.kr${primary}`));
+    assert.ok(!sitemap.includes(`https://olm.kr${pathname}`));
+    assert.ok(!llms.includes(`https://olm.kr${pathname}`));
     assert.match(html, new RegExp(`href="/brands/${product.brandSlug}/"`));
   }
 });
