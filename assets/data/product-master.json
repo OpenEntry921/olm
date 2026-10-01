@@ -11,7 +11,7 @@
       "nameOriginal": null,
       "category": "kitchen",
       "purpose": "식기·조리도구 세척",
-      "description": "손설거지용 주방세제로, 제조사 패키지 기준 천연 유래 성분 97%이며 천연 알로에 추출물을 함유합니다.",
+      "description": "손설거지용 식기 세정제로, 제조사 공식 정보 기준 천연 유래 성분 97%의 포뮬러를 사용합니다. 천연 알로에 추출물과 글리세린을 함유하며, 식기·조리도구의 기름때와 음식물 잔여물을 세척합니다.",
       "volume": "700ml",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -26,20 +26,25 @@
       "usage": "적당량을 수세미 또는 식기에 덜어 세척한 후 흐르는 물로 충분히 헹궈 주세요. 제품 라벨에 표시된 권장 사용량을 확인해 사용하세요.",
       "cautions": "용도 외에는 사용하지 마시고, 사용 전 제품 라벨에 표시된 주의사항을 확인하세요. 환경에 미치는 영향을 줄이기 위해 권장 사용량을 준수하세요.",
       "ingredients": [
-        "천연 알로에 추출물"
+        "천연 알로에 추출물",
+        "글리세린"
       ],
       "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "제조사 기준 천연 유래 성분 97%",
-        "천연 알로에 추출물 함유",
-        "EU Ecolabel 표시 제품",
-        "생분해성 포뮬러"
+        "제조사 공식 정보 기준 천연 유래 성분 97%",
+        "천연 알로에 추출물과 글리세린 함유",
+        "식기·조리도구의 기름때와 음식물 잔여물 세척",
+        "제조사가 설명하는 생분해성 성분 기반 포뮬러",
+        "EU Ecolabel 인증(PL/019/009)",
+        "제조사가 설명하는 재활용 가능한 용기"
       ],
       "allowedClaims": [
-        "제조사 기준 천연 유래 성분 97%",
-        "천연 알로에 추출물 함유",
-        "EU Ecolabel 표시 제품",
-        "생분해성 포뮬러"
+        "제조사 공식 정보 기준 천연 유래 성분 97%",
+        "천연 알로에 추출물과 글리세린 함유",
+        "식기·조리도구의 기름때와 음식물 잔여물 세척",
+        "제조사가 설명하는 생분해성 성분 기반 포뮬러",
+        "EU Ecolabel 인증(PL/019/009)",
+        "제조사가 설명하는 재활용 가능한 용기"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -54,13 +59,21 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-dishwashing-liquid-700ml.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
+        },
+        {
+          "title": "BIOstar 공식 제조사 웹사이트",
+          "sourceUrl": "https://biostarclean.pl/",
+          "sourceType": "official manufacturer website",
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
       "approvalStatus": "approved",
       "certifications": [
-        "EU Ecolabel"
+        "EU Ecolabel (PL/019/009)"
       ],
       "additionalProperty": [
         {
@@ -69,11 +82,26 @@
         },
         {
           "name": "주요 성분 특징",
-          "value": "천연 알로에 추출물"
+          "value": "천연 알로에 추출물, 글리세린"
         },
         {
           "name": "환경 인증",
-          "value": "EU Ecolabel"
+          "value": "EU Ecolabel PL/019/009"
+        },
+        {
+          "name": "포장",
+          "value": "재활용 가능한 용기"
+        }
+      ],
+      "countryOfOrigin": "폴란드",
+      "factualQna": [
+        {
+          "question": "100% 천연 유래 성분 제품인가요?",
+          "answer": "아닙니다. BIOstar 주방세제는 100% 천연 유래 제품으로 표시된 제품이 아니며, 제조사 공식 정보 기준 천연 유래 성분 비율은 97%입니다."
+        },
+        {
+          "question": "어디에 사용하는 제품인가요?",
+          "answer": "손설거지할 때 식기와 조리도구의 기름때 및 음식물 잔여물을 세척하는 주방세제입니다."
         }
       ]
     },
@@ -131,7 +159,8 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-kitchen-cleaner-700ml.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -152,7 +181,8 @@
           "name": "포장",
           "value": "용기의 98%가 재활용 원료"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "biostar-dishwasher-tablets",
@@ -163,7 +193,7 @@
       "nameOriginal": null,
       "category": "dishwasher",
       "purpose": "식기세척기용",
-      "description": "식기세척기에 한 개씩 넣는 정제형 세제입니다. 제조사 패키지는 천연 유래 소다 100%, 무보존제·무향료, 활성 산소와 생분해성 포뮬러를 표시합니다.",
+      "description": "식기세척기에 한 개씩 넣는 정제형 세제입니다. 제조사 공식 정보는 천연 유래 성분 기반 포뮬러, 100% 천연 유래 소다, 활성 산소와 Natural Bioactive Agent를 설명합니다. 100% 표시는 소다 원료에 한정되며 제품 전체의 천연 유래 성분 비율을 뜻하지 않습니다.",
       "volume": "50개입",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -182,17 +212,19 @@
       ],
       "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "천연 유래 소다 100% 사용(제품 전체의 천연 유래 비율을 뜻하지 않음)",
-        "보존제 및 향료 무첨가",
+        "100% 천연 유래 소다 함유(제품 전체의 천연 유래 비율을 뜻하지 않음)",
         "활성 산소 함유",
+        "Natural Bioactive Agent에 대한 제조사 설명",
+        "보존제 및 향료 무첨가",
         "생분해성 포뮬러",
         "EU Ecolabel 표시 제품",
         "50°C부터 세정 성능 발휘"
       ],
       "allowedClaims": [
-        "천연 유래 소다 100% 사용(제품 전체의 천연 유래 비율을 뜻하지 않음)",
-        "보존제 및 향료 무첨가",
+        "100% 천연 유래 소다 함유(제품 전체의 천연 유래 비율을 뜻하지 않음)",
         "활성 산소 함유",
+        "Natural Bioactive Agent에 대한 제조사 설명",
+        "보존제 및 향료 무첨가",
         "생분해성 포뮬러",
         "EU Ecolabel 표시 제품",
         "50°C부터 세정 성능 발휘"
@@ -210,7 +242,15 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-dishwasher-tablets-50pcs.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
+        },
+        {
+          "title": "BIOstar 공식 제조사 웹사이트",
+          "sourceUrl": "https://biostarclean.pl/",
+          "sourceType": "official manufacturer website",
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -221,7 +261,11 @@
       "additionalProperty": [
         {
           "name": "원료 특징",
-          "value": "천연 유래 소다 100%"
+          "value": "100% 천연 유래 소다 함유(제품 전체 비율 아님)"
+        },
+        {
+          "name": "포뮬러 특징",
+          "value": "활성 산소, Natural Bioactive Agent"
         },
         {
           "name": "첨가 여부",
@@ -230,6 +274,17 @@
         {
           "name": "환경 인증",
           "value": "EU Ecolabel"
+        }
+      ],
+      "countryOfOrigin": "폴란드",
+      "factualQna": [
+        {
+          "question": "제품 전체가 100% 천연 유래 성분인가요?",
+          "answer": "아닙니다. 제조사의 100% 표시는 제품에 함유된 소다의 천연 유래 특성을 뜻하며, 제품 전체의 천연 유래 성분 비율을 뜻하지 않습니다."
+        },
+        {
+          "question": "손설거지용인가요?",
+          "answer": "아닙니다. 식기세척기의 세제 투입구에 한 개씩 넣어 사용하는 식기세척기용 정제형 세제입니다."
         }
       ]
     },
@@ -287,7 +342,8 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-bathroom-cleaner-700ml.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -308,7 +364,8 @@
           "name": "포장",
           "value": "용기의 98%가 재활용 원료"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "biostar-shower-cabin-cleaner",
@@ -364,7 +421,8 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-shower-cabin-cleaner-700ml.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -385,7 +443,8 @@
           "name": "포장",
           "value": "용기의 98%가 재활용 원료"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "biostar-toilet-gel",
@@ -443,7 +502,8 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-toilet-gel-750ml.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -464,7 +524,8 @@
           "name": "포장",
           "value": "용기의 50%가 재활용 원료"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "biostar-glass-mirror-cleaner",
@@ -521,7 +582,8 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-glass-and-mirror-cleaner-700ml.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -542,7 +604,8 @@
           "name": "포장",
           "value": "용기의 98%가 재활용 원료"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "biostar-universal-cleaner",
@@ -598,7 +661,8 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-universal-cleaner-800ml.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -619,7 +683,8 @@
           "name": "포장",
           "value": "용기의 50%가 재활용 원료"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "biostar-laundry-capsules",
@@ -678,7 +743,8 @@
           "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
           "sourceUrl": "/docs/source-images/biostar-laundry-detergent.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -699,7 +765,8 @@
           "name": "환경 인증",
           "value": "EU Ecolabel"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "ludwik-eko-tablets-40",
@@ -743,7 +810,15 @@
           "title": "GRUPA INCO 공식 Ludwik EKO 제품 패키지",
           "sourceUrl": "/docs/source-images/ludwik-eko-dishwasher-tablets-40pcs.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
+        },
+        {
+          "title": "Ludwik 공식 제조사 웹사이트",
+          "sourceUrl": "https://www.ludwik.pl/",
+          "sourceType": "official manufacturer website",
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -771,7 +846,8 @@
           "name": "세정 온도",
           "value": "50°C부터"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "ludwik-eko-tablets-75",
@@ -815,7 +891,15 @@
           "title": "GRUPA INCO 공식 Ludwik EKO 제품 패키지",
           "sourceUrl": "/docs/source-images/ludwik-eko-dishwasher-tablets-75pcs.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
+        },
+        {
+          "title": "Ludwik 공식 제조사 웹사이트",
+          "sourceUrl": "https://www.ludwik.pl/",
+          "sourceType": "official manufacturer website",
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -843,7 +927,8 @@
           "name": "세정 온도",
           "value": "50°C부터"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "ludwik-eko-tablets-120",
@@ -887,7 +972,15 @@
           "title": "GRUPA INCO 공식 Ludwik EKO 제품 패키지",
           "sourceUrl": "/docs/source-images/ludwik-eko-dishwasher-tablets-120pcs.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
+        },
+        {
+          "title": "Ludwik 공식 제조사 웹사이트",
+          "sourceUrl": "https://www.ludwik.pl/",
+          "sourceType": "official manufacturer website",
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -915,7 +1008,8 @@
           "name": "세정 온도",
           "value": "50°C부터"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     },
     {
       "id": "ludwik-eko-powder-1-2kg",
@@ -959,7 +1053,15 @@
           "title": "GRUPA INCO 공식 Ludwik EKO 제품 패키지",
           "sourceUrl": "/docs/source-images/ludwik-eko-dishwasher-powder-1-2kg.png",
           "sourceType": "official manufacturer packaging",
-          "checkedAt": "2026-10-01"
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
+        },
+        {
+          "title": "Ludwik 공식 제조사 웹사이트",
+          "sourceUrl": "https://www.ludwik.pl/",
+          "sourceType": "official manufacturer website",
+          "checkedAt": "2026-10-01",
+          "lastVerifiedAt": "2026-10-01"
         }
       ],
       "lastReviewedAt": "2026-10-01",
@@ -987,7 +1089,8 @@
           "name": "세정 온도",
           "value": "50°C부터"
         }
-      ]
+      ],
+      "countryOfOrigin": "폴란드"
     }
   ]
 }

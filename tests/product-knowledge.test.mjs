@@ -11,8 +11,9 @@ test("product master covers both brands without unverified commerce fields", () 
   assert.equal(approved.filter(product => product.brand === "BIOstar").length, 9);
   assert.equal(approved.filter(product => product.brand === "Ludwik").length, 4);
   for (const product of approved) {
-    for (const field of ["id", "slug", "brand", "brandSlug", "name", "category", "purpose", "description", "volume", "images", "source", "lastReviewedAt"])
+    for (const field of ["id", "slug", "brand", "brandSlug", "name", "category", "purpose", "description", "volume", "images", "source", "lastReviewedAt", "countryOfOrigin"])
       assert.ok(product[field], `${product.id} missing ${field}`);
+    assert.ok(product.source.every(source => source.sourceUrl && source.sourceType && source.lastVerifiedAt));
     assert.equal(product.price, undefined);
     assert.equal(product.stock, undefined);
     assert.equal(product.rating, undefined);
@@ -36,6 +37,7 @@ test("every knowledge page is static, self-canonical, structured and discoverabl
     assert.equal(schema.name, product.name);
     assert.equal(schema.description, product.description);
     assert.equal(schema.url, `https://olm.kr${pathname}`);
+    assert.equal(schema.countryOfOrigin.name, "폴란드");
     assert.equal(schema.offers, undefined);
     assert.equal(schema.aggregateRating, undefined);
     assert.equal(schema.review, undefined);
@@ -43,6 +45,18 @@ test("every knowledge page is static, self-canonical, structured and discoverabl
     assert.ok(llms.includes(`https://olm.kr${pathname}`));
     assert.match(html, new RegExp(`href="/brands/${product.brandSlug}/"`));
   }
+});
+
+test("natural-origin percentages and ingredient-only 100% claims remain product-specific", async () => {
+  const dishLiquid = approved.find(product => product.id === "biostar-dishwashing-liquid");
+  const dishwasher = approved.find(product => product.id === "biostar-dishwasher-tablets");
+  assert.equal(dishLiquid.additionalProperty.find(property => property.name === "천연 유래 성분 비율").value, "97%");
+  assert.match(dishLiquid.factualQna[0].answer, /100%.*아니며.*97%/);
+  assert.match(dishwasher.additionalProperty.find(property => property.name === "원료 특징").value, /100% 천연 유래 소다.*제품 전체 비율 아님/);
+  assert.match(dishwasher.factualQna[0].answer, /제품 전체의 천연 유래 성분 비율을 뜻하지 않습니다/);
+  const liquidHtml = await readFile(new URL(`${route(dishLiquid).slice(1)}index.html`, root), "utf8");
+  assert.match(liquidHtml, /EU Ecolabel PL\/019\/009/);
+  assert.match(liquidHtml, /BIOstar 공식 제조사 웹사이트/);
 });
 
 test("brand pages expose ordinary links and legacy BIOstar URLs remain built", async () => {
