@@ -35,7 +35,7 @@ const brandNodes = {
   ludwik: {"@type":"Brand","@id":absoluteUrl("/brands/ludwik/#brand"),"name":ludwikBrand.name,"url":absoluteUrl("/brands/ludwik/")},
   biostar: {"@type":"Brand","@id":absoluteUrl("/brands/biostar/#brand"),"name":biostarBrand.name,"url":absoluteUrl("/brands/biostar/")}
 };
-const productNode = (product, brand, pagePath) => ({"@type":"Product","@id":absoluteUrl(`${pagePath}#product-${product.id}`),"name":`${product.name} ${product.quantity || product.volume}`,"description":product.description,"image":absoluteUrl(product.image),"category":product.category,"brand":{"@id":brand["@id"]},"url":brand.name === "BIOstar" ? absoluteUrl(`${pagePath}#detail-${product.id}`) : absoluteUrl(pagePath)});
+const productNode = (product, brand, pagePath) => ({"@type":"Product","@id":absoluteUrl(`${pagePath}#product-${product.id}`),"name":`${product.name} ${product.quantity || product.volume}`,"description":product.description,"image":absoluteUrl(product.image),"category":product.category,"brand":{"@id":brand["@id"]},"url":brand.name === "BIOstar" ? absoluteUrl(`${pagePath}#detail-${product.id}`) : absoluteUrl(pagePath),"additionalProperty":(product.structuredFacts || product.allowedClaims || []).map(fact=>typeof fact === "string" ? ({"@type":"PropertyValue","name":"제품 특징","value":fact}) : ({"@type":"PropertyValue",...fact}))});
 const breadcrumbNode = id => {
   const entries = [{name:commonContentKo.breadcrumb.home,path:"/"}];
   if (["ludwik","biostar"].includes(id)) entries.push({name:commonContentKo.breadcrumb.brands,path:"/brands/"});
@@ -112,6 +112,7 @@ const knowledgeStructuredData = (product, metadata) => {
   if (product.sku) node.sku=product.sku;
   if (product.gtin) node.gtin=product.gtin;
   if (product.manufacturer) node.manufacturer={"@type":"Organization","name":product.manufacturer};
+  node.additionalProperty=(product.additionalProperty||[]).map(property=>({"@type":"PropertyValue",...property}));
   return JSON.stringify({"@context":"https://schema.org","@graph":[organization,website,{"@type":"WebPage","@id":`${metadata.canonical}#webpage`,"url":metadata.canonical,"name":metadata.title,"description":metadata.description,"isPartOf":{"@id":websiteId},"about":{"@id":node["@id"]},"breadcrumb":{"@id":`${metadata.canonical}#breadcrumb`},"inLanguage":"ko-KR"},{"@type":"BreadcrumbList","@id":`${metadata.canonical}#breadcrumb`,"itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":absoluteUrl("/")},{"@type":"ListItem","position":2,"name":"제품","item":absoluteUrl("/products/")},{"@type":"ListItem","position":3,"name":product.brand,"item":absoluteUrl(`/products/${product.brandSlug}/`)},{"@type":"ListItem","position":4,"name":product.name,"item":metadata.canonical}]},node]}).replaceAll("<","\\u003c");
 };
 const knowledgeBody = product => {
