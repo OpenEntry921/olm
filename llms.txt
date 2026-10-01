@@ -24,9 +24,9 @@
 - [전체 제품 목록](https://olm.kr/products/)
 - [BIOstar 제품 목록](https://olm.kr/products/biostar/)
 - [Ludwik 제품 목록](https://olm.kr/products/ludwik/)
-- [BIOstar 주방세제 700ml](https://olm.kr/products/biostar/dishwashing-liquid/): 손설거지용 주방세제로, 제조사 패키지 기준 천연 유래 성분 97%이며 천연 알로에 추출물을 함유합니다.
+- [BIOstar 주방세제 700ml](https://olm.kr/products/biostar/dishwashing-liquid/): 손설거지용 식기 세정제로, 제조사 공식 정보 기준 천연 유래 성분 97%의 포뮬러를 사용합니다. 천연 알로에 추출물과 글리세린을 함유하며, 식기·조리도구의 기름때와 음식물 잔여물을 세척합니다.
 - [BIOstar 주방 세정 폼 700ml](https://olm.kr/products/biostar/kitchen-cleaner/): 주방의 세척 가능한 표면에서 기름때, 눌어붙은 오염과 끈적한 때를 닦는 폼 세정제입니다. 제조사 패키지 기준 천연 유래 성분 98%이며 천연 알로에 추출물을 함유합니다.
-- [BIOstar 식기세척기 세제 50개입](https://olm.kr/products/biostar/dishwasher-tablets/): 식기세척기에 한 개씩 넣는 정제형 세제입니다. 제조사 패키지는 천연 유래 소다 100%, 무보존제·무향료, 활성 산소와 생분해성 포뮬러를 표시합니다.
+- [BIOstar 식기세척기 세제 50개입](https://olm.kr/products/biostar/dishwasher-tablets/): 식기세척기에 한 개씩 넣는 정제형 세제입니다. 제조사 공식 정보는 천연 유래 성분 기반 포뮬러, 100% 천연 유래 소다, 활성 산소와 Natural Bioactive Agent를 설명합니다. 100% 표시는 소다 원료에 한정되며 제품 전체의 천연 유래 성분 비율을 뜻하지 않습니다.
 - [BIOstar 욕실 세정 폼 700ml](https://olm.kr/products/biostar/bathroom-cleaner/): 욕실의 물때와 석회 침전물을 닦는 폼 세정제입니다. 제조사 패키지 기준 천연 유래 성분 99%이며 천연 라벤더 추출물을 함유합니다.
 - [BIOstar 샤워부스 세정제 700ml](https://olm.kr/products/biostar/shower-cabin-cleaner/): 샤워부스의 물때와 석회 침전물을 닦는 전용 세정제입니다. 제조사 패키지 기준 천연 유래 성분 99%이며 천연 라벤더 추출물을 함유합니다.
 - [BIOstar 변기 세정 젤 750ml](https://olm.kr/products/biostar/toilet-gel/): 변기 내부의 물때와 석회 침전물을 닦는 젤 세정제입니다. 제조사 패키지 기준 천연 유래 성분 98%이며 천연 라벤더 추출물을 함유하고 염소를 넣지 않았습니다.
