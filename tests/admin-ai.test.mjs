@@ -99,8 +99,8 @@ test("product recommendations stay within the approved purpose and category",asy
  ])assert.match(CLEAN_CARE_SYSTEM_PROMPT,rule);
 
  const dishes=demoAnswer("기름기가 많은 식기를 씻을 때 어떤 제품이 좋아?",knowledge);
- assert.deepEqual(dishes.recommendedProductIds,[]);
- assert.match(dishes.coreAnswer,/해당 용도에 맞는 제품을 확인하지 못했습니다/);
+ assert.deepEqual(dishes.recommendedProductIds,["biostar-dishwashing-liquid"]);
+ assert.match(dishes.coreAnswer,/손설거지/);
  assert.doesNotMatch(dishes.coreAnswer,/세탁 캡슐.*(?:효과|사용할 수)/);
 
  const laundry=demoAnswer("옷을 세탁할 때 사용할 제품이 있어?",knowledge);

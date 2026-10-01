@@ -1,4 +1,6 @@
-/** Korean BIOstar brand settings and reviewed product catalogue. */
+/** Korean BIOstar brand settings. Product facts come only from the approved AI Clean Care knowledge file. */
+import knowledgeData from "../../../assets/data/ai-clean-care-knowledge.json" with { type: "json" };
+
 export const biostarBrand = {
   name: "BIOstar",
   // TODO: 공식 BIOstar 로고 업로드 후 교체
@@ -7,29 +9,22 @@ export const biostarBrand = {
   purchaseFallbackUrl: "https://smartstore.naver.com/olmmall"
 };
 
-const productImagePath = fileName => `/docs/source-images/${fileName}`;
+export const biostarProducts = knowledgeData.products
+  .filter(product => product.brand === biostarBrand.name && product.approvalStatus === "approved")
+  .map(product => ({
+    ...product,
+    id: product.id.replace(/^biostar-/, ""),
+    name: product.name.replace(/^BIOstar\s+/, ""),
+    space: product.useSpace,
+    use: product.purpose,
+    width: product.imageWidth,
+    height: product.imageHeight,
+    alt: product.imageAlt,
+    purchaseUrl: product.seller?.url || null
+  }));
 
-export const biostarProducts = [
-  { id: "dishwashing-liquid", name: "주방세제", volume: "700ml", category: "kitchen", space: "주방", use: "식기·조리도구 세척", description: "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다.", image: productImagePath("biostar-dishwashing-liquid-700ml.png"), width: 854, height: 2143, alt: "BIOstar 주방세제 700ml 용기", usage: "적당량을 수세미 또는 식기에 덜어 세척한 후 흐르는 물로 충분히 헹궈 주세요. 제품 라벨에 표시된 권장 사용량을 확인해 사용하세요.", cautions: "용도 외에는 사용하지 마시고, 사용 전 제품 라벨에 표시된 주의사항을 확인하세요. 환경에 미치는 영향을 줄이기 위해 권장 사용량을 준수하세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null },
-  { id: "kitchen-cleaner", name: "주방 세정 폼", volume: "700ml", category: "kitchen", space: "주방", use: "주방 표면", description: "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다.", image: productImagePath("biostar-kitchen-cleaner-700ml.png"), width: 854, height: 2270, alt: "BIOstar 주방 세정 폼 700ml 스프레이 용기", usage: "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.", cautions: "뜨거운 표면에는 사용하지 마세요. 사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null },
-  { id: "dishwasher-tablets", name: "식기세척기 세제", volume: "50개입", category: "dishwasher", space: "식기세척기", use: "식기세척기용", description: "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다.", image: productImagePath("biostar-dishwasher-tablets-50pcs.png"), width: 2000, height: 2000, alt: "BIOstar 식기세척기 세제 50개입 패키지", usage: "마른 손으로 제품을 꺼내 식기세척기의 세제 투입구에 넣고 작동하세요. 세척 코스와 사용량은 식기세척기 설명서와 제품 라벨의 권장 방법을 확인해 주세요.", cautions: "손이 젖은 상태로 제품을 만지지 마세요. 어린이의 손이 닿지 않는 곳에 보관하고, 제품 라벨에 표시된 주의사항을 확인한 후 사용하세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null },
-  { id: "bathroom-cleaner", name: "욕실 세정 폼", volume: "700ml", category: "bathroom", space: "욕실", use: "욕실 타일·세면대·욕조", description: "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다.", image: productImagePath("biostar-bathroom-cleaner-700ml.png"), width: 854, height: 2270, alt: "BIOstar 욕실 세정 폼 700ml 스프레이 용기", usage: "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.", cautions: "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 알루미늄, 대리석, 트래버틴과 석회암 표면에는 사용하지 마세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null },
-  { id: "shower-cabin-cleaner", name: "샤워부스 세정제", volume: "700ml", category: "bathroom", space: "욕실", use: "샤워부스·욕실 표면", description: "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다.", image: productImagePath("biostar-shower-cabin-cleaner-700ml.png"), width: 854, height: 2270, alt: "BIOstar 샤워부스 세정제 700ml 스프레이 용기", usage: "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.", cautions: "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 알루미늄, 대리석, 트래버틴과 석회암 표면에는 사용하지 마세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null },
-  { id: "toilet-gel", name: "변기 세정 젤", volume: "750ml", category: "toilet", space: "변기", use: "변기 내부 세정", description: "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다.", image: productImagePath("biostar-toilet-gel-750ml.png"), width: 814, height: 2208, alt: "BIOstar 변기 세정 젤 750ml 용기", usage: "변기 안쪽 가장자리를 따라 적당량을 고르게 바른 후 제품 라벨에 표시된 시간 동안 두세요. 변기용 솔로 문지른 다음 물을 내려 헹궈 주세요.", cautions: "다른 세정제와 혼합하지 마세요. 피부와 눈에 직접 닿지 않도록 주의하고, 어린이의 손이 닿지 않는 곳에 보관하세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null },
-  { id: "glass-mirror-cleaner", name: "유리·거울 세정제", volume: "700ml", category: "glass", space: "유리·거울", use: "유리·거울 표면", description: "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다.", image: productImagePath("biostar-glass-and-mirror-cleaner-700ml.png"), width: 1006, height: 2354, alt: "BIOstar 유리·거울 세정제 700ml 스프레이 용기", usage: "세정할 표면에 적당량을 분사한 후 보풀이 없는 마른 천으로 닦아 주세요. 전자기기 화면에는 직접 분사하지 마세요.", cautions: "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 용도 외에는 사용하지 말고 제품 라벨의 주의사항을 확인하세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null },
-  { id: "universal-cleaner", name: "다목적 세정제", volume: "800ml", category: "multipurpose", space: "생활 공간", use: "세척 가능한 생활공간 표면", description: "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다.", image: productImagePath("biostar-universal-cleaner-800ml.png"), width: 830, height: 2216, alt: "BIOstar 다목적 세정제 800ml 용기", usage: "넓은 면적을 청소할 때는 제품 라벨의 희석 비율에 맞춰 물에 희석한 후 표면을 닦아 주세요. 심한 오염에는 젖은 천에 소량을 묻혀 닦은 다음 물이나 젖은 천으로 마무리하세요.", cautions: "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 보호 처리되지 않은 목재 표면에는 사용하지 마세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null },
-  { id: "laundry-capsules", name: "BIOstar 세탁 캡슐", nameOriginal: "2 in 1 Laundry Capsules", volume: "32개입", category: "laundry", space: "세탁", use: "의류 세탁", description: "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다.", image: productImagePath("biostar-laundry-detergent.png"), width: 2000, height: 2000, alt: "BIOstar 2 in 1 세탁 캡슐 32개입 제품 패키지", usage: "마른 손으로 캡슐을 꺼내 빈 세탁조 안쪽에 먼저 넣은 다음 세탁물을 넣어 주세요. 세탁물의 양과 오염 정도에 따른 사용량은 제품 라벨의 권장 방법을 확인하세요.", cautions: "캡슐을 자르거나 뜯지 마세요. 젖은 손으로 만지지 말고, 어린이의 손이 닿지 않는 건조한 곳에 보관하세요. 의류의 세탁 표시와 제품 라벨의 주의사항을 함께 확인하세요.", ingredients: "제품 라벨에 표시된 최신 성분 정보를 확인해 주세요.", certifications: [], purchaseUrl: null }
-];
-
-/** Reviewed records for the future guide API. Null means no verified label data is published. */
-export const biostarProductGuideData = biostarProducts.map(product => ({
-  id: `biostar-${product.id}`, brand: biostarBrand.name, nameKo: product.name, nameOriginal: null,
-  category: product.category, volume: product.volume, image: product.image,
-  approvedDescription: product.description, usage: product.usage, cautions: product.cautions,
-  ingredients: product.ingredients, retailerUrl: product.purchaseUrl, regulatoryCategory: null,
-  allowedClaims: [product.description], restrictedClaims: ["확인되지 않은 성분·효능·안전성 표현"],
-  source: "제품 패키지 및 제공된 브랜드 자료", lastReviewedAt: "2026-09-26"
-}));
+/** The website and AI API consume these same approved records. */
+export const biostarProductGuideData = knowledgeData.products.filter(product => product.brand === biostarBrand.name && product.approvalStatus === "approved");
 
 const categories = [
   { id: "kitchen", label: "주방" }, { id: "dishwasher", label: "식기세척기" },
@@ -56,8 +51,8 @@ const guideIcon = type => {
 };
 
 const productImage = (product, { decorative = false, eager = false } = {}) => `<img class="biostar-product-image" src="${product.image}" width="${product.width}" height="${product.height}" alt="${decorative ? "" : product.alt}" loading="${eager ? "eager" : "lazy"}" decoding="async">`;
-const productCard = product => `<article class="biostar-product reveal-step" data-product-id="${product.id}"><div class="biostar-product-visual">${productImage(product)}</div><div class="biostar-product-copy"><h3>${product.name}</h3>${product.nameOriginal ? `<p class="biostar-product-subtitle">${product.nameOriginal}</p>` : ""}<p class="biostar-product-volume">${product.volume}</p><dl><div><dt>사용 공간</dt><dd>${product.space}</dd></div><div><dt>제품 용도</dt><dd>${product.use}</dd></div></dl><a class="biostar-product-link" href="#detail-${product.id}">제품 정보 보기 <span aria-hidden="true">→</span></a></div></article>`;
-const productDetail = (product, purchaseUrl) => `<article class="biostar-detail-item reveal" id="detail-${product.id}"><header><p>${product.space}</p><h3>${product.name}</h3><strong>${product.volume}</strong></header><dl><div><dt>용도</dt><dd>${product.use}</dd></div><div><dt>사용 방법</dt><dd>${product.usage}</dd></div><div><dt>주의사항</dt><dd>${product.cautions}</dd></div><div><dt>성분 정보</dt><dd>${product.ingredients}</dd></div><div><dt>정보 확인일</dt><dd>2026년 9월 26일</dd></div></dl><a href="${product.purchaseUrl || purchaseUrl}" target="_blank" rel="noopener noreferrer">판매처 정보 문의하기 <span aria-hidden="true">→</span></a></article>`;
+const productCard = product => `<article class="biostar-product reveal-step" data-product-id="${product.id}"><div class="biostar-product-visual">${productImage(product)}</div><div class="biostar-product-copy"><h3>${product.name}</h3>${product.nameOriginal ? `<p class="biostar-product-subtitle">${product.nameOriginal}</p>` : ""}<p class="biostar-product-volume">${product.volume}</p><dl><div><dt>사용 공간</dt><dd>${product.space}</dd></div><div><dt>제품 용도</dt><dd>${product.use}</dd></div></dl><a class="biostar-product-link" href="${product.url}">제품 정보 보기 <span aria-hidden="true">→</span></a></div></article>`;
+const productDetail = (product, purchaseUrl) => `<article class="biostar-detail-item reveal" id="detail-${product.id}"><header><p>${product.space}</p><h3>${product.name}</h3><strong>${product.volume}</strong></header><dl><div><dt>용도</dt><dd>${product.use}</dd></div><div><dt>사용 방법</dt><dd>${product.usage}</dd></div><div><dt>주의사항</dt><dd>${product.cautions}</dd></div><div><dt>성분 정보</dt><dd>${product.ingredients.length ? product.ingredients.join(", ") : product.ingredientsNote}</dd></div><div><dt>정보 확인일</dt><dd>2026년 9월 26일</dd></div></dl><a href="${product.purchaseUrl || purchaseUrl}" target="_blank" rel="noopener noreferrer">판매처 정보 문의하기 <span aria-hidden="true">→</span></a></article>`;
 
 /** Standalone placeholder that can receive biostarProductGuideData when the approved API is connected. */
 const renderAiProductGuide = () => `<section class="section biostar-ai-guide reveal" aria-labelledby="biostar-ai-title"><div class="container biostar-ai-layout"><div><span class="eyebrow">PRODUCT GUIDE</span><h2 class="title" id="biostar-ai-title">어떤 제품이 필요한지 쉽게 찾아보세요</h2><p>사용할 공간과 목적에 맞는 BIOstar 제품 정보를 안내하는 AI 제품 가이드를 준비하고 있습니다.</p><strong>AI 제품 가이드 준비 중</strong></div><nav aria-label="BIOstar 제품 안내"><a class="btn btn-light" href="#biostar-products-title">제품 목록 보기</a><a class="btn btn-light" href="/ai-clean-care/">제품 문의하기</a></nav></div><!-- FUTURE API: 승인된 biostarProductGuideData를 이 독립 영역에 연결합니다. --></section>`;
