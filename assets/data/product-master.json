@@ -11,7 +11,7 @@
       "nameOriginal": null,
       "category": "kitchen",
       "purpose": "식기·조리도구 세척",
-      "description": "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다.",
+      "description": "손설거지용 주방세제로, 제조사 패키지 기준 천연 유래 성분 97%이며 천연 알로에 추출물을 함유합니다.",
       "volume": "700ml",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -25,13 +25,21 @@
       ],
       "usage": "적당량을 수세미 또는 식기에 덜어 세척한 후 흐르는 물로 충분히 헹궈 주세요. 제품 라벨에 표시된 권장 사용량을 확인해 사용하세요.",
       "cautions": "용도 외에는 사용하지 마시고, 사용 전 제품 라벨에 표시된 주의사항을 확인하세요. 환경에 미치는 영향을 줄이기 위해 권장 사용량을 준수하세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 알로에 추출물"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다."
+        "제조사 기준 천연 유래 성분 97%",
+        "천연 알로에 추출물 함유",
+        "EU Ecolabel 표시 제품",
+        "생분해성 포뮬러"
       ],
       "allowedClaims": [
-        "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다."
+        "제조사 기준 천연 유래 성분 97%",
+        "천연 알로에 추출물 함유",
+        "EU Ecolabel 표시 제품",
+        "생분해성 포뮬러"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -43,12 +51,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-dishwashing-liquid-700ml.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "천연 유래 성분 비율",
+          "value": "97%"
+        },
+        {
+          "name": "주요 성분 특징",
+          "value": "천연 알로에 추출물"
+        },
+        {
+          "name": "환경 인증",
+          "value": "EU Ecolabel"
+        }
+      ]
     },
     {
       "id": "biostar-kitchen-cleaner",
@@ -59,7 +86,7 @@
       "nameOriginal": null,
       "category": "kitchen",
       "purpose": "주방 표면",
-      "description": "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다.",
+      "description": "주방의 세척 가능한 표면에서 기름때, 눌어붙은 오염과 끈적한 때를 닦는 폼 세정제입니다. 제조사 패키지 기준 천연 유래 성분 98%이며 천연 알로에 추출물을 함유합니다.",
       "volume": "700ml",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -73,13 +100,23 @@
       ],
       "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
       "cautions": "뜨거운 표면에는 사용하지 마세요. 사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 알로에 추출물"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다."
+        "제조사 기준 천연 유래 성분 98%",
+        "천연 알로에 추출물 함유",
+        "기름때·눌어붙은 오염·끈적한 때 세정",
+        "생분해성 성분 표시",
+        "용기의 98%가 재활용 원료"
       ],
       "allowedClaims": [
-        "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다."
+        "제조사 기준 천연 유래 성분 98%",
+        "천연 알로에 추출물 함유",
+        "기름때·눌어붙은 오염·끈적한 때 세정",
+        "생분해성 성분 표시",
+        "용기의 98%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -91,12 +128,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-kitchen-cleaner-700ml.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "ECOCERT Ecodetergent 표시"
+      ],
+      "additionalProperty": [
+        {
+          "name": "천연 유래 성분 비율",
+          "value": "98%"
+        },
+        {
+          "name": "주요 성분 특징",
+          "value": "천연 알로에 추출물"
+        },
+        {
+          "name": "포장",
+          "value": "용기의 98%가 재활용 원료"
+        }
+      ]
     },
     {
       "id": "biostar-dishwasher-tablets",
@@ -107,7 +163,7 @@
       "nameOriginal": null,
       "category": "dishwasher",
       "purpose": "식기세척기용",
-      "description": "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다.",
+      "description": "식기세척기에 한 개씩 넣는 정제형 세제입니다. 제조사 패키지는 천연 유래 소다 100%, 무보존제·무향료, 활성 산소와 생분해성 포뮬러를 표시합니다.",
       "volume": "50개입",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -121,13 +177,25 @@
       ],
       "usage": "마른 손으로 제품을 꺼내 식기세척기의 세제 투입구에 넣고 작동하세요. 세척 코스와 사용량은 식기세척기 설명서와 제품 라벨의 권장 방법을 확인해 주세요.",
       "cautions": "손이 젖은 상태로 제품을 만지지 마세요. 어린이의 손이 닿지 않는 곳에 보관하고, 제품 라벨에 표시된 주의사항을 확인한 후 사용하세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 유래 소다"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다."
+        "천연 유래 소다 100% 사용(제품 전체의 천연 유래 비율을 뜻하지 않음)",
+        "보존제 및 향료 무첨가",
+        "활성 산소 함유",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘"
       ],
       "allowedClaims": [
-        "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다."
+        "천연 유래 소다 100% 사용(제품 전체의 천연 유래 비율을 뜻하지 않음)",
+        "보존제 및 향료 무첨가",
+        "활성 산소 함유",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -139,12 +207,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-dishwasher-tablets-50pcs.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "원료 특징",
+          "value": "천연 유래 소다 100%"
+        },
+        {
+          "name": "첨가 여부",
+          "value": "보존제·향료 무첨가"
+        },
+        {
+          "name": "환경 인증",
+          "value": "EU Ecolabel"
+        }
+      ]
     },
     {
       "id": "biostar-bathroom-cleaner",
@@ -155,7 +242,7 @@
       "nameOriginal": null,
       "category": "bathroom",
       "purpose": "욕실 타일·세면대·욕조",
-      "description": "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다.",
+      "description": "욕실의 물때와 석회 침전물을 닦는 폼 세정제입니다. 제조사 패키지 기준 천연 유래 성분 99%이며 천연 라벤더 추출물을 함유합니다.",
       "volume": "700ml",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -169,13 +256,23 @@
       ],
       "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
       "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 알루미늄, 대리석, 트래버틴과 석회암 표면에는 사용하지 마세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 라벤더 추출물"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다."
+        "제조사 기준 천연 유래 성분 99%",
+        "천연 라벤더 추출물 함유",
+        "물때·석회 침전물 세정",
+        "생분해성 성분 표시",
+        "용기의 98%가 재활용 원료"
       ],
       "allowedClaims": [
-        "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다."
+        "제조사 기준 천연 유래 성분 99%",
+        "천연 라벤더 추출물 함유",
+        "물때·석회 침전물 세정",
+        "생분해성 성분 표시",
+        "용기의 98%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -187,12 +284,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-bathroom-cleaner-700ml.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "ECOCERT Ecodetergent 표시"
+      ],
+      "additionalProperty": [
+        {
+          "name": "천연 유래 성분 비율",
+          "value": "99%"
+        },
+        {
+          "name": "주요 성분 특징",
+          "value": "천연 라벤더 추출물"
+        },
+        {
+          "name": "포장",
+          "value": "용기의 98%가 재활용 원료"
+        }
+      ]
     },
     {
       "id": "biostar-shower-cabin-cleaner",
@@ -203,7 +319,7 @@
       "nameOriginal": null,
       "category": "bathroom",
       "purpose": "샤워부스·욕실 표면",
-      "description": "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다.",
+      "description": "샤워부스의 물때와 석회 침전물을 닦는 전용 세정제입니다. 제조사 패키지 기준 천연 유래 성분 99%이며 천연 라벤더 추출물을 함유합니다.",
       "volume": "700ml",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -217,13 +333,23 @@
       ],
       "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
       "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 알루미늄, 대리석, 트래버틴과 석회암 표면에는 사용하지 마세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 라벤더 추출물"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다."
+        "제조사 기준 천연 유래 성분 99%",
+        "천연 라벤더 추출물 함유",
+        "물때·석회 침전물 세정",
+        "생분해성 성분 표시",
+        "용기의 98%가 재활용 원료"
       ],
       "allowedClaims": [
-        "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다."
+        "제조사 기준 천연 유래 성분 99%",
+        "천연 라벤더 추출물 함유",
+        "물때·석회 침전물 세정",
+        "생분해성 성분 표시",
+        "용기의 98%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -235,12 +361,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-shower-cabin-cleaner-700ml.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "ECOCERT Ecodetergent 표시"
+      ],
+      "additionalProperty": [
+        {
+          "name": "천연 유래 성분 비율",
+          "value": "99%"
+        },
+        {
+          "name": "주요 성분 특징",
+          "value": "천연 라벤더 추출물"
+        },
+        {
+          "name": "포장",
+          "value": "용기의 98%가 재활용 원료"
+        }
+      ]
     },
     {
       "id": "biostar-toilet-gel",
@@ -251,7 +396,7 @@
       "nameOriginal": null,
       "category": "toilet",
       "purpose": "변기 내부 세정",
-      "description": "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다.",
+      "description": "변기 내부의 물때와 석회 침전물을 닦는 젤 세정제입니다. 제조사 패키지 기준 천연 유래 성분 98%이며 천연 라벤더 추출물을 함유하고 염소를 넣지 않았습니다.",
       "volume": "750ml",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -265,13 +410,25 @@
       ],
       "usage": "변기 안쪽 가장자리를 따라 적당량을 고르게 바른 후 제품 라벨에 표시된 시간 동안 두세요. 변기용 솔로 문지른 다음 물을 내려 헹궈 주세요.",
       "cautions": "다른 세정제와 혼합하지 마세요. 피부와 눈에 직접 닿지 않도록 주의하고, 어린이의 손이 닿지 않는 곳에 보관하세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 라벤더 추출물"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다."
+        "제조사 기준 천연 유래 성분 98%",
+        "천연 라벤더 추출물 함유",
+        "염소 무첨가",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "용기의 50%가 재활용 원료"
       ],
       "allowedClaims": [
-        "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다."
+        "제조사 기준 천연 유래 성분 98%",
+        "천연 라벤더 추출물 함유",
+        "염소 무첨가",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "용기의 50%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -283,12 +440,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-toilet-gel-750ml.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "천연 유래 성분 비율",
+          "value": "98%"
+        },
+        {
+          "name": "첨가 여부",
+          "value": "염소 무첨가"
+        },
+        {
+          "name": "포장",
+          "value": "용기의 50%가 재활용 원료"
+        }
+      ]
     },
     {
       "id": "biostar-glass-mirror-cleaner",
@@ -299,7 +475,7 @@
       "nameOriginal": null,
       "category": "glass",
       "purpose": "유리·거울 표면",
-      "description": "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다.",
+      "description": "유리와 거울의 얼룩을 닦고 줄무늬 없이 마무리하는 세정제입니다. 제조사 패키지 기준 천연 유래 성분 98%이며 천연 알로에 추출물과 천연 식초 에센스를 함유합니다.",
       "volume": "700ml",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -313,13 +489,24 @@
       ],
       "usage": "세정할 표면에 적당량을 분사한 후 보풀이 없는 마른 천으로 닦아 주세요. 전자기기 화면에는 직접 분사하지 마세요.",
       "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 용도 외에는 사용하지 말고 제품 라벨의 주의사항을 확인하세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 알로에 추출물",
+        "천연 식초 에센스"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다."
+        "제조사 기준 천연 유래 성분 98%",
+        "천연 알로에 추출물 및 천연 식초 에센스 함유",
+        "줄무늬 없는 유리·거울 세정",
+        "EU Ecolabel 표시 제품",
+        "용기의 98%가 재활용 원료"
       ],
       "allowedClaims": [
-        "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다."
+        "제조사 기준 천연 유래 성분 98%",
+        "천연 알로에 추출물 및 천연 식초 에센스 함유",
+        "줄무늬 없는 유리·거울 세정",
+        "EU Ecolabel 표시 제품",
+        "용기의 98%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -331,12 +518,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-glass-and-mirror-cleaner-700ml.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "천연 유래 성분 비율",
+          "value": "98%"
+        },
+        {
+          "name": "주요 성분 특징",
+          "value": "천연 알로에 추출물·천연 식초 에센스"
+        },
+        {
+          "name": "포장",
+          "value": "용기의 98%가 재활용 원료"
+        }
+      ]
     },
     {
       "id": "biostar-universal-cleaner",
@@ -347,7 +553,7 @@
       "nameOriginal": null,
       "category": "multipurpose",
       "purpose": "세척 가능한 생활공간 표면",
-      "description": "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다.",
+      "description": "바닥을 포함한 세척 가능한 다양한 표면에 사용하는 다목적 세정제입니다. 제조사 패키지 기준 천연 유래 성분 99%이며 천연 라벤더 추출물을 함유합니다.",
       "volume": "800ml",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -361,13 +567,23 @@
       ],
       "usage": "넓은 면적을 청소할 때는 제품 라벨의 희석 비율에 맞춰 물에 희석한 후 표면을 닦아 주세요. 심한 오염에는 젖은 천에 소량을 묻혀 닦은 다음 물이나 젖은 천으로 마무리하세요.",
       "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 보호 처리되지 않은 목재 표면에는 사용하지 마세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 라벤더 추출물"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다."
+        "제조사 기준 천연 유래 성분 99%",
+        "천연 라벤더 추출물 함유",
+        "파라벤 및 색소 무첨가",
+        "생분해성 성분 표시",
+        "용기의 50%가 재활용 원료"
       ],
       "allowedClaims": [
-        "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다."
+        "제조사 기준 천연 유래 성분 99%",
+        "천연 라벤더 추출물 함유",
+        "파라벤 및 색소 무첨가",
+        "생분해성 성분 표시",
+        "용기의 50%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -379,12 +595,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-universal-cleaner-800ml.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "ECOCERT Ecodetergent 표시"
+      ],
+      "additionalProperty": [
+        {
+          "name": "천연 유래 성분 비율",
+          "value": "99%"
+        },
+        {
+          "name": "첨가 여부",
+          "value": "파라벤·색소 무첨가"
+        },
+        {
+          "name": "포장",
+          "value": "용기의 50%가 재활용 원료"
+        }
+      ]
     },
     {
       "id": "biostar-laundry-capsules",
@@ -395,7 +630,7 @@
       "nameOriginal": "2 in 1 Laundry Capsules",
       "category": "laundry",
       "purpose": "의류 세탁",
-      "description": "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다.",
+      "description": "흰색과 유색 의류에 사용하는 2 in 1 캡슐형 세제입니다. 제조사 패키지는 천연 식물 추출물 100%와 천연 라벤더 추출물, 파라벤·미세플라스틱 무첨가를 표시합니다.",
       "volume": "32개입",
       "manufacturer": "GRUPA INCO S.A.",
       "distributor": "주식회사 오름인터내셔널",
@@ -409,13 +644,26 @@
       ],
       "usage": "마른 손으로 캡슐을 꺼내 빈 세탁조 안쪽에 먼저 넣은 다음 세탁물을 넣어 주세요. 세탁물의 양과 오염 정도에 따른 사용량은 제품 라벨의 권장 방법을 확인하세요.",
       "cautions": "캡슐을 자르거나 뜯지 마세요. 젖은 손으로 만지지 말고, 어린이의 손이 닿지 않는 건조한 곳에 보관하세요. 의류의 세탁 표시와 제품 라벨의 주의사항을 함께 확인하세요.",
-      "ingredients": [],
-      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "ingredients": [
+        "천연 식물 추출물",
+        "천연 라벤더 추출물"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다. 전체 성분은 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
       "features": [
-        "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다."
+        "천연 식물 추출물 100% 사용(제품 전체의 천연 유래 비율을 뜻하지 않음)",
+        "천연 라벤더 추출물 함유",
+        "파라벤 및 미세플라스틱 무첨가",
+        "흰색·유색 의류용",
+        "생분해성 표시",
+        "EU Ecolabel 표시 제품"
       ],
       "allowedClaims": [
-        "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다."
+        "천연 식물 추출물 100% 사용(제품 전체의 천연 유래 비율을 뜻하지 않음)",
+        "천연 라벤더 추출물 함유",
+        "파라벤 및 미세플라스틱 무첨가",
+        "흰색·유색 의류용",
+        "생분해성 표시",
+        "EU Ecolabel 표시 제품"
       ],
       "prohibitedClaims": [
         "확인되지 않은 천연 유래 비율",
@@ -427,12 +675,31 @@
       ],
       "source": [
         {
-          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 BIOstar 제품 패키지",
+          "sourceUrl": "/docs/source-images/biostar-laundry-detergent.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "원료 특징",
+          "value": "천연 식물 추출물 100%"
+        },
+        {
+          "name": "첨가 여부",
+          "value": "파라벤·미세플라스틱 무첨가"
+        },
+        {
+          "name": "환경 인증",
+          "value": "EU Ecolabel"
+        }
+      ]
     },
     {
       "id": "ludwik-eko-tablets-40",
@@ -442,7 +709,7 @@
       "name": "Ludwik EKO 식기세척기용 태블릿",
       "category": "식기세척기용 세제",
       "purpose": "식기세척기에서 식기 세척",
-      "description": "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.",
+      "description": "식기세척기용 올인원 태블릿으로, 베이킹소다 시스템과 생분해성 포뮬러를 적용하고 50°C부터 세정 성능을 발휘합니다.",
       "volume": "40개입",
       "images": [
         {
@@ -453,22 +720,58 @@
         }
       ],
       "features": [
-        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+        "기름때와 눌어붙은 오염 제거 및 광택",
+        "베이킹소다 시스템",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘",
+        "포장의 85%가 재활용 원료"
       ],
       "allowedClaims": [
-        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+        "기름때와 눌어붙은 오염 제거 및 광택",
+        "베이킹소다 시스템",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘",
+        "포장의 85%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 성분·효능·안전성 표현"
       ],
       "source": [
         {
-          "title": "제품 패키지 및 제공된 브랜드 자료",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 Ludwik EKO 제품 패키지",
+          "sourceUrl": "/docs/source-images/ludwik-eko-dishwasher-tablets-40pcs.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "manufacturer": "GRUPA INCO S.A.",
+      "usage": "식기를 식기세척기 제조사 지침에 따라 넣고 수용성 필름을 벗기지 않은 태블릿 1개를 투입구에 넣어 작동하세요. 일반적으로 세척 1회당 1개를 사용합니다.",
+      "cautions": "은, 알루미늄, 크리스털, 납 크리스털, 구리 및 나무 제품에는 사용하지 마세요. 어린이의 손이 닿지 않는 건조한 곳에 보관하고 제품 라벨을 확인하세요.",
+      "ingredients": [
+        "베이킹소다 시스템"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다.",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "환경 인증",
+          "value": "EU Ecolabel"
+        },
+        {
+          "name": "포장",
+          "value": "포장의 85%가 재활용 원료"
+        },
+        {
+          "name": "세정 온도",
+          "value": "50°C부터"
+        }
+      ]
     },
     {
       "id": "ludwik-eko-tablets-75",
@@ -478,7 +781,7 @@
       "name": "Ludwik EKO 식기세척기용 태블릿",
       "category": "식기세척기용 세제",
       "purpose": "식기세척기에서 식기 세척",
-      "description": "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.",
+      "description": "식기세척기용 올인원 태블릿으로, 베이킹소다 시스템과 생분해성 포뮬러를 적용하고 50°C부터 세정 성능을 발휘합니다.",
       "volume": "75개입",
       "images": [
         {
@@ -489,22 +792,58 @@
         }
       ],
       "features": [
-        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+        "기름때와 눌어붙은 오염 제거 및 광택",
+        "베이킹소다 시스템",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘",
+        "포장의 85%가 재활용 원료"
       ],
       "allowedClaims": [
-        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+        "기름때와 눌어붙은 오염 제거 및 광택",
+        "베이킹소다 시스템",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘",
+        "포장의 85%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 성분·효능·안전성 표현"
       ],
       "source": [
         {
-          "title": "제품 패키지 및 제공된 브랜드 자료",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 Ludwik EKO 제품 패키지",
+          "sourceUrl": "/docs/source-images/ludwik-eko-dishwasher-tablets-75pcs.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "manufacturer": "GRUPA INCO S.A.",
+      "usage": "식기를 식기세척기 제조사 지침에 따라 넣고 수용성 필름을 벗기지 않은 태블릿 1개를 투입구에 넣어 작동하세요. 일반적으로 세척 1회당 1개를 사용합니다.",
+      "cautions": "은, 알루미늄, 크리스털, 납 크리스털, 구리 및 나무 제품에는 사용하지 마세요. 어린이의 손이 닿지 않는 건조한 곳에 보관하고 제품 라벨을 확인하세요.",
+      "ingredients": [
+        "베이킹소다 시스템"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다.",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "환경 인증",
+          "value": "EU Ecolabel"
+        },
+        {
+          "name": "포장",
+          "value": "포장의 85%가 재활용 원료"
+        },
+        {
+          "name": "세정 온도",
+          "value": "50°C부터"
+        }
+      ]
     },
     {
       "id": "ludwik-eko-tablets-120",
@@ -514,7 +853,7 @@
       "name": "Ludwik EKO 식기세척기용 태블릿",
       "category": "식기세척기용 세제",
       "purpose": "식기세척기에서 식기 세척",
-      "description": "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.",
+      "description": "식기세척기용 올인원 태블릿으로, 베이킹소다 시스템과 생분해성 포뮬러를 적용하고 50°C부터 세정 성능을 발휘합니다.",
       "volume": "120개입",
       "images": [
         {
@@ -525,22 +864,58 @@
         }
       ],
       "features": [
-        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+        "기름때와 눌어붙은 오염 제거 및 광택",
+        "베이킹소다 시스템",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘",
+        "포장의 85%가 재활용 원료"
       ],
       "allowedClaims": [
-        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+        "기름때와 눌어붙은 오염 제거 및 광택",
+        "베이킹소다 시스템",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘",
+        "포장의 85%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 성분·효능·안전성 표현"
       ],
       "source": [
         {
-          "title": "제품 패키지 및 제공된 브랜드 자료",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 Ludwik EKO 제품 패키지",
+          "sourceUrl": "/docs/source-images/ludwik-eko-dishwasher-tablets-120pcs.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "manufacturer": "GRUPA INCO S.A.",
+      "usage": "식기를 식기세척기 제조사 지침에 따라 넣고 수용성 필름을 벗기지 않은 태블릿 1개를 투입구에 넣어 작동하세요. 일반적으로 세척 1회당 1개를 사용합니다.",
+      "cautions": "은, 알루미늄, 크리스털, 납 크리스털, 구리 및 나무 제품에는 사용하지 마세요. 어린이의 손이 닿지 않는 건조한 곳에 보관하고 제품 라벨을 확인하세요.",
+      "ingredients": [
+        "베이킹소다 시스템"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다.",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "환경 인증",
+          "value": "EU Ecolabel"
+        },
+        {
+          "name": "포장",
+          "value": "포장의 85%가 재활용 원료"
+        },
+        {
+          "name": "세정 온도",
+          "value": "50°C부터"
+        }
+      ]
     },
     {
       "id": "ludwik-eko-powder-1-2kg",
@@ -550,7 +925,7 @@
       "name": "Ludwik EKO 식기세척기용 분말 세제",
       "category": "식기세척기용 세제",
       "purpose": "식기세척기에서 식기 세척",
-      "description": "사용 환경과 세척량에 맞게 양을 조절해 사용할 수 있는 식기세척기용 분말 세제입니다.",
+      "description": "식기세척기용 분말 세제로, 오염도와 물의 경도에 맞춰 양을 조절하며 베이킹소다 시스템과 생분해성 포뮬러를 적용했습니다.",
       "volume": "1.2kg",
       "images": [
         {
@@ -561,22 +936,58 @@
         }
       ],
       "features": [
-        "사용 환경과 세척량에 맞게 양을 조절해 사용할 수 있는 식기세척기용 분말 세제입니다."
+        "기름때와 눌어붙은 오염 제거",
+        "베이킹소다 시스템",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘",
+        "종이 상자의 95%가 재활용 원료"
       ],
       "allowedClaims": [
-        "사용 환경과 세척량에 맞게 양을 조절해 사용할 수 있는 식기세척기용 분말 세제입니다."
+        "기름때와 눌어붙은 오염 제거",
+        "베이킹소다 시스템",
+        "생분해성 포뮬러",
+        "EU Ecolabel 표시 제품",
+        "50°C부터 세정 성능 발휘",
+        "종이 상자의 95%가 재활용 원료"
       ],
       "prohibitedClaims": [
         "확인되지 않은 성분·효능·안전성 표현"
       ],
       "source": [
         {
-          "title": "제품 패키지 및 제공된 브랜드 자료",
-          "checkedAt": "2026-09-26"
+          "title": "GRUPA INCO 공식 Ludwik EKO 제품 패키지",
+          "sourceUrl": "/docs/source-images/ludwik-eko-dishwasher-powder-1-2kg.png",
+          "sourceType": "official manufacturer packaging",
+          "checkedAt": "2026-10-01"
         }
       ],
-      "lastReviewedAt": "2026-09-26",
-      "approvalStatus": "approved"
+      "lastReviewedAt": "2026-10-01",
+      "approvalStatus": "approved",
+      "manufacturer": "GRUPA INCO S.A.",
+      "usage": "식기를 식기세척기 제조사 지침에 따라 넣고 분말을 투입구에 넣으세요. 제조사 패키지는 보통 오염에 19g(계량컵 약 3/4), 심한 오염에 25g(계량컵 1개)을 안내합니다.",
+      "cautions": "은, 알루미늄, 크리스털, 납 크리스털, 구리 및 나무 제품에는 사용하지 마세요. 어린이의 손이 닿지 않는 건조한 곳에 보관하고 제품 라벨을 확인하세요.",
+      "ingredients": [
+        "베이킹소다 시스템"
+      ],
+      "ingredientsNote": "제조사 제품 패키지에서 확인한 주요 성분 특징입니다.",
+      "certifications": [
+        "EU Ecolabel"
+      ],
+      "additionalProperty": [
+        {
+          "name": "환경 인증",
+          "value": "EU Ecolabel"
+        },
+        {
+          "name": "포장",
+          "value": "종이 상자의 95%가 재활용 원료"
+        },
+        {
+          "name": "세정 온도",
+          "value": "50°C부터"
+        }
+      ]
     }
   ]
 }
