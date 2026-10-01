@@ -11,6 +11,7 @@ import { contactContentKo } from "../src/content/ko/contact.js";
 import { aiCleanCareContentKo } from "../src/content/ko/ai-clean-care.js";
 import { renderLanguageSwitcher } from "../src/components/language-switcher.js";
 import { createMetadata, renderMetadata } from "../src/seo/metadata.js";
+import productMaster from "../assets/data/product-master.json" with { type: "json" };
 
 const root = new URL("../", import.meta.url);
 const media = JSON.parse(await readFile(new URL("assets/data/media-data.json", root), "utf8"));
@@ -96,9 +97,45 @@ for (const product of biostarProducts) {
   await writeFile(new URL("index.html",folder),document);
 }
 
-const publicRoutes = ["/","/about/","/brands/","/brands/ludwik/","/brands/biostar/","/business/","/partnership/","/contact/","/ai-clean-care/",...biostarProducts.map(product=>product.url)];
+// Product Knowledge Layer: generated independently of the existing brand and AI Clean Care runtimes.
+const knowledgeProducts = productMaster.products.filter(product => product.approvalStatus === "approved");
+const knowledgeUrl = product => `/products/${product.brandSlug}/${product.slug}/`;
+const brandUrl = product => `/brands/${product.brandSlug}/`;
+const verifiedOr = value => value || "확인된 자료 없음";
+const knowledgeMetadata = product => {
+  const canonical = absoluteUrl(knowledgeUrl(product));
+  const description = `${product.name} ${product.volume}. ${product.description}`;
+  return {lang:"ko",title:`${product.name} ${product.volume} | 오름인터내셔널`,description,canonical,openGraph:{title:`${product.name} ${product.volume}`,description,locale:"ko_KR",url:canonical,image:absoluteUrl(product.images[0].src)}};
+};
+const knowledgeStructuredData = (product, metadata) => {
+  const node = {"@type":"Product","@id":`${metadata.canonical}#product`,"name":product.name,"description":product.description,"image":product.images.map(item=>absoluteUrl(item.src)),"brand":{"@type":"Brand","name":product.brand,"url":absoluteUrl(brandUrl(product))},"category":product.category,"url":metadata.canonical};
+  if (product.sku) node.sku=product.sku;
+  if (product.gtin) node.gtin=product.gtin;
+  if (product.manufacturer) node.manufacturer={"@type":"Organization","name":product.manufacturer};
+  return JSON.stringify({"@context":"https://schema.org","@graph":[organization,website,{"@type":"WebPage","@id":`${metadata.canonical}#webpage`,"url":metadata.canonical,"name":metadata.title,"description":metadata.description,"isPartOf":{"@id":websiteId},"about":{"@id":node["@id"]},"breadcrumb":{"@id":`${metadata.canonical}#breadcrumb`},"inLanguage":"ko-KR"},{"@type":"BreadcrumbList","@id":`${metadata.canonical}#breadcrumb`,"itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":absoluteUrl("/")},{"@type":"ListItem","position":2,"name":"제품","item":absoluteUrl("/products/")},{"@type":"ListItem","position":3,"name":product.brand,"item":absoluteUrl(`/products/${product.brandSlug}/`)},{"@type":"ListItem","position":4,"name":product.name,"item":metadata.canonical}]},node]}).replaceAll("<","\\u003c");
+};
+const knowledgeBody = product => {
+  const image=product.images[0];
+  const features=(product.features||[]).map(feature=>`<li>${htmlEscape(feature)}</li>`).join("");
+  const sources=(product.source||[]).map(source=>`${htmlEscape(source.title)} (확인일 ${htmlEscape(source.checkedAt)})`).join(", ");
+  const facts=[["브랜드",product.brand],["분류",product.category],["용도",product.purpose],["용량",product.volume],["사용 방법",verifiedOr(product.usage)],["주의사항",verifiedOr(product.cautions)],["제조사",verifiedOr(product.manufacturer)],["국내 유통사",verifiedOr(product.distributor)],["근거 자료",sources],["최종 검토일",product.lastReviewedAt]];
+  return `<article class="product-page"><section class="product-hero"><div class="container product-hero-grid"><figure><img src="${image.src}" width="${image.width}" height="${image.height}" alt="${htmlEscape(image.alt)}"></figure><div><nav class="breadcrumb" aria-label="현재 위치"><a href="/">홈</a> / <a href="/products/">제품</a> / <a href="/products/${product.brandSlug}/">${product.brand}</a></nav><span class="eyebrow">${product.brand} · PRODUCT KNOWLEDGE</span><h1>${htmlEscape(product.name)}</h1><p class="product-volume">${htmlEscape(product.volume)}</p><p class="lead">${htmlEscape(product.description)}</p><p><strong>용도:</strong> ${htmlEscape(product.purpose)}</p><div class="product-actions"><a class="btn btn-primary" href="${brandUrl(product)}">${product.brand} 브랜드 페이지</a><a class="btn" href="/products/${product.brandSlug}/">${product.brand} 제품 목록</a></div></div></div></section><section class="product-facts" aria-labelledby="product-facts-title"><div class="container"><span class="eyebrow">VERIFIED PRODUCT FACTS</span><h2 class="title" id="product-facts-title">확인된 제품 정보</h2><dl class="product-facts-grid">${facts.map(([term,value])=>`<div class="product-fact"><dt>${term}</dt><dd>${htmlEscape(value)}</dd></div>`).join("")}</dl><h2 class="title">확인된 특징</h2><ul>${features}</ul><p class="product-source-note">확인되지 않은 성분, 효능, 인증, 가격, 재고 정보는 제공하지 않습니다. 실제 사용 전 구매 제품의 최신 한글 라벨을 확인하세요.</p></div></section></article>`;
+};
+const productIndexBody = (products, title, lead) => `<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">홈</a> / 제품</div><span class="eyebrow">PRODUCT KNOWLEDGE</span><h1 class="display">${title}</h1><p class="lead">${lead}</p></div></section><section class="section"><div class="container product-index-grid">${products.map(product=>`<article class="product-index-card"><img src="${product.images[0].src}" width="${product.images[0].width}" height="${product.images[0].height}" alt="${htmlEscape(product.images[0].alt)}" loading="lazy"><div><span class="eyebrow">${product.brand}</span><h2>${htmlEscape(product.name)}</h2><p><strong>${htmlEscape(product.volume)}</strong> · ${htmlEscape(product.purpose)}</p><p>${htmlEscape(product.description)}</p><a class="btn" href="${knowledgeUrl(product)}">제품 상세 정보</a></div></article>`).join("")}</div></section>`;
+const knowledgeLayout = (pathname, title, description, body, jsonLd) => {const metadata={lang:"ko",title,description,canonical:absoluteUrl(pathname),openGraph:{title,description,locale:"ko_KR",url:absoluteUrl(pathname),image:absoluteUrl(image("commonOg").src)}};return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${renderMetadata(metadata)}<link rel="icon" href="${image("favicon").src}" type="image/png"><link rel="stylesheet" href="/assets/css/style.css">${jsonLd?`<script type="application/ld+json">${jsonLd}</script>`:""}</head><body>${header("brands")}<main id="main">${body}</main>${footer}<script src="/assets/data/site-data.js"></script><script src="/assets/js/main.js"></script></body></html>`};
+for (const product of knowledgeProducts) {
+  const metadata=knowledgeMetadata(product), folder=new URL(knowledgeUrl(product).slice(1),root);
+  await mkdir(folder,{recursive:true});
+  await writeFile(new URL("index.html",folder),knowledgeLayout(knowledgeUrl(product),metadata.title,metadata.description,knowledgeBody(product),knowledgeStructuredData(product,metadata)));
+}
+const productIndexes=[{path:"/products/",products:knowledgeProducts,title:"제품 지식 목록",lead:"오름인터내셔널이 취급하는 BIOstar와 Ludwik 제품의 확인된 정보를 브랜드별로 살펴보세요."},...['biostar','ludwik'].map(slug=>{const products=knowledgeProducts.filter(product=>product.brandSlug===slug),brand=products[0].brand;return {path:`/products/${slug}/`,products,title:`${brand} 제품`,lead:`${brand} 제품의 용도, 용량과 확인된 상세 정보를 살펴보세요.`}})];
+for(const entry of productIndexes){const folder=new URL(entry.path.slice(1),root);await mkdir(folder,{recursive:true});await writeFile(new URL("index.html",folder),knowledgeLayout(entry.path,`${entry.title} | 오름인터내셔널`,entry.lead,productIndexBody(entry.products,entry.title,entry.lead)));}
+
+const publicRoutes = ["/","/about/","/brands/","/brands/ludwik/","/brands/biostar/","/business/","/partnership/","/contact/","/ai-clean-care/",...biostarProducts.map(product=>product.url),...productIndexes.map(entry=>entry.path),...knowledgeProducts.map(knowledgeUrl)];
 await writeFile(new URL("sitemap.xml",root),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicRoutes.map(route=>`  <url><loc>${absoluteUrl(route)}</loc></url>`).join("\n")}\n</urlset>\n`);
-const productLinks=biostarProducts.map(product=>`- [${product.name} ${product.volume}](${absoluteUrl(product.url)}): ${product.description}`).join("\n");
+const productLinks=knowledgeProducts.map(product=>`- [${product.name} ${product.volume}](${absoluteUrl(knowledgeUrl(product))}): ${product.description}`).join("\n");
+const legacyProductLinks=biostarProducts.map(product=>`- [기존 BIOstar 제품 문서: ${product.name} ${product.volume}](${absoluteUrl(product.url)})`).join("\n");
 const llms=await readFile(new URL("llms.txt",root),"utf8");
-const marker="\n## BIOstar 개별 제품 문서";
-await writeFile(new URL("llms.txt",root),`${llms.split(marker)[0]}${marker}\n${productLinks}\n\n각 문서는 승인된 용도, 사용 공간, 용량, 사용법, 주의사항, 성분 확인 상태, 제조사, 한국 공식 유통사, 판매처, 확인일과 출처를 제공합니다. 확인되지 않은 효능이나 환경·안전성 주장은 제공하지 않습니다.\n`);
+const marker="\n## 제품 지식 문서";
+const legacyMarker="\n## BIOstar 개별 제품 문서";
+await writeFile(new URL("llms.txt",root),`${llms.split(marker)[0].split(legacyMarker)[0]}${marker}\n- [전체 제품 목록](${absoluteUrl("/products/")})\n- [BIOstar 제품 목록](${absoluteUrl("/products/biostar/")})\n- [Ludwik 제품 목록](${absoluteUrl("/products/ludwik/")})\n${productLinks}\n\n### 기존 BIOstar 제품 URL\n${legacyProductLinks}\n\n각 문서는 저장소 자료에서 확인된 제품명, 용도, 용량과 제품정보만 제공합니다. llms.txt는 검색·생성형 AI를 위한 보조 탐색 정보이며 노출이나 색인을 보장하지 않습니다.\n`);
