@@ -1,0 +1,582 @@
+{
+  "schemaVersion": 1,
+  "description": "BIOstar와 Ludwik의 검증된 정적 제품 지식 레이어. AI Clean Care 런타임과 독립적으로 사용합니다.",
+  "products": [
+    {
+      "id": "biostar-dishwashing-liquid",
+      "slug": "dishwashing-liquid",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 주방세제",
+      "nameOriginal": null,
+      "category": "kitchen",
+      "purpose": "식기·조리도구 세척",
+      "description": "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다.",
+      "volume": "700ml",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-dishwashing-liquid-700ml.png",
+          "width": 854,
+          "height": 2143,
+          "alt": "BIOstar 주방세제 700ml 용기"
+        }
+      ],
+      "usage": "적당량을 수세미 또는 식기에 덜어 세척한 후 흐르는 물로 충분히 헹궈 주세요. 제품 라벨에 표시된 권장 사용량을 확인해 사용하세요.",
+      "cautions": "용도 외에는 사용하지 마시고, 사용 전 제품 라벨에 표시된 주의사항을 확인하세요. 환경에 미치는 영향을 줄이기 위해 권장 사용량을 준수하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다."
+      ],
+      "allowedClaims": [
+        "손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "biostar-kitchen-cleaner",
+      "slug": "kitchen-cleaner",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 주방 세정 폼",
+      "nameOriginal": null,
+      "category": "kitchen",
+      "purpose": "주방 표면",
+      "description": "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다.",
+      "volume": "700ml",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-kitchen-cleaner-700ml.png",
+          "width": 854,
+          "height": 2270,
+          "alt": "BIOstar 주방 세정 폼 700ml 스프레이 용기"
+        }
+      ],
+      "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
+      "cautions": "뜨거운 표면에는 사용하지 마세요. 사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다."
+      ],
+      "allowedClaims": [
+        "주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "biostar-dishwasher-tablets",
+      "slug": "dishwasher-tablets",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 식기세척기 세제",
+      "nameOriginal": null,
+      "category": "dishwasher",
+      "purpose": "식기세척기용",
+      "description": "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다.",
+      "volume": "50개입",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-dishwasher-tablets-50pcs.png",
+          "width": 2000,
+          "height": 2000,
+          "alt": "BIOstar 식기세척기 세제 50개입 패키지"
+        }
+      ],
+      "usage": "마른 손으로 제품을 꺼내 식기세척기의 세제 투입구에 넣고 작동하세요. 세척 코스와 사용량은 식기세척기 설명서와 제품 라벨의 권장 방법을 확인해 주세요.",
+      "cautions": "손이 젖은 상태로 제품을 만지지 마세요. 어린이의 손이 닿지 않는 곳에 보관하고, 제품 라벨에 표시된 주의사항을 확인한 후 사용하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다."
+      ],
+      "allowedClaims": [
+        "식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "biostar-bathroom-cleaner",
+      "slug": "bathroom-cleaner",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 욕실 세정 폼",
+      "nameOriginal": null,
+      "category": "bathroom",
+      "purpose": "욕실 타일·세면대·욕조",
+      "description": "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다.",
+      "volume": "700ml",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-bathroom-cleaner-700ml.png",
+          "width": 854,
+          "height": 2270,
+          "alt": "BIOstar 욕실 세정 폼 700ml 스프레이 용기"
+        }
+      ],
+      "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
+      "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 알루미늄, 대리석, 트래버틴과 석회암 표면에는 사용하지 마세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다."
+      ],
+      "allowedClaims": [
+        "욕실의 세척 가능한 표면을 관리하는 세정 폼입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "biostar-shower-cabin-cleaner",
+      "slug": "shower-cabin-cleaner",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 샤워부스 세정제",
+      "nameOriginal": null,
+      "category": "bathroom",
+      "purpose": "샤워부스·욕실 표면",
+      "description": "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다.",
+      "volume": "700ml",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-shower-cabin-cleaner-700ml.png",
+          "width": 854,
+          "height": 2270,
+          "alt": "BIOstar 샤워부스 세정제 700ml 스프레이 용기"
+        }
+      ],
+      "usage": "세척할 표면에서 약 10cm 떨어진 거리에서 거품을 분사한 후 헹구거나 젖은 천으로 닦아내세요. 오염이 심한 경우 약 5분간 그대로 둔 다음 닦아내세요.",
+      "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 알루미늄, 대리석, 트래버틴과 석회암 표면에는 사용하지 마세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다."
+      ],
+      "allowedClaims": [
+        "샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "biostar-toilet-gel",
+      "slug": "toilet-gel",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 변기 세정 젤",
+      "nameOriginal": null,
+      "category": "toilet",
+      "purpose": "변기 내부 세정",
+      "description": "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다.",
+      "volume": "750ml",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-toilet-gel-750ml.png",
+          "width": 814,
+          "height": 2208,
+          "alt": "BIOstar 변기 세정 젤 750ml 용기"
+        }
+      ],
+      "usage": "변기 안쪽 가장자리를 따라 적당량을 고르게 바른 후 제품 라벨에 표시된 시간 동안 두세요. 변기용 솔로 문지른 다음 물을 내려 헹궈 주세요.",
+      "cautions": "다른 세정제와 혼합하지 마세요. 피부와 눈에 직접 닿지 않도록 주의하고, 어린이의 손이 닿지 않는 곳에 보관하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다."
+      ],
+      "allowedClaims": [
+        "변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "biostar-glass-mirror-cleaner",
+      "slug": "glass-mirror-cleaner",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 유리·거울 세정제",
+      "nameOriginal": null,
+      "category": "glass",
+      "purpose": "유리·거울 표면",
+      "description": "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다.",
+      "volume": "700ml",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-glass-and-mirror-cleaner-700ml.png",
+          "width": 1006,
+          "height": 2354,
+          "alt": "BIOstar 유리·거울 세정제 700ml 스프레이 용기"
+        }
+      ],
+      "usage": "세정할 표면에 적당량을 분사한 후 보풀이 없는 마른 천으로 닦아 주세요. 전자기기 화면에는 직접 분사하지 마세요.",
+      "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 용도 외에는 사용하지 말고 제품 라벨의 주의사항을 확인하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다."
+      ],
+      "allowedClaims": [
+        "유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "biostar-universal-cleaner",
+      "slug": "universal-cleaner",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 다목적 세정제",
+      "nameOriginal": null,
+      "category": "multipurpose",
+      "purpose": "세척 가능한 생활공간 표면",
+      "description": "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다.",
+      "volume": "800ml",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-universal-cleaner-800ml.png",
+          "width": 830,
+          "height": 2216,
+          "alt": "BIOstar 다목적 세정제 800ml 용기"
+        }
+      ],
+      "usage": "넓은 면적을 청소할 때는 제품 라벨의 희석 비율에 맞춰 물에 희석한 후 표면을 닦아 주세요. 심한 오염에는 젖은 천에 소량을 묻혀 닦은 다음 물이나 젖은 천으로 마무리하세요.",
+      "cautions": "사용 전 눈에 잘 띄지 않는 작은 부분에 먼저 시험해 주세요. 보호 처리되지 않은 목재 표면에는 사용하지 마세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다."
+      ],
+      "allowedClaims": [
+        "생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "biostar-laundry-capsules",
+      "slug": "laundry-capsules",
+      "brand": "BIOstar",
+      "brandSlug": "biostar",
+      "name": "BIOstar 세탁 캡슐",
+      "nameOriginal": "2 in 1 Laundry Capsules",
+      "category": "laundry",
+      "purpose": "의류 세탁",
+      "description": "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다.",
+      "volume": "32개입",
+      "manufacturer": "GRUPA INCO S.A.",
+      "distributor": "주식회사 오름인터내셔널",
+      "images": [
+        {
+          "src": "/docs/source-images/biostar-laundry-detergent.png",
+          "width": 2000,
+          "height": 2000,
+          "alt": "BIOstar 2 in 1 세탁 캡슐 32개입 제품 패키지"
+        }
+      ],
+      "usage": "마른 손으로 캡슐을 꺼내 빈 세탁조 안쪽에 먼저 넣은 다음 세탁물을 넣어 주세요. 세탁물의 양과 오염 정도에 따른 사용량은 제품 라벨의 권장 방법을 확인하세요.",
+      "cautions": "캡슐을 자르거나 뜯지 마세요. 젖은 손으로 만지지 말고, 어린이의 손이 닿지 않는 건조한 곳에 보관하세요. 의류의 세탁 표시와 제품 라벨의 주의사항을 함께 확인하세요.",
+      "ingredients": [],
+      "ingredientsNote": "공개된 승인 제품정보에서 개별 성분명을 확인하지 못했습니다. 구매 제품의 최신 한글 표시사항을 확인해 주세요.",
+      "features": [
+        "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다."
+      ],
+      "allowedClaims": [
+        "의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 천연 유래 비율",
+        "친환경",
+        "유기농",
+        "무독성",
+        "인체에 안전",
+        "살균·항균"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 오름인터내셔널 승인 제품정보",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "ludwik-eko-tablets-40",
+      "slug": "eko-dishwasher-tablets-40pcs",
+      "brand": "Ludwik",
+      "brandSlug": "ludwik",
+      "name": "Ludwik EKO 식기세척기용 태블릿",
+      "category": "식기세척기용 세제",
+      "purpose": "식기세척기에서 식기 세척",
+      "description": "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.",
+      "volume": "40개입",
+      "images": [
+        {
+          "src": "/docs/source-images/ludwik-eko-dishwasher-tablets-40pcs.png",
+          "width": 2503,
+          "height": 2142,
+          "alt": "Ludwik EKO 식기세척기용 태블릿 40개입 패키지"
+        }
+      ],
+      "features": [
+        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+      ],
+      "allowedClaims": [
+        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 성분·효능·안전성 표현"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 제공된 브랜드 자료",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "ludwik-eko-tablets-75",
+      "slug": "eko-dishwasher-tablets-75pcs",
+      "brand": "Ludwik",
+      "brandSlug": "ludwik",
+      "name": "Ludwik EKO 식기세척기용 태블릿",
+      "category": "식기세척기용 세제",
+      "purpose": "식기세척기에서 식기 세척",
+      "description": "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.",
+      "volume": "75개입",
+      "images": [
+        {
+          "src": "/docs/source-images/ludwik-eko-dishwasher-tablets-75pcs.png",
+          "width": 2542,
+          "height": 2898,
+          "alt": "Ludwik EKO 식기세척기용 태블릿 75개입 패키지"
+        }
+      ],
+      "features": [
+        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+      ],
+      "allowedClaims": [
+        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 성분·효능·안전성 표현"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 제공된 브랜드 자료",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "ludwik-eko-tablets-120",
+      "slug": "eko-dishwasher-tablets-120pcs",
+      "brand": "Ludwik",
+      "brandSlug": "ludwik",
+      "name": "Ludwik EKO 식기세척기용 태블릿",
+      "category": "식기세척기용 세제",
+      "purpose": "식기세척기에서 식기 세척",
+      "description": "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.",
+      "volume": "120개입",
+      "images": [
+        {
+          "src": "/docs/source-images/ludwik-eko-dishwasher-tablets-120pcs.png",
+          "width": 2724,
+          "height": 3587,
+          "alt": "Ludwik EKO 식기세척기용 태블릿 120개입 패키지"
+        }
+      ],
+      "features": [
+        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+      ],
+      "allowedClaims": [
+        "필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 성분·효능·안전성 표현"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 제공된 브랜드 자료",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    },
+    {
+      "id": "ludwik-eko-powder-1-2kg",
+      "slug": "eko-dishwasher-powder-1-2kg",
+      "brand": "Ludwik",
+      "brandSlug": "ludwik",
+      "name": "Ludwik EKO 식기세척기용 분말 세제",
+      "category": "식기세척기용 세제",
+      "purpose": "식기세척기에서 식기 세척",
+      "description": "사용 환경과 세척량에 맞게 양을 조절해 사용할 수 있는 식기세척기용 분말 세제입니다.",
+      "volume": "1.2kg",
+      "images": [
+        {
+          "src": "/docs/source-images/ludwik-eko-dishwasher-powder-1-2kg.png",
+          "width": 2362,
+          "height": 3154,
+          "alt": "Ludwik EKO 식기세척기용 분말 세제 1.2kg 패키지"
+        }
+      ],
+      "features": [
+        "사용 환경과 세척량에 맞게 양을 조절해 사용할 수 있는 식기세척기용 분말 세제입니다."
+      ],
+      "allowedClaims": [
+        "사용 환경과 세척량에 맞게 양을 조절해 사용할 수 있는 식기세척기용 분말 세제입니다."
+      ],
+      "prohibitedClaims": [
+        "확인되지 않은 성분·효능·안전성 표현"
+      ],
+      "source": [
+        {
+          "title": "제품 패키지 및 제공된 브랜드 자료",
+          "checkedAt": "2026-09-26"
+        }
+      ],
+      "lastReviewedAt": "2026-09-26",
+      "approvalStatus": "approved"
+    }
+  ]
+}

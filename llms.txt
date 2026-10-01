@@ -20,15 +20,33 @@
 
 이 파일은 공개 페이지 탐색을 돕는 보조 안내입니다. 최신 제품 사용 방법과 주의사항은 각 제품 페이지와 제품 라벨을 함께 확인하세요.
 
-## BIOstar 개별 제품 문서
-- [주방세제 700ml](https://olm.kr/products/biostar-dishwashing-liquid/): 손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다.
-- [주방 세정 폼 700ml](https://olm.kr/products/biostar-kitchen-cleaner/): 주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다.
-- [식기세척기 세제 50개입](https://olm.kr/products/biostar-dishwasher-tablets/): 식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다.
-- [욕실 세정 폼 700ml](https://olm.kr/products/biostar-bathroom-cleaner/): 욕실의 세척 가능한 표면을 관리하는 세정 폼입니다.
-- [샤워부스 세정제 700ml](https://olm.kr/products/biostar-shower-cabin-cleaner/): 샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다.
-- [변기 세정 젤 750ml](https://olm.kr/products/biostar-toilet-gel/): 변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다.
-- [유리·거울 세정제 700ml](https://olm.kr/products/biostar-glass-mirror-cleaner/): 유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다.
-- [다목적 세정제 800ml](https://olm.kr/products/biostar-universal-cleaner/): 생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다.
-- [BIOstar 세탁 캡슐 32개입](https://olm.kr/products/biostar-laundry-capsules/): 의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다.
+## 제품 지식 문서
+- [전체 제품 목록](https://olm.kr/products/)
+- [BIOstar 제품 목록](https://olm.kr/products/biostar/)
+- [Ludwik 제품 목록](https://olm.kr/products/ludwik/)
+- [BIOstar 주방세제 700ml](https://olm.kr/products/biostar/dishwashing-liquid/): 손설거지할 때 식기와 조리도구를 세척하는 주방세제입니다.
+- [BIOstar 주방 세정 폼 700ml](https://olm.kr/products/biostar/kitchen-cleaner/): 주방의 세척 가능한 표면을 용도에 맞게 관리하는 세정 폼입니다.
+- [BIOstar 식기세척기 세제 50개입](https://olm.kr/products/biostar/dishwasher-tablets/): 식기세척기에 한 개씩 넣어 사용하는 정제형 세제입니다.
+- [BIOstar 욕실 세정 폼 700ml](https://olm.kr/products/biostar/bathroom-cleaner/): 욕실의 세척 가능한 표면을 관리하는 세정 폼입니다.
+- [BIOstar 샤워부스 세정제 700ml](https://olm.kr/products/biostar/shower-cabin-cleaner/): 샤워부스의 세척 가능한 표면을 관리하는 전용 세정제입니다.
+- [BIOstar 변기 세정 젤 750ml](https://olm.kr/products/biostar/toilet-gel/): 변기 내부를 용도에 맞게 세정하는 젤 타입 제품입니다.
+- [BIOstar 유리·거울 세정제 700ml](https://olm.kr/products/biostar/glass-mirror-cleaner/): 유리와 거울 등 세척 가능한 표면을 관리하는 세정제입니다.
+- [BIOstar 다목적 세정제 800ml](https://olm.kr/products/biostar/universal-cleaner/): 생활 공간의 다양한 세척 가능한 표면에 사용하는 다목적 세정제입니다.
+- [BIOstar 세탁 캡슐 32개입](https://olm.kr/products/biostar/laundry-capsules/): 의류 세탁에 사용하는 2 in 1 캡슐형 세제입니다.
+- [Ludwik EKO 식기세척기용 태블릿 40개입](https://olm.kr/products/ludwik/eko-dishwasher-tablets-40pcs/): 필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.
+- [Ludwik EKO 식기세척기용 태블릿 75개입](https://olm.kr/products/ludwik/eko-dishwasher-tablets-75pcs/): 필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.
+- [Ludwik EKO 식기세척기용 태블릿 120개입](https://olm.kr/products/ludwik/eko-dishwasher-tablets-120pcs/): 필요한 사용량에 맞춰 선택할 수 있는 Ludwik EKO 식기세척기용 태블릿 제품군입니다.
+- [Ludwik EKO 식기세척기용 분말 세제 1.2kg](https://olm.kr/products/ludwik/eko-dishwasher-powder-1-2kg/): 사용 환경과 세척량에 맞게 양을 조절해 사용할 수 있는 식기세척기용 분말 세제입니다.
 
-각 문서는 승인된 용도, 사용 공간, 용량, 사용법, 주의사항, 성분 확인 상태, 제조사, 한국 공식 유통사, 판매처, 확인일과 출처를 제공합니다. 확인되지 않은 효능이나 환경·안전성 주장은 제공하지 않습니다.
+### 기존 BIOstar 제품 URL
+- [기존 BIOstar 제품 문서: 주방세제 700ml](https://olm.kr/products/biostar-dishwashing-liquid/)
+- [기존 BIOstar 제품 문서: 주방 세정 폼 700ml](https://olm.kr/products/biostar-kitchen-cleaner/)
+- [기존 BIOstar 제품 문서: 식기세척기 세제 50개입](https://olm.kr/products/biostar-dishwasher-tablets/)
+- [기존 BIOstar 제품 문서: 욕실 세정 폼 700ml](https://olm.kr/products/biostar-bathroom-cleaner/)
+- [기존 BIOstar 제품 문서: 샤워부스 세정제 700ml](https://olm.kr/products/biostar-shower-cabin-cleaner/)
+- [기존 BIOstar 제품 문서: 변기 세정 젤 750ml](https://olm.kr/products/biostar-toilet-gel/)
+- [기존 BIOstar 제품 문서: 유리·거울 세정제 700ml](https://olm.kr/products/biostar-glass-mirror-cleaner/)
+- [기존 BIOstar 제품 문서: 다목적 세정제 800ml](https://olm.kr/products/biostar-universal-cleaner/)
+- [기존 BIOstar 제품 문서: BIOstar 세탁 캡슐 32개입](https://olm.kr/products/biostar-laundry-capsules/)
+
+각 문서는 저장소 자료에서 확인된 제품명, 용도, 용량과 제품정보만 제공합니다. llms.txt는 검색·생성형 AI를 위한 보조 탐색 정보이며 노출이나 색인을 보장하지 않습니다.
