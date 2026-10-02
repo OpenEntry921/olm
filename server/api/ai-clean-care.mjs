@@ -1,5 +1,5 @@
-import {approvedKnowledge,attachProducts,CLEAN_CARE_SYSTEM_PROMPT,DEEP_CARE_SYSTEM_PROMPT,sanitizeQuestion} from "../../netlify/functions/lib/core.mjs";
-import {completeWithRetry,DEFAULT_OPENAI_MODEL,ProviderError} from "../../netlify/functions/lib/providers.mjs";
+import {approvedKnowledge,attachProducts,CLEAN_CARE_SYSTEM_PROMPT,DEEP_CARE_SYSTEM_PROMPT,needsWebProductSearch,sanitizeQuestion} from "../../netlify/functions/lib/core.mjs";
+import {completeWithRetry,completeWithWebSearch,DEFAULT_OPENAI_MODEL,ProviderError} from "../../netlify/functions/lib/providers.mjs";
 import {clientIp,jsonResponse} from "./http.mjs";
 
 const buckets=new Map();
@@ -20,8 +20,23 @@ export async function handleAiCleanCare(request){
  if(mode==="deep"&&!originalAnswer)return jsonResponse(400,{message:"심층 분석에 필요한 첫 답변이 없습니다."});
  try{
   const knowledge=await approvedKnowledge();
-  const answer=await completeWithRetry({model:DEFAULT_OPENAI_MODEL,systemPrompt:mode==="deep"?DEEP_CARE_SYSTEM_PROMPT:CLEAN_CARE_SYSTEM_PROMPT,question,originalQuestion:question,originalAnswer,mode,history:(body.history||[]).slice(-8),knowledge,language:body.language==="en"?"en":"ko"});
-  return jsonResponse(200,{...attachProducts(answer,knowledge),mode,searchedWeb:false});
+  const input={model:DEFAULT_OPENAI_MODEL,systemPrompt:mode==="deep"?DEEP_CARE_SYSTEM_PROMPT:CLEAN_CARE_SYSTEM_PROMPT,question,originalQuestion:question,originalAnswer,mode,history:(body.history||[]).slice(-8),knowledge,language:body.language==="en"?"en":"ko"};
+  const searchRequested=needsWebProductSearch(question);
+  let answer,searchedWeb=false,searchFallback=false;
+  if(searchRequested){
+   try{answer=await completeWithWebSearch(input);searchedWeb=true}
+   catch(searchError){
+    if(!(searchError instanceof ProviderError))throw searchError;
+    answer=await completeWithRetry(input);
+    answer={...answer,coreAnswer:`지금은 외부 제품 검색이 원활하지 않아요. 제가 확인할 수 있는 정보 범위에서 먼저 설명드릴게요.\n\n${answer.coreAnswer}`,sources:[]};
+    searchFallback=true;
+   }
+  }else answer=await completeWithRetry(input);
+  if(searchedWeb){
+   const approvedSources=(answer.recommendedProductIds||[]).flatMap(id=>knowledge.products.find(product=>product.id===id)?.sources||[]);
+   answer={...answer,sources:[...answer.sources,...approvedSources]};
+  }
+  return jsonResponse(200,{...attachProducts(answer,knowledge),mode,searchedWeb,searchFallback});
  }catch(error){
   const isProviderError=error instanceof ProviderError,providerCode=isProviderError&&providerMessages[error.code]?error.code:"PROVIDER_ERROR",code=providerCode==="RATE_LIMITED"?"OPENAI_RATE_LIMITED":providerCode;
   return jsonResponse(isProviderError?error.status:502,{code,message:providerMessages[providerCode]});

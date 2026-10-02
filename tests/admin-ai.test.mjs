@@ -71,6 +71,27 @@ test("OpenAI adapter uses only the fixed allowlist and does not expose its key",
  try{await assert.rejects(adapter.complete({model:"gpt-4o-mini",question:"ping",knowledge:{products:[]}}),error=>error.code==="API_KEY_MISSING"&&error.status===503)}finally{process.env.My_App_Key=key}
 });
 
+test("web product discovery uses the Responses API hosted search tool and verified citations",async()=>{
+ const {createOpenAIAdapter}=await import("../netlify/functions/lib/providers.mjs");
+ const answer={coreAnswer:"공정하게 비교했습니다.",recommendedProductIds:["biostar-bathroom-cleaner"],recommendationReason:"FACT와 판단을 구분했습니다.",usage:"",cautions:"",advertisingAnalysis:"",sources:[{title:"모델이 만든 출처",url:"https://invalid.example/"}],uncertainty:"",followUpQuestion:""};let request;
+ const adapter=createOpenAIAdapter({fetchImpl:async(url,options)=>{request={url,options};return new Response(JSON.stringify({output:[{type:"web_search_call",action:{sources:[{title:"공식 제품 정보",url:"https://brand.example/product"}]}},{type:"message",content:[{type:"output_text",text:JSON.stringify(answer),annotations:[{type:"url_citation",url:"https://brand.example/product",title:"공식 제품 정보",start_index:0,end_index:4}]}]}]}),{status:200})},timeoutMs:1000});
+ const result=await adapter.completeWithWebSearch({model:"gpt-4o-mini",systemPrompt:"rules",question:"욕실세제 찾아줘",history:[],knowledge:{products:[]},language:"ko"});
+ const body=JSON.parse(request.options.body);assert.equal(request.url,"https://api.openai.com/v1/responses");assert.deepEqual(body.tools,[{type:"web_search",user_location:{type:"approximate",country:"KR",timezone:"Asia/Seoul"}}]);assert.equal(body.tool_choice,"required");assert.deepEqual(body.include,["web_search_call.action.sources"]);assert.match(body.instructions,/웹 검색 결과만 근거/);assert.deepEqual(result.sources.map(source=>source.url),["https://brand.example/product"]);assert.doesNotMatch(JSON.stringify(result),/invalid\.example/);
+});
+
+test("product-search intent is selective for discovery, direct OLM facts, safety, and disparagement",async()=>{
+ const {needsWebProductSearch}=await import("../netlify/functions/lib/core.mjs");
+ for(const question of ["천연 유래 성분 욕실세제 찾아줘","천연 유래 성분 주방세제 찾아줘","식기세척기 세제 추천해줘","BIOstar와 다른 천연 유래 욕실세정제 비교해줘","아이에게 안전한 욕실세정제 추천해줘","Method 욕실세정제와 BIOstar 비교해줘"])assert.equal(needsWebProductSearch(question),true,question);
+ for(const question of ["BIOstar 욕실세정제 알려줘","주방세제와 식기세척기 세제 차이가 뭐야?","계면활성제가 뭐야?","욕실 세정제 사용할 때 주의할 점은?","다른 회사 제품은 별로지?"])assert.equal(needsWebProductSearch(question),false,question);
+});
+
+test("web search failure falls back without inventing external product sources",async()=>{
+ const {handler:publicHandler}=await import("../netlify/functions/ai-clean-care.mjs");const originalFetch=globalThis.fetch;let calls=0;
+ const answer={coreAnswer:"승인 지식 범위의 답변입니다.",recommendedProductIds:[],recommendationReason:"",usage:"",cautions:"",advertisingAnalysis:"",sources:[{title:"제거되어야 할 출처"}],uncertainty:"",followUpQuestion:""};
+ globalThis.fetch=async(url)=>{calls++;if(url.endsWith("/responses"))return new Response("search unavailable",{status:502});return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(answer)}}]}),{status:200})};
+ try{const response=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":"web-fallback-test"},body:JSON.stringify({question:"천연 유래 욕실세제 찾아줘",history:[]})});const data=JSON.parse(response.body);assert.equal(response.statusCode,200);assert.equal(calls,2);assert.equal(data.searchedWeb,false);assert.equal(data.searchFallback,true);assert.match(data.coreAnswer,/외부 제품 검색이 원활하지 않아요/);assert.deepEqual(data.sources,[])}finally{globalThis.fetch=originalFetch}
+});
+
 test("AI Clean Care policy separates approved facts, microbial principles, and Korean requirements",async()=>{
  const {CLEAN_CARE_SYSTEM_PROMPT,approvedKnowledge}=await import("../netlify/functions/lib/core.mjs");
  const knowledge=await approvedKnowledge();
@@ -164,7 +185,7 @@ test("standard and deep modes preserve the full question and safely expand the p
   for(const [index,[question,policy]] of scenarios.entries()){
    const standard=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":`deep-scenario-${index}`},body:JSON.stringify({question,history:[],mode:"standard"})});const standardData=JSON.parse(standard.body);assert.equal(standard.statusCode,200);assert.equal(standardData.mode,"standard");assert.equal(standardData.searchedWeb,false);
    const originalAnswer=JSON.stringify(standardData);const deep=await publicHandler({httpMethod:"POST",headers:{"x-forwarded-for":`deep-scenario-${index}`},body:JSON.stringify({originalQuestion:question,originalAnswer,history:[{role:"user",content:question},{role:"assistant",content:originalAnswer}],mode:"deep"})});const deepData=JSON.parse(deep.body);assert.equal(deep.statusCode,200);assert.equal(deepData.mode,"deep");assert.equal(deepData.searchedWeb,false);assert.match(deepData.coreAnswer,/심층 분석/);
-   const deepRequest=requests.at(-1);assert.equal(deepRequest.max_completion_tokens,1800);assert.match(deepRequest.messages[0].content,/웹 검색 도구가 없습니다/);assert.match(deepRequest.messages[0].content,policy);assert.ok(deepRequest.messages.at(-1).content.includes(question));assert.ok(deepRequest.messages.some(message=>message.content.includes(originalAnswer)));
+   const deepRequest=requests.at(-1);assert.equal(deepRequest.max_completion_tokens,1800);assert.match(deepRequest.messages[0].content,/도구가 제공되지 않은 호출/);assert.match(deepRequest.messages[0].content,policy);assert.ok(deepRequest.messages.at(-1).content.includes(question));assert.ok(deepRequest.messages.some(message=>message.content.includes(originalAnswer)));
   }
  }finally{globalThis.fetch=originalFetch}
 });
