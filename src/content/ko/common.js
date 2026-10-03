@@ -44,7 +44,7 @@ export const commonContentKo = {
     telephone: companyInfoKo.phone,
     address: companyInfoKo.address
   },
-  languageSwitcher: { currentLocale: "ko", enabledLocales: ["ko"] }
+  languageSwitcher: { currentLocale: "ko", enabledLocales: ["ko", "en"] }
 };
 
 export const pageMetaKo = {
