@@ -1,4 +1,4 @@
-import {isComparativeClaim,publicSchema,requiresOlmOpening,validateAnswer} from "./core.mjs";
+import {isComparativeClaim,publicSchema,validateAnswer} from "./core.mjs";
 
 const DEFAULT_TIMEOUT_MS=15_000;
 export const OPENAI_MODEL_ALLOWLIST=Object.freeze(["gpt-4o-mini"]);
@@ -57,14 +57,5 @@ export function createOpenAIAdapter({fetchImpl=fetch,timeoutMs=DEFAULT_TIMEOUT_M
 }
 
 export async function completeWithRetry(input,options={}){const adapter=createOpenAIAdapter(options);let last;for(let attempt=0;attempt<2;attempt++){try{return validateAnswer(await adapter.complete({...input,repair:attempt===1}))}catch(error){last=error;if(error instanceof ProviderError)throw error}}throw last}
-function validateWebSearchBehavior(answer,input){
- validateAnswer(answer);
- if(!isComparativeClaim(input.question))return answer;
- const opening=answer.coreAnswer.slice(0,220),combined=[answer.coreAnswer,answer.recommendationReason,answer.advertisingAnalysis].join(" ");
- if(requiresOlmOpening(input.question)&&(!/(?:OLM|오름|BIOstar|바이오스타)/i.test(opening)||!/[😀-🙏]/u.test(opening)))throw new Error("MISSING_OLM_OPENING");
- if(!/(?:비교|기준|반면|제품)/.test(combined)||!/(?:단정|근거|확인하기 어렵|기준에 따라|조건에 따라)/.test(combined))throw new Error("INCOMPLETE_COMPARISON");
- if(new Set((answer.sources||[]).map(source=>source.url).filter(Boolean)).size<2)throw new Error("INSUFFICIENT_COMPARISON_SOURCES");
- return answer;
-}
-export async function completeWithWebSearch(input,options={}){const adapter=createOpenAIAdapter(options);let last;for(let attempt=0;attempt<2;attempt++){try{return validateWebSearchBehavior(await adapter.completeWithWebSearch({...input,repair:attempt===1}),input)}catch(error){last=error;if(error instanceof ProviderError)throw error}}throw last}
+export async function completeWithWebSearch(input,options={}){return validateAnswer(await createOpenAIAdapter(options).completeWithWebSearch(input))}
 export async function testOpenAIConnection(model,options={}){await createOpenAIAdapter(options).complete({model,systemPrompt:"연결 상태 확인입니다. JSON 스키마에 맞춰 간단히 답하세요.",question:"연결 확인",history:[],knowledge:{products:[]},language:"ko"});return true}
