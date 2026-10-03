@@ -1,6 +1,6 @@
 export const locales = {
   ko: { lang: "ko", pathPrefix: "", openGraphLocale: "ko_KR" },
-  // Add `en` only when the complete English site is approved and published.
+  en: { lang: "en", pathPrefix: "/en", openGraphLocale: "en_US" },
 };
 
 export const defaultLocale = "ko";
