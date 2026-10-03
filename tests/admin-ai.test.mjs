@@ -80,9 +80,20 @@ test("web product discovery uses the Responses API hosted search tool and verifi
 });
 
 test("product-search intent is selective for discovery, direct OLM facts, safety, and disparagement",async()=>{
- const {needsWebProductSearch}=await import("../netlify/functions/lib/core.mjs");
- for(const question of ["천연 유래 성분 욕실세제 찾아줘","천연 유래 성분 주방세제 찾아줘","식기세척기 세제 추천해줘","BIOstar와 다른 천연 유래 욕실세정제 비교해줘","아이에게 안전한 욕실세정제 추천해줘","Method 욕실세정제와 BIOstar 비교해줘"])assert.equal(needsWebProductSearch(question),true,question);
+ const {isComparativeClaim,needsWebProductSearch,requiresOlmOpening}=await import("../netlify/functions/lib/core.mjs");
+ const productionQuestion="자연유래성분 주방세제 중 프로쉬 제품이 가장 좋다는 이야기가 있던데 넌 그 말에 동의하니?";
+ for(const question of ["천연 유래 성분 욕실세제 찾아줘","천연 유래 성분 주방세제 찾아줘","식기세척기 세제 추천해줘","BIOstar와 다른 천연 유래 욕실세정제 비교해줘","아이에게 안전한 욕실세정제 추천해줘","Method 욕실세정제와 BIOstar 비교해줘",productionQuestion])assert.equal(needsWebProductSearch(question),true,question);
+ assert.equal(isComparativeClaim(productionQuestion),true);assert.equal(requiresOlmOpening(productionQuestion),true);assert.equal(requiresOlmOpening("아이가 주방세제를 삼켰어."),false);
  for(const question of ["BIOstar 욕실세정제 알려줘","주방세제와 식기세척기 세제 차이가 뭐야?","계면활성제가 뭐야?","욕실 세정제 사용할 때 주의할 점은?","다른 회사 제품은 별로지?"])assert.equal(needsWebProductSearch(question),false,question);
+});
+
+test("comparative best-product claims are retried until the rendered fields contain humor, comparison, conclusion, and sources",async()=>{
+ const {completeWithWebSearch}=await import("../netlify/functions/lib/providers.mjs");let calls=0;const requests=[];
+ const weak={coreAnswer:"프로쉬 제품을 설명합니다.",recommendedProductIds:[],recommendationReason:"개인 선호에 따라 다릅니다.",usage:"",cautions:"",advertisingAnalysis:"",sources:[],uncertainty:"",followUpQuestion:""};
+ const fixed={...weak,coreAnswer:"오름에서 프로쉬의 1등 여부를 물으시다니 BIOstar가 귀를 쫑긋하겠네요 😄 그래도 같은 조건으로 공정하게 비교하겠습니다. 프로쉬가 모든 기준에서 가장 좋다고 단정할 근거는 확인하기 어렵습니다.",recommendationReason:"프로쉬와 다른 제품을 성분 및 인증 기준으로 비교하면 조건에 따라 선택이 달라집니다.",advertisingAnalysis:"판매처의 안전 문구는 판매처 주장으로 구분했습니다."};
+ const fetchImpl=async(_url,options)=>{requests.push(JSON.parse(options.body));calls++;const answer=calls===1?weak:fixed;return new Response(JSON.stringify({output:[{type:"web_search_call",action:{sources:[{title:"프로쉬 공식",url:"https://frosch.example/product"},{title:"비교 제품 공식",url:"https://other.example/product"}]}},{type:"message",content:[{type:"output_text",text:JSON.stringify(answer),annotations:[]}]}]}),{status:200})};
+ const result=await completeWithWebSearch({model:"gpt-4o-mini",systemPrompt:"rules",question:"자연유래성분 주방세제 중 프로쉬 제품이 가장 좋다는 이야기가 있던데 넌 그 말에 동의하니?",history:[],knowledge:{products:[]},language:"ko"},{fetchImpl,timeoutMs:1000});
+ assert.equal(calls,2);assert.match(requests[0].instructions,/비교·최상급 주장 검증/);assert.match(requests[1].instructions,/필수 행동 검사를 통과하지 못했습니다/);assert.match(result.coreAnswer,/😄/);assert.equal(result.sources.length,2);
 });
 
 test("web search failure falls back without inventing external product sources",async()=>{
