@@ -107,6 +107,19 @@ test("AI Clean Care policy separates approved facts, microbial principles, and K
  ])assert.match(CLEAN_CARE_SYSTEM_PROMPT,rule);
 });
 
+test("AI Clean Care prompt scopes the OLM opening joke without changing the answer schema",async()=>{
+ const {CLEAN_CARE_SYSTEM_PROMPT,publicSchema}=await import("../netlify/functions/lib/core.mjs");
+ for(const rule of [
+  /coreAnswer의 가장 첫 부분.*OLM 홈페이지.*다른 브랜드/,
+  /1~2문장.*장난기 20%.*정보 제공 80%/,
+  /타사를 깎아내리거나.*구매를 압박하지/,
+  /OLM, BIOstar, Ludwik 자체.*첫마디를 넣지 마세요/,
+  /어린이·아기·유아.*임산부.*눈에 들어감.*삼킴·흡입·중독.*절대 유머를 쓰지 말고/,
+  /history의 최근 assistant 답변.*후속 질문.*다시 반복하지/
+ ])assert.match(CLEAN_CARE_SYSTEM_PROMPT,rule);
+ assert.deepEqual(Object.keys(publicSchema),["coreAnswer","recommendedProductIds","recommendationReason","usage","cautions","advertisingAnalysis","sources","uncertainty","followUpQuestion"]);
+});
+
 test("product recommendations stay within the approved purpose and category",async()=>{
  const {CLEAN_CARE_SYSTEM_PROMPT,approvedKnowledge,attachProducts,demoAnswer}=await import("../netlify/functions/lib/core.mjs");
  const knowledge=await approvedKnowledge();
