@@ -56,3 +56,14 @@ test("AI safety fallback uses only approved knowledge and refuses secret extract
 test("client bundles contain no provider API keys",async()=>{for(const file of ["assets/js/main.js","assets/js/admin-ai.js","ai-clean-care/index.html","admin/ai-clean-care/index.html"]){const source=await readFile(new URL(file,root),"utf8");assert.doesNotMatch(source,/(?:sk-ant-|sk-proj-)[A-Za-z0-9_-]{12,}/)}});
 
 test("AI Clean Care exposes an on-demand, accessible deep answer without a research claim",async()=>{const html=await readFile(new URL("ai-clean-care/index.html",root),"utf8");const client=await readFile(new URL("assets/js/main.js",root),"utf8");const css=await readFile(new URL("assets/css/style.css",root),"utf8");assert.match(html,/id="ai-deep-button"[^>]*hidden>더 자세히 알아보기/);assert.match(html,/04<\/span><h2 id="deep-result-title">더 자세히 알아본 내용/);assert.match(html,/id="ai-deep-status"[^>]*aria-live="polite"/);assert.match(client,/mode:"standard"/);assert.match(client,/originalQuestion,originalAnswer,history,mode:"deep"/);assert.match(client,/if\(deepPending\|\|!originalQuestion\|\|!originalAnswer\)return/);assert.match(client,/deepButton\.disabled=true/);assert.doesNotMatch(html,/웹에서 더 찾아보기|인터넷에서 확인/);assert.match(css,/@media\(max-width:600px\).*\.ai-product/s)});
+
+test("English brand pages preserve the Korean visual and DOM structure",async()=>{
+  const signature=html=>{const main=html.match(/<main id="main">([\s\S]*?)<\/main>/)?.[1]??"";return {sections:(main.match(/<section\b/g)||[]).length,sectionClasses:[...main.matchAll(/<section\b[^>]*class="([^"]*)"/g)].map(match=>match[1]),images:[...main.matchAll(/<img\b[^>]*src="([^"]+)"/g)].map(match=>match[1]),cards:(main.match(/data-product-id=/g)||[]).length,ctas:(main.match(/class="[^"]*(?:btn|cta-button|product-link)[^"]*"/g)||[]).length};};
+  for(const brand of ["biostar","ludwik"]){
+    const ko=await readFile(new URL(`brands/${brand}/index.html`,root),"utf8");
+    const en=await readFile(new URL(`en/brands/${brand}/index.html`,root),"utf8");
+    assert.deepEqual(signature(en),signature(ko),`${brand} EN must mirror KO sections, assets, cards and CTAs`);
+  }
+  const biostar=await readFile(new URL("en/brands/biostar/index.html",root),"utf8");
+  assert.match(biostar,/class="biostar-hero-products"[\s\S]*biostar-dishwashing-liquid-700ml\.png[\s\S]*biostar-kitchen-cleaner-700ml\.png[\s\S]*biostar-dishwasher-tablets-50pcs\.png/);
+});
