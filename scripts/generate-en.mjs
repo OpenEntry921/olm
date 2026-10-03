@@ -81,15 +81,32 @@ const mirroredBrandBody=async(brand)=>{
     "BIOstar는 폴란드 INCO 그룹이 선보이는 홈케어 브랜드입니다. 주방과 욕실 등 생활공간에 맞춘 다양한 세정 제품을 소개합니다.":"BIOstar is a homecare brand from Poland's INCO Group, with cleaning products designed for kitchens, bathrooms and other everyday spaces.",
     "공간과 제품에 맞춘<br>홈케어 기준":"Homecare guidance<br>by space and product",
     "BIOstar의 제품 구성과 제품별 용도, 표시 정보를 차례로 확인해 보세요.":"Explore the BIOstar range, intended uses and verified label information.",
+    "청소가 끝난 뒤에도,<br>남은 유기물 분해를 돕는 미생물":"Microorganisms that help break down<br>residual organic matter after cleaning",
+    "BIOstar는 세정 성분과 함께 미생물을 활용하는 제품을 선보입니다. 세정 성분이 표면의 오염을 씻어내는 역할을 하고, 제품에 포함된 미생물은 제조사 설명에 따라 표면에 남은 유기물의 분해를 돕는 방식으로 작용합니다.":"BIOstar offers products that use microorganisms alongside cleaning ingredients. The cleaning ingredients wash soil from surfaces, while the microorganisms in the products work to help break down organic matter left on surfaces, according to the manufacturer.",
+    "눈에 보이는 오염을 닦아내는 세정 과정과 미생물이 유기물의 분해를 돕는 과정은 서로 다른 역할입니다.":"The cleaning process that removes visible soil and the process in which microorganisms help break down organic matter perform different roles.",
+    "바실러스(Bacillus)는 다양한 환경에서 발견되는 미생물의 한 종류입니다. BIOstar에서는 이러한 미생물을 활용한 청소 원리를 제품 설명에 적용하고 있습니다.":"Bacillus is a type of microorganism found in a variety of environments. BIOstar applies a cleaning principle that uses these microorganisms in its product descriptions.",
+    "BIOstar 세정 성분과 미생물 기반 청소 원리 설명 영상":"Video explaining how BIOstar cleaning ingredients and microorganism-based cleaning work",
+    "영상을 재생할 수 없는 브라우저입니다. 페이지의 텍스트와 원리 설명 이미지에서 같은 내용을 확인할 수 있습니다.":"Your browser cannot play this video. The same information is available in the page text and explanatory image.",
+    "세정과 미생물, 서로 다른 역할":"Cleaning ingredients and microorganisms: different roles",
+    "청소할 때 세정 성분은 표면의 때와 오염을 씻어내는 역할을 합니다. BIOstar의 미생물 기반 제품은 여기에 또 하나의 작용 원리를 더합니다.":"During cleaning, cleaning ingredients wash dirt and soil from surfaces. BIOstar's microorganism-based products add another mode of action.",
+    "제조사 설명에 따르면 제품에 포함된 미생물은 표면에 남은 유기물의 분해를 돕는 효소를 만들어 작용합니다.":"According to the manufacturer, the microorganisms in the products work by producing enzymes that help break down organic matter left on surfaces.",
+    "즉, 세정 성분이 오염을 씻어내는 과정과 미생물이 남은 유기물의 분해를 돕는 과정이 서로 다른 역할을 하는 방식입니다.":"In other words, the cleaning ingredients wash away soil, while the microorganisms help break down the remaining organic matter, with each process performing a different role.",
+    "BIOstar 세정 성분과 미생물이 청소 과정에서 서로 다른 역할을 하는 원리 설명":"Explanation of the different roles of BIOstar cleaning ingredients and microorganisms in the cleaning process",
+    "제조사 설명에 따른 작용 원리를 이해하기 쉽게 설명한 내용입니다. 실제 작용은 제품과 사용 환경에 따라 달라질 수 있으며, 살균·소독 효과를 의미하지 않습니다.":"This is a simplified explanation of the mode of action described by the manufacturer. Actual results may vary by product and conditions of use, and this does not imply a sanitizing or disinfecting effect.",
+    "자료: BIOstar 공식 제품·원료 설명":"Source: Official BIOstar product and ingredient information",
+    "공식 판매처 정보를 준비하고 있습니다. 문의 페이지에서 제품 정보를 확인해 주세요.":"Official retailer information is being prepared. Please visit the inquiry page for product information.",
     "BIOstar 제품을 살펴보세요":"Explore BIOstar products","사용하는 공간과 목적에 맞는 제품을 찾고, 제품별 용도와 사용 정보를 확인해 보세요.":"Find products by space and purpose, then review product-specific use information.",
     "사용 공간별 제품":"Products by use area","제품별 상세 정보":"Product details","사용 전 제품 라벨의 최신 표시사항을 함께 확인해 주세요.":"Always review the latest product label before use.",
     "어떤 제품이 필요한지 쉽게 찾아보세요":"Find the product you need","BIOstar 제품 판매처가 궁금하신가요?":"Looking for BIOstar products?"
   }:{
     "폴란드 주방에서 시작해 생활 전반으로 확장된 클리닝 브랜드":"A cleaning brand that grew from Polish kitchens into everyday homecare",
     "1964년부터 이어온 폴란드의 생활 세정 브랜드, Ludwik. 주방에서 시작한 오랜 경험을 바탕으로 일상의 다양한 공간을 위한 홈케어 제품을 선보입니다.":"Ludwik is a Polish homecare brand with experience dating to 1964, offering products for the kitchen and other everyday spaces.",
-    "주방에서 시작된 생활 세정의 경험":"Homecare experience that began in the kitchen","국내에서 만나는 Ludwik EKO 식기세척기 제품":"Ludwik EKO dishwasher products available in Korea",
+    "주방에서 시작된 생활 세정의 경험":"Homecare experience that began in the kitchen","1964년 폴란드의 주방에서 시작한 Ludwik는 오랜 시간 생활 속 세정 경험을 축적하며 주방부터 세탁과 홈케어까지 제품 영역을 확장해 왔습니다.":"Ludwik began in a Polish kitchen in 1964 and has built decades of home-cleaning experience, expanding its product range from the kitchen to laundry and homecare.",
+    "1964년 시작된 폴란드 생활 세정 브랜드":"A Polish home-cleaning brand established in 1964","주방세제에서 출발해 종합 홈케어로 이어진 경험":"Experience that began with dishwashing liquid and grew into comprehensive homecare",
+    "국내에서 만나는 Ludwik EKO 식기세척기 제품":"Ludwik EKO dishwasher products available in Korea",
     "식기세척기용 태블릿":"Dishwasher tablets","제품 상세 정보":"Product details","식기세척기 제품의 공식 표시 정보":"Verified label information for dishwasher products",
-    "주방에서 시작해 생활 전반으로":"From the kitchen to everyday homecare","Ludwik 제품을 공식 판매처에서 만나보세요":"Find Ludwik at the official store"
+    "주방에서 시작해 생활 전반으로":"From the kitchen to everyday homecare","주방세제에서 시작한 Ludwik는 세탁과 다양한 생활 공간을 위한 홈케어 영역으로 제품 경험을 확장해 왔습니다.":"Beginning with dishwashing liquid, Ludwik has expanded its product experience into laundry and homecare for a variety of everyday spaces.",
+    "Ludwik 제품을 공식 판매처에서 만나보세요":"Find Ludwik at the official store","오름인터내셔널이 공식적으로 소개하는 Ludwik 제품과 판매 정보를 확인하세요.":"Explore Ludwik products officially introduced by OLM International and find sales information."
   };
   return localizeInternalLinks(replaceText(body,{...shared,...brandText}));
 };
