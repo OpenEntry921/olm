@@ -14,7 +14,7 @@
 | 현재 파일 | 사용 영역 | 공식 자산 권장 파일명 | 데이터 키 |
 | --- | --- | --- | --- |
 | `assets/common/icons/olm-icon-favicon.svg` | 파비콘 | `olm-icon-favicon.svg` | `favicon` |
-| `assets/common/og/olm-og-default.svg` | 전 페이지 OG 공유 이미지 | `olm-og-default-1200x630.webp` | `commonOg` |
+| `assets/common/og/olm-og-olm-international-corp.svg` | 전 페이지 OG 공유 이미지 | `olm-og-default-1200x630.webp` | `commonOg` |
 | `assets/ludwik/hero/ludwik-hero-placeholder.svg` | 홈·브랜드 목록·Ludwik 히어로 | `ludwik-hero-products-large-front.webp` | `ludwikHero` |
 | `assets/biostar/hero/biostar-hero-placeholder.svg` | 홈·브랜드 목록·BIOstar 히어로 | `biostar-hero-products-large-front.webp` | `biostarHero` |
 | 위 BIOstar 임시 비주얼 재사용 | BIOstar 성분 소개 | `biostar-ingredients-aloe-lavender-large.webp` | `biostarIngredients` |
